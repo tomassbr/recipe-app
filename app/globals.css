@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer utilities {
+  .tabular-nums-stable {
+    font-variant-numeric: tabular-nums;
+  }
+}
