@@ -21,7 +21,7 @@ export function IngredientRow({
   const subLine = scaledIngredient.displayAmount ?? "";
 
   return (
-    <tr className="border-b border-white/25 last:border-b-0">
+    <tr className="border-b border-white/25 tabular-nums last:border-b-0">
       <td className="px-4 py-3 text-slate-800">
         <span className="block">{originalIngredient.name}</span>
         {originalIngredient.note ? (

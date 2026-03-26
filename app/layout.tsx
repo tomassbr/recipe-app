@@ -21,7 +21,7 @@ export default function RootLayout({
       >
         <GlassBlobBackground />
         <div
-          className="fixed inset-0 -z-10 bg-gradient-to-br from-[#e0f7fa]/90 via-[#ede7f6]/85 to-[#e3f2fd]/90"
+          className="fixed inset-0 -z-10 bg-mesh-gradient"
           aria-hidden
         />
         <Providers>{children}</Providers>

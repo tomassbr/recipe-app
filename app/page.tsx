@@ -8,7 +8,8 @@ import { RecipeDetail } from "@/components/recipe/RecipeDetail";
 import { RecipeFormModal } from "@/components/recipe/RecipeFormModal";
 import { ConfirmDeleteModal } from "@/components/recipe/ConfirmDeleteModal";
 import { CategoryBrowseHero } from "@/components/recipe/CategoryBrowseHero";
-import { useRecipe } from "@/context/RecipeContext";
+import { useRecipe } from "@/composables/useRecipe";
+import { GlassCard } from "@/components/ui";
 
 const transitionEase = [0.22, 1, 0.36, 1] as const;
 
@@ -46,17 +47,17 @@ export default function HomePage() {
     <div className="relative z-10 mx-auto flex min-h-screen max-w-[1680px] flex-col px-4 pb-8 pt-8 md:px-8 md:pb-12 md:pt-8 lg:px-12">
       <AppBrandBar />
 
-      <div className="flex min-h-0 flex-1 flex-col gap-8 md:flex-row md:gap-8">
+      <div className="flex min-h-0 flex-1 flex-col gap-8 md:flex-row md:items-start md:gap-8">
         <Sidebar />
 
-        <main className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-x-hidden">
+        <main className="relative flex min-h-0 min-w-0 flex-1 flex-col">
           {activeRecipe ? (
             <motion.div
               key={`detail-${activeRecipe.id}`}
               initial={{ opacity: 0, x: 16 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.28, ease: transitionEase }}
-              className="flex w-full min-h-0 flex-1 flex-col"
+              className="flex w-full min-h-0 min-w-0 flex-1 flex-col"
             >
               <RecipeDetail recipe={activeRecipe} />
             </motion.div>
@@ -66,8 +67,9 @@ export default function HomePage() {
               initial={{ opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.28, ease: transitionEase }}
-              className="flex min-h-0 flex-1 flex-col gap-6 rounded-2xl border border-white/50 bg-white/40 p-6 shadow-glass backdrop-blur-xl md:gap-8 md:rounded-3xl md:p-8"
+              className="flex min-h-0 min-w-0 flex-1 flex-col"
             >
+              <GlassCard className="flex min-h-0 flex-1 flex-col gap-6 p-6 md:gap-8 md:p-8">
                 <motion.header
                   className="border-b border-white/30 pb-4"
                   initial={{ opacity: 0, y: 8 }}
@@ -92,7 +94,8 @@ export default function HomePage() {
                 <CategoryBrowseHero category={activeCategory} />
 
                 <RecipeGrid />
-              </motion.div>
+              </GlassCard>
+            </motion.div>
             )}
         </main>
       </div>

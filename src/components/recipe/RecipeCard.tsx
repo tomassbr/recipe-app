@@ -3,6 +3,7 @@
 import type { Recipe } from "@/types/recipe";
 import { motion } from "framer-motion";
 import { Pencil, Scale, Trash2 } from "lucide-react";
+import { GlassCard } from "@/components/ui";
 import { getCategoryIcon } from "@/utils/categoryIcons";
 
 type RecipeCardProps = {
@@ -34,7 +35,7 @@ export function RecipeCard({
       }}
       className="group/card flex h-full min-h-0 flex-col"
     >
-      <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-white/50 bg-white/40 shadow-glass backdrop-blur-xl">
+      <GlassCard className="flex h-full min-h-0 flex-col overflow-hidden p-0">
         {manageMode ? (
           <div className="relative z-20 flex shrink-0 items-center justify-end gap-2 border-b border-white/40 bg-white/40 px-4 py-3 backdrop-blur-md md:px-4 md:py-3">
             <button
@@ -101,7 +102,7 @@ export function RecipeCard({
             </span>
           </div>
         </motion.button>
-      </div>
+      </GlassCard>
     </motion.div>
   );
 }

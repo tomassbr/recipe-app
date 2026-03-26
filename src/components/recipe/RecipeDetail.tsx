@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Pencil } from "lucide-react";
 import type { Recipe } from "@/types/recipe";
-import { useRecipeCalculator } from "@/composables/useRecipeCalculator";
-import { useRecipe } from "@/context/RecipeContext";
+import { useRecipe, useRecipeDetailScaling } from "@/composables/useRecipe";
+import { GlassCard, GlassInput, GlassTable } from "@/components/ui";
+import { formatScaledAmountDisplay } from "@/utils/recipeAmount";
 import { IngredientRow } from "./IngredientRow";
 
 type RecipeDetailProps = {
@@ -14,19 +14,18 @@ type RecipeDetailProps = {
 
 export function RecipeDetail({ recipe }: RecipeDetailProps) {
   const { setActiveRecipeId, manageMode, openEditRecipe } = useRecipe();
-  const [targetYield, setTargetYield] = useState(recipe.baseYield);
-
-  useEffect(() => {
-    setTargetYield(recipe.baseYield);
-  }, [recipe.id, recipe.baseYield]);
-
-  const { coefficient, scaledRecipe, componentBatchSummaries } =
-    useRecipeCalculator(recipe, targetYield);
+  const {
+    targetYield,
+    setTargetYield,
+    coefficient,
+    scaledRecipe,
+    componentBatchSummaries,
+  } = useRecipeDetailScaling(recipe);
 
   const singleComponent = (recipe.components?.length ?? 0) === 1;
 
   return (
-    <div className="relative z-0 flex min-h-0 flex-1 flex-col gap-8 rounded-2xl border border-white/50 bg-white/40 p-6 shadow-glass backdrop-blur-xl md:gap-8 md:rounded-3xl md:p-8">
+    <GlassCard className="relative z-0 flex min-h-0 flex-1 flex-col gap-8 p-6 md:gap-8 md:p-8">
       <div className="flex flex-wrap items-center gap-4">
         <motion.button
           type="button"
@@ -100,11 +99,12 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
           <p className="text-sm text-slate-500">
             Upravte hodnotu — přepočet všech surovin proběhne okamžitě.
           </p>
-          <input
+          <GlassInput
             id="target-yield"
             type="number"
             inputMode="decimal"
             step="any"
+            variant="emphasis"
             value={Number.isFinite(targetYield) ? targetYield : ""}
             onChange={(e) => {
               const raw = e.target.value;
@@ -117,18 +117,24 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
                 setTargetYield(n);
               }
             }}
-            className="w-full max-w-lg rounded-2xl border-2 border-gold/35 bg-white/85 px-6 py-4 text-3xl font-semibold text-slate-800 tabular-nums shadow-inner outline-none transition-[border-color,box-shadow] focus:border-gold focus:ring-4 focus:ring-gold/20 md:max-w-xl md:text-4xl"
+            className="max-w-lg md:max-w-xl"
           />
           <p className="text-sm tabular-nums text-slate-500">
             Koeficient (live):{" "}
             <motion.span
-              key={Number.isFinite(coefficient) ? coefficient.toFixed(8) : "nan"}
+              key={
+                Number.isFinite(coefficient)
+                  ? formatScaledAmountDisplay(coefficient)
+                  : "nan"
+              }
               initial={{ opacity: 0.35, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="inline-block font-medium text-gold-dark"
             >
-              {Number.isFinite(coefficient) ? coefficient.toFixed(6) : "—"}
+              {Number.isFinite(coefficient)
+                ? formatScaledAmountDisplay(coefficient)
+                : "—"}
             </motion.span>
           </p>
         </div>
@@ -154,54 +160,52 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
               />
               {component.name}
             </h2>
-            <div className="overflow-x-auto rounded-xl border border-white/45 bg-white/30 shadow-inner backdrop-blur-md">
-              <table className="w-full min-w-[300px] border-collapse text-sm md:text-base">
-                <thead>
-                  <tr className="border-b border-white/50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    <th className="px-4 py-4">Surovina</th>
-                    <th className="px-4 py-4 text-right tabular-nums">
-                      Původní
-                    </th>
-                    <th className="px-4 py-4 text-right tabular-nums">
-                      Přepočet
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {component.ingredients.map((ing, idx) => (
-                    <IngredientRow
-                      key={`${component.id}-${idx}-${ing.name}`}
-                      originalIngredient={ing}
-                      scaledIngredient={
-                        scaledRecipe.components[ci].ingredients[idx]
-                      }
-                      recalcKey={`${targetYield}`}
-                    />
-                  ))}
-                </tbody>
-                <tfoot>
-                  <tr className="border-t border-white/20 bg-white/15 text-slate-800">
-                    <td
-                      colSpan={2}
-                      className="px-4 py-3 text-left text-sm font-semibold"
-                    >
-                      {singleComponent
-                        ? "Součet receptury"
-                        : "Součet komponenty"}
-                    </td>
-                    <td
-                      className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-gold-dark"
-                      title="Součet přepočtu podle jednotek v řádcích (hmotnosti v g, ks a další zvlášť)"
-                    >
-                      {componentBatchSummaries[ci]?.displayLine ?? "—"}
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
+            <GlassTable className="shadow-inner">
+              <thead>
+                <tr className="border-b border-white/50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <th className="px-4 py-4">Surovina</th>
+                  <th className="px-4 py-4 text-right tabular-nums">
+                    Původní
+                  </th>
+                  <th className="px-4 py-4 text-right tabular-nums">
+                    Přepočet
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {component.ingredients.map((ing, idx) => (
+                  <IngredientRow
+                    key={`${component.id}-${idx}-${ing.name}`}
+                    originalIngredient={ing}
+                    scaledIngredient={
+                      scaledRecipe.components[ci].ingredients[idx]
+                    }
+                    recalcKey={`${targetYield}`}
+                  />
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="border-t border-white/20 bg-white/15 text-slate-800">
+                  <td
+                    colSpan={2}
+                    className="px-4 py-3 text-left text-sm font-semibold"
+                  >
+                    {singleComponent
+                      ? "Součet receptury"
+                      : "Součet komponenty"}
+                  </td>
+                  <td
+                    className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-gold-dark"
+                    title="Součet přepočtu podle jednotek v řádcích (hmotnosti v g, ks a další zvlášť)"
+                  >
+                    {componentBatchSummaries[ci]?.displayLine ?? "—"}
+                  </td>
+                </tr>
+              </tfoot>
+            </GlassTable>
           </motion.section>
         ))}
       </div>
-    </div>
+    </GlassCard>
   );
 }

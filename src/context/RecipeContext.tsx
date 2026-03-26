@@ -259,15 +259,15 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useRecipe(): RecipeContextValue {
+export function useRecipeContext(): RecipeContextValue {
   const ctx = useContext(RecipeContext);
   if (!ctx) {
-    throw new Error("useRecipe must be used within RecipeProvider");
+    throw new Error("useRecipeContext must be used within RecipeProvider");
   }
   return ctx;
 }
 
-/** @deprecated Use `useRecipe` */
+/** @deprecated Use `useRecipe` from `@/composables/useRecipe` */
 export function useRecipesContext(): RecipeContextValue {
-  return useRecipe();
+  return useRecipeContext();
 }

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { getCategoryAsset } from "@/utils/getCategoryAsset";
 import { getLucideIconForAsset } from "@/utils/categoryLucideIcon";
+import { GlassCard } from "@/components/ui";
 import { cn } from "@/utils/cn";
 
 type CategoryBrowseHeroProps = {
@@ -63,7 +64,7 @@ export function CategoryBrowseHero({ category }: CategoryBrowseHeroProps) {
   const Icon = getLucideIconForAsset(asset);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/50 shadow-glass backdrop-blur-xl md:rounded-3xl">
+    <GlassCard className="relative overflow-hidden p-0">
       <div className="relative min-h-[100px] w-full sm:min-h-[108px] md:min-h-[112px]">
         <motion.div
           key={category}
@@ -118,6 +119,6 @@ export function CategoryBrowseHero({ category }: CategoryBrowseHeroProps) {
           </div>
         </div>
       </div>
-    </div>
+    </GlassCard>
   );
 }

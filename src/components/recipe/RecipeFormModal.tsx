@@ -4,7 +4,7 @@ import { type FormEvent, useEffect, useMemo, useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
 import type { Component, Ingredient, Recipe } from "@/types/recipe";
 import { validateRecipe } from "@/utils/recipeValidation";
-import { useRecipe } from "@/context/RecipeContext";
+import { useRecipe } from "@/composables/useRecipe";
 import { Button, GlassModal, Input, Textarea } from "@/components/common";
 import { cn } from "@/utils/cn";
 
