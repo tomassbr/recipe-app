@@ -1,6 +1,6 @@
 "use client";
 
-import { useRecipe } from "@/composables/useRecipe";
+import { useRecipe } from "@/hooks/useRecipe";
 import type { Recipe } from "@/types/recipe";
 
 /** @deprecated Use `useRecipe` */

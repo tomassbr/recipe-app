@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AppBrandBar } from "@/components/layout/AppBrandBar";
-import { Sidebar } from "@/components/layout/Sidebar";
-import { RecipeGrid } from "@/components/recipe/RecipeGrid";
-import { RecipeDetail } from "@/components/recipe/RecipeDetail";
-import { RecipeFormModal } from "@/components/recipe/RecipeFormModal";
-import { ConfirmDeleteModal } from "@/components/recipe/ConfirmDeleteModal";
-import { CategoryBrowseHero } from "@/components/recipe/CategoryBrowseHero";
-import { useRecipe } from "@/composables/useRecipe";
+import { AppBrandBar } from "@/components/features/layout/AppBrandBar";
+import { Sidebar } from "@/components/features/layout/Sidebar";
+import { RecipeGrid } from "@/components/features/recipe/RecipeGrid";
+import { RecipeDetail } from "@/components/features/recipe/RecipeDetail";
+import { RecipeFormModal } from "@/components/features/recipe/RecipeFormModal";
+import { ConfirmDeleteModal } from "@/components/features/recipe/ConfirmDeleteModal";
+import { CategoryBrowseHero } from "@/components/features/recipe/CategoryBrowseHero";
+import { useRecipe } from "@/hooks/useRecipe";
 import { GlassCard } from "@/components/ui";
 
 const transitionEase = [0.22, 1, 0.36, 1] as const;

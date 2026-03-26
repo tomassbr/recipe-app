@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { Recipe } from "@/types/recipe";
-import { useRecipeCalculator } from "@/composables/useRecipeCalculator";
+import { useRecipeCalculator } from "@/hooks/useRecipeCalculator";
 import { useRecipeContext } from "@/context/RecipeContext";
 
 export type { RecipeContextValue } from "@/context/RecipeContext";

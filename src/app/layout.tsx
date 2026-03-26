@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
-import { GlassBlobBackground } from "@/components/layout/GlassBlobBackground";
-import { Providers } from "@/components/layout/Providers";
+import { GlassBlobBackground } from "@/components/features/layout/GlassBlobBackground";
+import { Providers } from "@/components/features/layout/Providers";
 
 export const metadata: Metadata = {
   title: "PastryCalc — přepočty receptur",

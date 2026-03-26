@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { requireAdmin } from "@/lib/auth/requireAdmin";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import type { ProfileRole } from "@/types/profile";
 
 export type SetProfileRoleResult = { ok: true } | { ok: false; error: string };

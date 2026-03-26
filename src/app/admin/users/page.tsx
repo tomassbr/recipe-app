@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { UserManagementTable } from "./UserManagementTable";
+import { UserManagementTable } from "@/components/features/admin/UserManagementTable";
 import { GlassCard } from "@/components/ui";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import type { ProfileRow } from "@/types/profile";
 
 export const metadata = {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { GlassCard } from "@/components/ui";
 
 export default async function DashboardPage() {

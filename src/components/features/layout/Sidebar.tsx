@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { LayoutGrid, Search, Settings2 } from "lucide-react";
 import { getCategoryIcon } from "@/utils/categoryIcons";
-import { useRecipe } from "@/composables/useRecipe";
+import { useRecipe } from "@/hooks/useRecipe";
 import { GlassCard, GlassInput } from "@/components/ui";
 
 export function Sidebar() {

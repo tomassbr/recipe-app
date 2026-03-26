@@ -1,6 +1,6 @@
 "use client";
 
-import { useRecipe } from "@/composables/useRecipe";
+import { useRecipe } from "@/hooks/useRecipe";
 import { Button, GlassModal } from "@/components/common";
 
 export function ConfirmDeleteModal() {

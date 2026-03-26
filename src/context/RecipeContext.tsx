@@ -11,7 +11,7 @@ import {
 } from "react";
 import { toast } from "sonner";
 import type { Recipe } from "@/types/recipe";
-import { usePersistedRecipes } from "@/composables/usePersistedRecipes";
+import { usePersistedRecipes } from "@/hooks/usePersistedRecipes";
 import { useSessionProfile } from "@/context/SessionProfileContext";
 
 const STORAGE_MANAGE = "pastrycalc-manage-v1";
@@ -351,7 +351,7 @@ export function useRecipeContext(): RecipeContextValue {
   return ctx;
 }
 
-/** @deprecated Use `useRecipe` from `@/composables/useRecipe` */
+/** @deprecated Use `useRecipe` from `@/hooks/useRecipe` */
 export function useRecipesContext(): RecipeContextValue {
   return useRecipeContext();
 }

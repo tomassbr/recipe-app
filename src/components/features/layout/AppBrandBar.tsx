@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ChefHat, Plus } from "lucide-react";
-import { useRecipe } from "@/composables/useRecipe";
-import { UserNav } from "@/components/auth/UserNav";
+import { useRecipe } from "@/hooks/useRecipe";
+import { UserNav } from "@/components/features/auth/UserNav";
 import { GlassCard } from "@/components/ui";
 import { cn } from "@/utils/cn";
 

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, Pencil } from "lucide-react";
 import type { Recipe } from "@/types/recipe";
-import { useRecipe, useRecipeDetailScaling } from "@/composables/useRecipe";
+import { useRecipe, useRecipeDetailScaling } from "@/hooks/useRecipe";
 import { GlassCard, GlassInput, GlassTable } from "@/components/ui";
 import { formatScaledAmountDisplay } from "@/utils/recipeAmount";
 import { IngredientRow } from "./IngredientRow";

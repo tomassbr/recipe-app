@@ -3,7 +3,7 @@
 import { RecipeCard } from "./RecipeCard";
 import { RecipeEmptyState } from "./RecipeEmptyState";
 import { motion } from "framer-motion";
-import { useRecipe } from "@/composables/useRecipe";
+import { useRecipe } from "@/hooks/useRecipe";
 
 export function RecipeGrid() {
   const {

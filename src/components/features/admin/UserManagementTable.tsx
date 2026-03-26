@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
-import { setProfileAdminRole } from "./actions";
+import { setProfileAdminRole } from "@/actions/admin";
 import { GlassTable } from "@/components/ui";
 import type { ProfileRow } from "@/types/profile";
 import { cn } from "@/utils/cn";

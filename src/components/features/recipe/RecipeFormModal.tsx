@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Plus, Trash2 } from "lucide-react";
 import type { Component, Ingredient, Recipe } from "@/types/recipe";
 import { validateRecipe } from "@/utils/recipeValidation";
-import { useRecipe } from "@/composables/useRecipe";
+import { useRecipe } from "@/hooks/useRecipe";
 import { RECIPE_MUTATION_FORBIDDEN_MESSAGE } from "@/context/RecipeContext";
 import { Button, GlassModal, Input, Textarea } from "@/components/common";
 import { cn } from "@/utils/cn";

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { LoginContent } from "./LoginContent";
+import { LoginContent } from "@/components/features/auth/LoginContent";
 
 export default function LoginPage() {
   return (
