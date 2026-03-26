@@ -8,7 +8,7 @@ import { GlassCard } from "@/components/ui";
 import { cn } from "@/utils/cn";
 
 export function AppBrandBar() {
-  const { manageMode, openCreateRecipe } = useRecipe();
+  const { effectiveManageMode, openCreateRecipe } = useRecipe();
 
   return (
     <motion.div
@@ -35,16 +35,16 @@ export function AppBrandBar() {
           <UserNav />
           <button
             type="button"
-            disabled={!manageMode}
+            disabled={!effectiveManageMode}
             onClick={openCreateRecipe}
             title={
-              manageMode
+              effectiveManageMode
                 ? "Přidat nový recept"
-                : "Nejprve zapněte režim Správa v postranním panelu"
+                : "Režim Správa je dostupný jen administrátorům (postranní panel)."
             }
             className={cn(
               "inline-flex items-center gap-2 rounded-full border px-4 py-3 text-sm font-medium shadow-sm backdrop-blur-sm transition-colors",
-              manageMode
+              effectiveManageMode
                 ? "border-gold/35 bg-white/60 text-slate-800 hover:border-gold/50 hover:bg-gold-muted"
                 : "cursor-not-allowed border-white/40 bg-white/30 text-slate-400"
             )}

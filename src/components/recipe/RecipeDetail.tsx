@@ -13,7 +13,7 @@ type RecipeDetailProps = {
 };
 
 export function RecipeDetail({ recipe }: RecipeDetailProps) {
-  const { setActiveRecipeId, manageMode, openEditRecipe } = useRecipe();
+  const { setActiveRecipeId, effectiveManageMode, openEditRecipe } = useRecipe();
   const {
     targetYield,
     setTargetYield,
@@ -42,15 +42,15 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
         </motion.button>
         <button
           type="button"
-          disabled={!manageMode}
+          disabled={!effectiveManageMode}
           title={
-            manageMode
+            effectiveManageMode
               ? "Upravit recept"
-              : "Zapněte režim Správa v postranním panelu"
+              : "Úpravy jsou jen pro administrátory se zapnutou správou v panelu."
           }
-          onClick={() => manageMode && openEditRecipe(recipe)}
+          onClick={() => effectiveManageMode && openEditRecipe(recipe)}
           className={`inline-flex items-center gap-2 rounded-full border px-4 py-3 text-sm ${
-            manageMode
+            effectiveManageMode
               ? "border-gold/35 bg-white/50 text-slate-800 hover:border-gold/50 hover:bg-gold-muted"
               : "cursor-not-allowed border-white/40 bg-white/30 text-slate-400"
           }`}

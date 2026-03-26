@@ -9,8 +9,10 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { toast } from "sonner";
 import type { Recipe } from "@/types/recipe";
 import { usePersistedRecipes } from "@/composables/usePersistedRecipes";
+import { useSessionProfile } from "@/context/SessionProfileContext";
 
 const STORAGE_MANAGE = "pastrycalc-manage-v1";
 
@@ -36,6 +38,10 @@ export type RecipeContextValue = {
   hydrated: boolean;
   manageMode: boolean;
   setManageMode: (v: boolean | ((prev: boolean) => boolean)) => void;
+  /** Správa v UI jen pro administrátory (ignoruje localStorage / DevTools). */
+  effectiveManageMode: boolean;
+  isAdmin: boolean;
+  profileRoleHydrated: boolean;
 
   categories: string[];
   activeCategory: string;
@@ -75,8 +81,13 @@ export type RecipeContextValue = {
 
 const RecipeContext = createContext<RecipeContextValue | null>(null);
 
+/** Zobrazení při pokusu neadmina měnit data receptů (UI + server actions). */
+export const RECIPE_MUTATION_FORBIDDEN_MESSAGE =
+  "Úpravy receptů smí provádět pouze administrátor. Přihlaste se účtem s rolí admin.";
+
 export function RecipeProvider({ children }: { children: ReactNode }) {
   const { recipes, setRecipes, hydrated } = usePersistedRecipes();
+  const { isAdmin, profileHydrated: profileRoleHydrated } = useSessionProfile();
   const [manageMode, setManageModeState] = useState(false);
 
   const [activeCategory, setActiveCategoryState] = useState("");
@@ -92,17 +103,34 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
     setManageModeState(loadManageMode());
   }, []);
 
+  useEffect(() => {
+    if (!profileRoleHydrated) return;
+    if (!isAdmin && manageMode) {
+      setManageModeState(false);
+      if (typeof window !== "undefined") {
+        localStorage.setItem(STORAGE_MANAGE, "0");
+      }
+    }
+  }, [profileRoleHydrated, isAdmin, manageMode]);
+
   const setManageMode = useCallback(
     (v: boolean | ((prev: boolean) => boolean)) => {
       setManageModeState((prev) => {
         const next = typeof v === "function" ? v(prev) : v;
+        if (next && !isAdmin) {
+          toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+          if (typeof window !== "undefined") {
+            localStorage.setItem(STORAGE_MANAGE, "0");
+          }
+          return false;
+        }
         if (typeof window !== "undefined") {
           localStorage.setItem(STORAGE_MANAGE, next ? "1" : "0");
         }
         return next;
       });
     },
-    []
+    [isAdmin]
   );
 
   const categories = useMemo(() => uniqueCategories(recipes), [recipes]);
@@ -158,29 +186,61 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
     ? getRecipeById(editingId) ?? null
     : null;
 
-  const addRecipe = useCallback((recipe: Recipe) => {
-    setRecipes((prev) => [...prev, recipe]);
-  }, [setRecipes]);
+  const addRecipe = useCallback(
+    (recipe: Recipe) => {
+      if (!isAdmin) {
+        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        return;
+      }
+      setRecipes((prev) => [...prev, recipe]);
+    },
+    [isAdmin, setRecipes]
+  );
 
-  const updateRecipe = useCallback((recipe: Recipe) => {
-    setRecipes((prev) =>
-      prev.map((r) => (r.id === recipe.id ? recipe : r))
-    );
-  }, [setRecipes]);
+  const updateRecipe = useCallback(
+    (recipe: Recipe) => {
+      if (!isAdmin) {
+        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        return;
+      }
+      setRecipes((prev) =>
+        prev.map((r) => (r.id === recipe.id ? recipe : r))
+      );
+    },
+    [isAdmin, setRecipes]
+  );
 
-  const deleteRecipe = useCallback((id: string) => {
-    setRecipes((prev) => prev.filter((r) => r.id !== id));
-  }, [setRecipes]);
+  const deleteRecipe = useCallback(
+    (id: string) => {
+      if (!isAdmin) {
+        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        return;
+      }
+      setRecipes((prev) => prev.filter((r) => r.id !== id));
+    },
+    [isAdmin, setRecipes]
+  );
 
   const openCreateRecipe = useCallback(() => {
+    if (!isAdmin) {
+      toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+      return;
+    }
     setEditingId(null);
     setEditorOpen(true);
-  }, []);
+  }, [isAdmin]);
 
-  const openEditRecipe = useCallback((recipe: Recipe) => {
-    setEditingId(recipe.id);
-    setEditorOpen(true);
-  }, []);
+  const openEditRecipe = useCallback(
+    (recipe: Recipe) => {
+      if (!isAdmin) {
+        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        return;
+      }
+      setEditingId(recipe.id);
+      setEditorOpen(true);
+    },
+    [isAdmin]
+  );
 
   const closeEditor = useCallback(() => {
     setEditorOpen(false);
@@ -189,14 +249,31 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
 
   const persistRecipe = useCallback(
     (recipe: Recipe) => {
+      if (!isAdmin) {
+        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        return;
+      }
       if (editingId) {
         updateRecipe(recipe);
       } else {
         addRecipe(recipe);
       }
     },
-    [editingId, updateRecipe, addRecipe]
+    [editingId, updateRecipe, addRecipe, isAdmin]
   );
+
+  const setDeleteTargetGuarded = useCallback(
+    (recipe: Recipe | null) => {
+      if (recipe != null && !isAdmin) {
+        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        return;
+      }
+      setDeleteTarget(recipe);
+    },
+    [isAdmin]
+  );
+
+  const effectiveManageMode = manageMode && isAdmin;
 
   const value = useMemo<RecipeContextValue>(
     () => ({
@@ -204,6 +281,9 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
       hydrated,
       manageMode,
       setManageMode,
+      effectiveManageMode,
+      isAdmin,
+      profileRoleHydrated,
       categories,
       activeCategory,
       setActiveCategory,
@@ -225,13 +305,16 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
       openEditRecipe,
       closeEditor,
       deleteTarget,
-      setDeleteTarget,
+      setDeleteTarget: setDeleteTargetGuarded,
     }),
     [
       recipes,
       hydrated,
       manageMode,
       setManageMode,
+      effectiveManageMode,
+      isAdmin,
+      profileRoleHydrated,
       categories,
       activeCategory,
       setActiveCategory,
@@ -251,6 +334,7 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
       openEditRecipe,
       closeEditor,
       deleteTarget,
+      setDeleteTargetGuarded,
     ]
   );
 

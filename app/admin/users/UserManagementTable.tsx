@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
+import { toast } from "sonner";
 import { setProfileAdminRole } from "./actions";
 import { GlassTable } from "@/components/ui";
 import type { ProfileRow } from "@/types/profile";
@@ -28,6 +29,7 @@ export function UserManagementTable({
       const result = await setProfileAdminRole(row.id, nextRole);
       setPendingId(null);
       if (!result.ok) {
+        toast.error(result.error);
         setErrorMessage(result.error);
         return;
       }

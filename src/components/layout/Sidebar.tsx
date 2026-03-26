@@ -13,6 +13,8 @@ export function Sidebar() {
     setActiveCategory,
     manageMode,
     setManageMode,
+    isAdmin,
+    profileRoleHydrated,
     searchQuery,
     setSearchQuery,
   } = useRecipe();
@@ -23,34 +25,36 @@ export function Sidebar() {
       role="complementary"
       aria-label="Kategorie receptů"
     >
-      <div className="mb-8 flex shrink-0 flex-col gap-4 rounded-2xl border border-white/40 bg-white/25 p-4">
-        <div className="flex items-center justify-between gap-3">
-          <span className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-            <Settings2 className="h-4 w-4 text-gold-dark" aria-hidden />
-            Správa
-          </span>
-          <button
-            type="button"
-            role="switch"
-            aria-checked={manageMode}
-            onClick={() => setManageMode(!manageMode)}
-            className={`relative h-8 w-14 shrink-0 rounded-full border transition-colors ${
-              manageMode
-                ? "border-gold/50 bg-gold-muted shadow-inner"
-                : "border-white/50 bg-white/40"
-            }`}
-          >
-            <span
-              className={`absolute top-1 h-6 w-6 rounded-full bg-white shadow transition-transform ${
-                manageMode ? "left-7 translate-x-0 border border-gold/30" : "left-1"
+      {profileRoleHydrated && isAdmin ? (
+        <div className="mb-8 flex shrink-0 flex-col gap-4 rounded-2xl border border-white/40 bg-white/25 p-4">
+          <div className="flex items-center justify-between gap-3">
+            <span className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+              <Settings2 className="h-4 w-4 text-gold-dark" aria-hidden />
+              Správa
+            </span>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={manageMode}
+              onClick={() => setManageMode(!manageMode)}
+              className={`relative h-8 w-14 shrink-0 rounded-full border transition-colors ${
+                manageMode
+                  ? "border-gold/50 bg-gold-muted shadow-inner"
+                  : "border-white/50 bg-white/40"
               }`}
-            />
-          </button>
+            >
+              <span
+                className={`absolute top-1 h-6 w-6 rounded-full bg-white shadow transition-transform ${
+                  manageMode ? "left-7 translate-x-0 border border-gold/30" : "left-1"
+                }`}
+              />
+            </button>
+          </div>
+          <p className="text-xs leading-relaxed text-slate-500">
+            Zapněte pro úpravy a mazání receptů na kartách a v detailu.
+          </p>
         </div>
-        <p className="text-xs leading-relaxed text-slate-500">
-          Zapněte pro úpravy a mazání receptů na kartách a v detailu.
-        </p>
-      </div>
+      ) : null}
 
       <div className="mb-4 shrink-0">
         <label className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">

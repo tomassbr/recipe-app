@@ -1,10 +1,12 @@
 "use client";
 
 import { type FormEvent, useEffect, useMemo, useState } from "react";
+import { toast } from "sonner";
 import { Plus, Trash2 } from "lucide-react";
 import type { Component, Ingredient, Recipe } from "@/types/recipe";
 import { validateRecipe } from "@/utils/recipeValidation";
 import { useRecipe } from "@/composables/useRecipe";
+import { RECIPE_MUTATION_FORBIDDEN_MESSAGE } from "@/context/RecipeContext";
 import { Button, GlassModal, Input, Textarea } from "@/components/common";
 import { cn } from "@/utils/cn";
 
@@ -47,6 +49,8 @@ export function RecipeFormModal() {
     activeCategory,
     categories,
     persistRecipe,
+    isAdmin,
+    profileRoleHydrated,
   } = useRecipe();
 
   const [draft, setDraft] = useState<Recipe>(() =>
@@ -65,6 +69,14 @@ export function RecipeFormModal() {
       setDraft(emptyRecipeDraft(activeCategory));
     }
   }, [editorOpen, editingRecipe, activeCategory]);
+
+  useEffect(() => {
+    if (!profileRoleHydrated || !editorOpen) return;
+    if (!isAdmin) {
+      closeEditor();
+      toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+    }
+  }, [profileRoleHydrated, isAdmin, editorOpen, closeEditor]);
 
   const categoryOptions = useMemo(() => {
     const s = new Set(categories);

@@ -10,7 +10,7 @@ export function RecipeGrid() {
     filteredRecipes,
     activeCategory,
     setActiveRecipeId,
-    manageMode,
+    effectiveManageMode,
     openEditRecipe,
     setDeleteTarget,
   } = useRecipe();
@@ -37,7 +37,7 @@ export function RecipeGrid() {
         <RecipeCard
           key={r.id}
           recipe={r}
-          manageMode={manageMode}
+          manageMode={effectiveManageMode}
           onEdit={openEditRecipe}
           onDelete={setDeleteTarget}
           onSelect={setActiveRecipeId}
