@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { cn } from "@/utils/cn";
-import { Button } from "./button";
+import { GlassButton } from "@/components/ui";
 
 export type GlassModalProps = {
   open: boolean;
@@ -66,7 +66,7 @@ export function GlassModal({
             exit={{ opacity: 0, scale: 0.98, y: 8 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className={cn(
-              "relative z-10 max-h-[min(92vh,900px)] w-full overflow-hidden rounded-3xl border border-white/50 bg-white/45 shadow-[0_24px_80px_-12px_rgba(31,38,135,0.2)] backdrop-blur-2xl",
+              "relative z-10 max-h-[min(92vh,900px)] w-full overflow-hidden rounded-3xl border border-white/50 bg-white/40 shadow-glass-modal backdrop-blur-2xl",
               wide ? "max-w-3xl" : "max-w-lg"
             )}
             onClick={(e) => e.stopPropagation()}
@@ -78,14 +78,14 @@ export function GlassModal({
               >
                 {title}
               </h2>
-              <Button
+              <GlassButton
                 type="button"
                 variant="icon"
                 onClick={onClose}
                 aria-label="Zavřít"
               >
                 <X className="h-5 w-5" strokeWidth={2} aria-hidden />
-              </Button>
+              </GlassButton>
             </div>
             <div className="max-h-[min(78vh,760px)] overflow-y-auto px-6 py-6 md:px-8 md:py-8">
               {children}
