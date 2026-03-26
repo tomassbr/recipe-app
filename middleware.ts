@@ -62,6 +62,20 @@ export async function middleware(request: NextRequest) {
     return redirect;
   }
 
+  if (user && pathname.startsWith("/admin")) {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    if (profile?.role !== "admin") {
+      const redirect = NextResponse.redirect(new URL("/", request.url));
+      copyCookies(supabaseResponse, redirect);
+      return redirect;
+    }
+  }
+
   return supabaseResponse;
 }
 

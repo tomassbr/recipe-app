@@ -1,7 +1,8 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createClient } from "@/lib/supabase/server";
+import { requireAdmin } from "@/lib/auth/requireAdmin";
+import { createClient } from "@/utils/supabase/server";
 import type { ProfileRole } from "@/types/profile";
 
 export type SetProfileRoleResult = { ok: true } | { ok: false; error: string };
@@ -15,31 +16,9 @@ export async function setProfileAdminRole(
   }
 
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return { ok: false, error: "Nejste přihlášeni" };
-  }
-
-  const { data: me, error: profileError } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .maybeSingle();
-
-  if (profileError) {
-    return { ok: false, error: profileError.message };
-  }
-
-  const isPerformingUserAdmin = me?.role === "admin";
-  if (!isPerformingUserAdmin) {
-    return {
-      ok: false,
-      error:
-        "Aktualizaci profilů smí provádět jen uživatel s rolí administrátor v tabulce profiles.",
-    };
+  const authz = await requireAdmin(supabase);
+  if (!authz.ok) {
+    return { ok: false, error: authz.error };
   }
 
   const { error } = await supabase
