@@ -2,6 +2,10 @@
 
 Pastry recipe scaling app. Next.js 14 App Router + Supabase + TypeScript.
 
+## Git
+
+Never add `Co-Authored-By` lines to commit messages. Commits are always authored solely by the user.
+
 ## Stack
 
 - **Next.js 14.2.35** — App Router, Server Components, Server Actions
