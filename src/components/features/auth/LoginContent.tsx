@@ -79,13 +79,6 @@ export function LoginContent() {
             {t("heading")}
           </h1>
           <p className="mt-2 text-sm text-slate-500">{t("subtitle")}</p>
-          <p className="mt-3 text-xs text-slate-400">
-            {t.rich("redirectNote", {
-              code: (chunks) => (
-                <code className="rounded bg-white/60 px-1">{chunks}</code>
-              ),
-            })}
-          </p>
         </div>
 
         {displayError ? (
