@@ -57,11 +57,12 @@ const supabaseWsOrigin = supabaseOrigin
 function buildCsp(isDev) {
   const scriptSrc = isDev
     ? "script-src 'self' 'unsafe-eval' 'unsafe-inline'"
-    : "script-src 'self'";
+    : "script-src 'self' 'unsafe-inline'";
   const connectSrc = [
     "'self'",
     supabaseOrigin,
     supabaseWsOrigin,
+    "https://accounts.google.com",
   ]
     .filter(Boolean)
     .join(" ");
@@ -69,13 +70,13 @@ function buildCsp(isDev) {
   return [
     "default-src 'self'",
     scriptSrc,
-    "style-src 'self' 'unsafe-inline'",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     `connect-src ${connectSrc}`,
     "img-src 'self' data: blob: https://*.googleusercontent.com",
-    "font-src 'self'",
-    "frame-src 'none'",
+    "font-src 'self' https://fonts.gstatic.com",
+    "frame-src https://accounts.google.com",
     "frame-ancestors 'none'",
-    "form-action 'self'",
+    "form-action 'self' https://accounts.google.com",
     "base-uri 'self'",
     "object-src 'none'",
   ].join("; ");
