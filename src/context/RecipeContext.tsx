@@ -6,13 +6,20 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
 import { toast } from "sonner";
+import { v4 as uuidv4 } from "uuid";
 import type { Recipe } from "@/types/recipe";
-import { usePersistedRecipes } from "@/hooks/usePersistedRecipes";
 import { useSessionProfile } from "@/context/SessionProfileContext";
+import { useTranslations } from "next-intl";
+import {
+  createRecipe as createRecipeAction,
+  updateRecipe as updateRecipeAction,
+  deleteRecipe as deleteRecipeAction,
+} from "@/actions/recipes";
 
 const STORAGE_MANAGE = "pastrycalc-manage-v1";
 
@@ -62,11 +69,11 @@ export type RecipeContextValue = {
 
   getRecipeById: (id: string) => Recipe | undefined;
 
-  addRecipe: (recipe: Recipe) => void;
-  updateRecipe: (recipe: Recipe) => void;
-  deleteRecipe: (id: string) => void;
+  addRecipe: (recipe: Recipe) => Promise<void>;
+  updateRecipe: (recipe: Recipe) => Promise<void>;
+  deleteRecipe: (id: string) => Promise<void>;
   /** Create or update from form modal (uses `editingId` internally). */
-  persistRecipe: (recipe: Recipe) => void;
+  persistRecipe: (recipe: Recipe) => Promise<void>;
 
   /** Form modal */
   editorOpen: boolean;
@@ -81,12 +88,22 @@ export type RecipeContextValue = {
 
 const RecipeContext = createContext<RecipeContextValue | null>(null);
 
-/** Zobrazení při pokusu neadmina měnit data receptů (UI + server actions). */
-export const RECIPE_MUTATION_FORBIDDEN_MESSAGE =
-  "Úpravy receptů smí provádět pouze administrátor. Přihlaste se účtem s rolí admin.";
 
-export function RecipeProvider({ children }: { children: ReactNode }) {
-  const { recipes, setRecipes, hydrated } = usePersistedRecipes();
+interface RecipeProviderProps {
+  children: ReactNode;
+  /** Server-fetched recipes passed from the page Server Component. */
+  initialRecipes: Recipe[];
+}
+
+export function RecipeProvider({ children, initialRecipes }: RecipeProviderProps) {
+  const t = useTranslations("recipeContext");
+  const [recipes, setRecipes] = useState<Recipe[]>(initialRecipes);
+  // Track current recipes in a ref to avoid stale closures in callbacks
+  const recipesRef = useRef<Recipe[]>(initialRecipes);
+  useEffect(() => {
+    recipesRef.current = recipes;
+  }, [recipes]);
+
   const { isAdmin, profileHydrated: profileRoleHydrated } = useSessionProfile();
   const [manageMode, setManageModeState] = useState(false);
 
@@ -118,7 +135,7 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
       setManageModeState((prev) => {
         const next = typeof v === "function" ? v(prev) : v;
         if (next && !isAdmin) {
-          toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+          toast.error(t("mutationForbidden"));
           if (typeof window !== "undefined") {
             localStorage.setItem(STORAGE_MANAGE, "0");
           }
@@ -136,15 +153,15 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
   const categories = useMemo(() => uniqueCategories(recipes), [recipes]);
 
   useEffect(() => {
-    if (!hydrated || !categories.length) return;
+    if (!categories.length) return;
     if (!activeCategory || !categories.includes(activeCategory)) {
       setActiveCategoryState(categories[0]);
     }
-  }, [hydrated, categories, activeCategory]);
+  }, [categories, activeCategory]);
 
   const getRecipeById = useCallback(
-    (id: string) => recipes.find((r) => r.id === id),
-    [recipes]
+    (id: string) => recipesRef.current.find((r) => r.id === id),
+    []
   );
 
   useEffect(() => {
@@ -156,17 +173,20 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
 
   const setActiveCategory = useCallback(
     (category: string) => {
-      if (category !== activeCategory) {
-        const pi = categories.indexOf(activeCategory);
-        const ni = categories.indexOf(category);
-        if (pi >= 0 && ni >= 0) {
-          setCategorySlideDir(ni > pi ? 1 : -1);
+      setActiveCategoryState((prev) => {
+        if (category !== prev) {
+          const cats = uniqueCategories(recipesRef.current);
+          const pi = cats.indexOf(prev);
+          const ni = cats.indexOf(category);
+          if (pi >= 0 && ni >= 0) {
+            setCategorySlideDir(ni > pi ? 1 : -1);
+          }
         }
-      }
-      setActiveCategoryState(category);
+        return category;
+      });
       setActiveRecipeId(null);
     },
-    [activeCategory, categories]
+    []
   );
 
   const filteredRecipes = useMemo(() => {
@@ -182,48 +202,77 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
     ? getRecipeById(activeRecipeId)
     : undefined;
 
-  const editingRecipe = editingId
-    ? getRecipeById(editingId) ?? null
-    : null;
+  const editingRecipe = editingId ? getRecipeById(editingId) ?? null : null;
 
   const addRecipe = useCallback(
-    (recipe: Recipe) => {
+    async (recipe: Recipe) => {
       if (!isAdmin) {
-        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        toast.error(t("mutationForbidden"));
         return;
       }
-      setRecipes((prev) => [...prev, recipe]);
+      // Optimistic update with a temp id
+      const tempId = `temp-${uuidv4()}`;
+      const optimistic = { ...recipe, id: tempId };
+      setRecipes((prev) => [...prev, optimistic]);
+
+      const result = await createRecipeAction(recipe);
+      if (!result.ok) {
+        // Rollback
+        setRecipes(recipesRef.current.filter((r) => r.id !== tempId));
+        toast.error(result.error);
+        return;
+      }
+      // Replace temp id with the real server-generated id
+      setRecipes((prev) =>
+        prev.map((r) => (r.id === tempId ? { ...r, id: result.id } : r))
+      );
     },
-    [isAdmin, setRecipes]
+    [isAdmin]
   );
 
   const updateRecipe = useCallback(
-    (recipe: Recipe) => {
+    async (recipe: Recipe) => {
       if (!isAdmin) {
-        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        toast.error(t("mutationForbidden"));
         return;
       }
-      setRecipes((prev) =>
-        prev.map((r) => (r.id === recipe.id ? recipe : r))
+      const prev = recipesRef.current;
+      // Optimistic update
+      setRecipes((current) =>
+        current.map((r) => (r.id === recipe.id ? recipe : r))
       );
+
+      const result = await updateRecipeAction(recipe);
+      if (!result.ok) {
+        setRecipes(prev);
+        toast.error(result.error);
+      }
     },
-    [isAdmin, setRecipes]
+    [isAdmin]
   );
 
   const deleteRecipe = useCallback(
-    (id: string) => {
+    async (id: string) => {
       if (!isAdmin) {
-        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        toast.error(t("mutationForbidden"));
         return;
       }
-      setRecipes((prev) => prev.filter((r) => r.id !== id));
+      const prev = recipesRef.current;
+      // Optimistic update
+      setRecipes((current) => current.filter((r) => r.id !== id));
+
+      const result = await deleteRecipeAction(id);
+      if (!result.ok) {
+        setRecipes(prev);
+        toast.error(result.error);
+      }
     },
-    [isAdmin, setRecipes]
+    [isAdmin]
   );
 
   const openCreateRecipe = useCallback(() => {
     if (!isAdmin) {
-      toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+      toast.error(t("mutationForbidden"));
       return;
     }
     setEditingId(null);
@@ -233,7 +282,7 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
   const openEditRecipe = useCallback(
     (recipe: Recipe) => {
       if (!isAdmin) {
-        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        toast.error(t("mutationForbidden"));
         return;
       }
       setEditingId(recipe.id);
@@ -248,15 +297,15 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const persistRecipe = useCallback(
-    (recipe: Recipe) => {
+    async (recipe: Recipe) => {
       if (!isAdmin) {
-        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        toast.error(t("mutationForbidden"));
         return;
       }
       if (editingId) {
-        updateRecipe(recipe);
+        await updateRecipe(recipe);
       } else {
-        addRecipe(recipe);
+        await addRecipe(recipe);
       }
     },
     [editingId, updateRecipe, addRecipe, isAdmin]
@@ -265,7 +314,7 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
   const setDeleteTargetGuarded = useCallback(
     (recipe: Recipe | null) => {
       if (recipe != null && !isAdmin) {
-        toast.error(RECIPE_MUTATION_FORBIDDEN_MESSAGE);
+        toast.error(t("mutationForbidden"));
         return;
       }
       setDeleteTarget(recipe);
@@ -278,7 +327,7 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
   const value = useMemo<RecipeContextValue>(
     () => ({
       recipes,
-      hydrated,
+      hydrated: true,
       manageMode,
       setManageMode,
       effectiveManageMode,
@@ -309,7 +358,6 @@ export function RecipeProvider({ children }: { children: ReactNode }) {
     }),
     [
       recipes,
-      hydrated,
       manageMode,
       setManageMode,
       effectiveManageMode,

@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 import { setProfileAdminRole } from "@/actions/admin";
 import { GlassTable } from "@/components/ui";
 import type { ProfileRow } from "@/types/profile";
@@ -13,10 +14,8 @@ type UserManagementTableProps = {
   currentUserId: string;
 };
 
-export function UserManagementTable({
-  profiles,
-  currentUserId,
-}: UserManagementTableProps) {
+export function UserManagementTable({ profiles, currentUserId }: UserManagementTableProps) {
+  const t = useTranslations("admin");
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [pendingId, setPendingId] = useState<string | null>(null);
@@ -41,10 +40,7 @@ export function UserManagementTable({
   return (
     <div className="space-y-4">
       {errorMessage ? (
-        <p
-          className="rounded-2xl border border-red-200/80 bg-red-50/90 px-4 py-3 text-sm text-red-800"
-          role="alert"
-        >
+        <p className="rounded-2xl border border-red-200/80 bg-red-50/90 px-4 py-3 text-sm text-red-800" role="alert">
           {errorMessage}
         </p>
       ) : null}
@@ -52,36 +48,26 @@ export function UserManagementTable({
       <GlassTable>
         <thead>
           <tr className="border-b border-white/40 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
-            <th className="px-4 py-3 md:px-6">Uživatel</th>
-            <th className="px-4 py-3 md:px-6">E-mail</th>
-            <th className="px-4 py-3 md:px-6">Administrátor</th>
+            <th className="px-4 py-3 md:px-6">{t("colUser")}</th>
+            <th className="px-4 py-3 md:px-6">{t("colEmail")}</th>
+            <th className="px-4 py-3 md:px-6">{t("colAdmin")}</th>
           </tr>
         </thead>
         <tbody>
           {profiles.map((row) => {
-            const label =
-              row.display_name?.trim() ||
-              row.email?.trim() ||
-              row.id.slice(0, 8);
+            const label = row.display_name?.trim() || row.email?.trim() || row.id.slice(0, 8);
             const isAdmin = row.role === "admin";
             const busy = pendingId === row.id;
 
             return (
-              <tr
-                key={row.id}
-                className="border-b border-white/25 last:border-0"
-              >
+              <tr key={row.id} className="border-b border-white/25 last:border-0">
                 <td className="px-4 py-3 font-medium text-slate-800 md:px-6 md:py-4">
                   {label}
                   {row.id === currentUserId ? (
-                    <span className="ml-2 text-xs font-normal text-slate-500">
-                      (vy)
-                    </span>
+                    <span className="ml-2 text-xs font-normal text-slate-500">{t("you")}</span>
                   ) : null}
                 </td>
-                <td className="px-4 py-3 text-slate-600 md:px-6 md:py-4">
-                  {row.email ?? "—"}
-                </td>
+                <td className="px-4 py-3 text-slate-600 md:px-6 md:py-4">{row.email ?? "—"}</td>
                 <td className="px-4 py-3 md:px-6 md:py-4">
                   <button
                     type="button"
@@ -91,21 +77,15 @@ export function UserManagementTable({
                     onClick={() => toggleAdmin(row, !isAdmin)}
                     className={cn(
                       "relative h-8 w-14 shrink-0 rounded-full border transition-colors disabled:opacity-60",
-                      isAdmin
-                        ? "border-gold/50 bg-gold-muted shadow-inner"
-                        : "border-white/50 bg-white/40"
+                      isAdmin ? "border-gold/50 bg-gold-muted shadow-inner" : "border-white/50 bg-white/40"
                     )}
                   >
-                    <span
-                      className={cn(
-                        "absolute top-1 h-6 w-6 rounded-full bg-white shadow transition-transform",
-                        isAdmin
-                          ? "left-7 translate-x-0 border border-gold/30"
-                          : "left-1"
-                      )}
-                    />
+                    <span className={cn(
+                      "absolute top-1 h-6 w-6 rounded-full bg-white shadow transition-transform",
+                      isAdmin ? "left-7 translate-x-0 border border-gold/30" : "left-1"
+                    )} />
                     <span className="sr-only">
-                      {isAdmin ? "Odebrat roli administrátora" : "Udělit roli administrátora"}
+                      {isAdmin ? t("removeAdmin") : t("grantAdmin")}
                     </span>
                   </button>
                 </td>

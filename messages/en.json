@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "PastryCalc — recipe scaling",
+    "description": "Scale ingredient amounts by target yield"
+  },
+  "login": {
+    "heading": "Sign in",
+    "subtitle": "Continue with Google to access PastryCalc.",
+    "redirectNote": "Always open the app from the same URL configured in Supabase Redirect URLs (e.g. only <code>localhost</code>, not mixed with <code>127.0.0.1</code>).",
+    "signInButton": "Sign in with Google",
+    "redirecting": "Redirecting…",
+    "errorAuth": "Sign-in failed. Please try again.",
+    "errorNoUrl": "Could not get Google sign-in URL. Check that the Google provider is enabled in Supabase.",
+    "errorUnexpected": "Unexpected error during sign-in.",
+    "loading": "Loading sign-in…"
+  },
+  "nav": {
+    "signOut": "Sign out",
+    "account": "Account",
+    "settings": "Account settings"
+  },
+  "brandBar": {
+    "tagline": "Recipe scaling for pastry chefs",
+    "addRecipe": "Add new recipe",
+    "adminOnly": "Manage mode is only available to administrators (sidebar).",
+    "newRecipe": "New recipe"
+  },
+  "sidebar": {
+    "categories": "Recipe categories",
+    "manage": "Manage",
+    "manageHint": "Enable to edit and delete recipes on cards and in the detail view.",
+    "searchLabel": "Search in category",
+    "searchPlaceholder": "Recipe name…",
+    "categoriesNav": "Categories"
+  },
+  "home": {
+    "noRecipes": "No recipes in the database.",
+    "noRecipesHint": "An administrator can add recipes via recipe management.",
+    "heading": "Recipes",
+    "selectCategory": "Select a category in the sidebar.",
+    "clickCard": "Click a card below — ingredient scaling and notes will appear."
+  },
+  "recipeDetail": {
+    "back": "Back to recipes",
+    "editTitle": "Edit recipe",
+    "editHint": "Editing is only available to administrators with Manage mode enabled in the sidebar.",
+    "edit": "Edit",
+    "targetYield": "Target net / quantity",
+    "yieldHint": "Adjust the value — all ingredients will be recalculated instantly.",
+    "coefficient": "Coefficient (live):",
+    "colIngredient": "Ingredient",
+    "colOriginal": "Original",
+    "colScaled": "Scaled",
+    "batchTotal": "Recipe total",
+    "componentTotal": "Component total",
+    "batchTotalHint": "Scaled total grouped by unit (weights in g, pcs, etc. separately)"
+  },
+  "recipeForm": {
+    "newTitle": "New recipe",
+    "editTitle": "Edit recipe",
+    "defaultComponentName": "Base",
+    "sectionBase": "Base",
+    "sectionComponents": "Components & ingredients",
+    "labelName": "Name",
+    "labelCategory": "Category",
+    "labelBaseYield": "Base yield (positive number)",
+    "labelYieldUnit": "Yield unit",
+    "labelNote": "Note",
+    "addComponent": "Add component",
+    "labelComponentName": "Component name",
+    "removeComponent": "Component",
+    "labelIngredient": "Ingredient",
+    "labelAmount": "Amount",
+    "labelUnit": "Unit",
+    "labelIngredientNote": "Note (optional)",
+    "removeIngredient": "Remove ingredient",
+    "addIngredient": "Add ingredient",
+    "cancel": "Cancel",
+    "save": "Save changes",
+    "create": "Create recipe"
+  },
+  "confirmDelete": {
+    "title": "Delete recipe?",
+    "message": "Are you sure you want to permanently delete \"{name}\"? This action cannot be undone.",
+    "cancel": "Cancel",
+    "confirm": "Delete"
+  },
+  "emptyState": {
+    "selectRecipe": "Select a recipe",
+    "emptyCategory": "No recipes in this category yet",
+    "clickCard": "Click a card below — ingredient scaling and notes will appear.",
+    "addInManage": "Add a recipe in Manage mode or choose another category."
+  },
+  "admin": {
+    "pageTitle": "User management — PastryCalc",
+    "pageDescription": "Grant or revoke administrator role",
+    "errorLoad": "Could not load users: {message}",
+    "errorHint": "Make sure the profiles_admin_trigger.sql migration has been applied in Supabase.",
+    "heading": "User management",
+    "subtitle": "Grant or revoke the administrator role. The first registered account becomes an admin automatically.",
+    "backToApp": "Back to app",
+    "noProfiles": "No profiles yet. A profile is created automatically when the first user signs in.",
+    "colUser": "User",
+    "colEmail": "Email",
+    "colAdmin": "Administrator",
+    "you": "(you)",
+    "removeAdmin": "Remove administrator role",
+    "grantAdmin": "Grant administrator role"
+  },
+  "errors": {
+    "heading": "Something went wrong",
+    "digest": "Error code: {digest}",
+    "generic": "An unexpected application error occurred.",
+    "retry": "Try again",
+    "adminHeading": "Admin error",
+    "adminGeneric": "An unexpected error occurred in the admin section.",
+    "backToApp": "Back to app",
+    "globalHeading": "Critical application error",
+    "globalGeneric": "Please refresh the page.",
+    "globalRetry": "Refresh"
+  },
+  "recipeContext": {
+    "mutationForbidden": "Only administrators can edit recipes. Please sign in with an admin account."
+  },
+  "account": {
+    "title": "Account settings",
+    "loggedInAs": "Signed in as",
+    "language": "App language",
+    "langCs": "Čeština",
+    "langEn": "English",
+    "dangerZone": "Danger zone",
+    "deleteAccount": "Delete account",
+    "deleteHint": "This action is irreversible. Your account and profile will be permanently removed.",
+    "deleteConfirmTitle": "Really delete your account?",
+    "deleteConfirmMessage": "This action is irreversible. You will lose access to the app. Recipes will be preserved.",
+    "deleteConfirmButton": "Yes, delete account",
+    "deleteCancel": "Cancel",
+    "backToRecipes": "Back to recipes",
+    "deleting": "Deleting…"
+  }
+}

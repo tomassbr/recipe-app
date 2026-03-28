@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import nextEnv from "@next/env";
+import { withSentryConfig } from "@sentry/nextjs";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const { loadEnvConfig } = nextEnv;
 
@@ -46,9 +48,64 @@ const supabaseAnonKey =
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
   fileEnv.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
+// Build the Supabase origin for CSP connect-src
+const supabaseOrigin = supabaseUrl ? new URL(supabaseUrl).origin : "";
+const supabaseWsOrigin = supabaseOrigin
+  ? supabaseOrigin.replace(/^https/, "wss")
+  : "";
+
+function buildCsp(isDev) {
+  const scriptSrc = isDev
+    ? "script-src 'self' 'unsafe-eval' 'unsafe-inline'"
+    : "script-src 'self'";
+  const connectSrc = [
+    "'self'",
+    supabaseOrigin,
+    supabaseWsOrigin,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return [
+    "default-src 'self'",
+    scriptSrc,
+    "style-src 'self' 'unsafe-inline'",
+    `connect-src ${connectSrc}`,
+    "img-src 'self' data: blob: https://*.googleusercontent.com",
+    "font-src 'self'",
+    "frame-src 'none'",
+    "frame-ancestors 'none'",
+    "form-action 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+  ].join("; ");
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async headers() {
+    const csp = buildCsp(process.env.NODE_ENV === "development");
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "Content-Security-Policy", value: csp },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+        ],
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
@@ -78,4 +135,14 @@ const nextConfig = {
     : {}),
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+
+export default withSentryConfig(withNextIntl(nextConfig), {
+  silent: true,
+  widenClientFileUpload: true,
+  hideSourceMaps: true,
+  disableLogger: true,
+  // Disable automatic instrumentation that would cause build errors without SENTRY_AUTH_TOKEN
+  autoInstrumentServerFunctions: false,
+  autoInstrumentMiddleware: false,
+});

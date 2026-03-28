@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "PastryCalc — přepočty receptur",
+    "description": "Přepočet surovin podle cílového výstupu"
+  },
+  "login": {
+    "heading": "Přihlášení",
+    "subtitle": "Pokračujte účtem Google pro přístup k PastryCalc.",
+    "redirectNote": "Otevírejte app vždy přes stejnou adresu jako v Supabase Redirect URLs (např. jen <code>localhost</code>, ne mix s <code>127.0.0.1</code>).",
+    "signInButton": "Přihlásit se přes Google",
+    "redirecting": "Přesměrování…",
+    "errorAuth": "Přihlášení se nezdařilo. Zkuste to prosím znovu.",
+    "errorNoUrl": "Nepodařilo se získat odkaz na Google. Zkontrolujte v Supabase, že je zapnutý provider Google.",
+    "errorUnexpected": "Neočekávaná chyba při přihlášení.",
+    "loading": "Načítám přihlášení…"
+  },
+  "nav": {
+    "signOut": "Odhlásit se",
+    "account": "Účet",
+    "settings": "Nastavení účtu"
+  },
+  "brandBar": {
+    "tagline": "Přepočty receptur pro cukráře",
+    "addRecipe": "Přidat nový recept",
+    "adminOnly": "Režim Správa je dostupný jen administrátorům (postranní panel).",
+    "newRecipe": "Nový recept"
+  },
+  "sidebar": {
+    "categories": "Kategorie receptů",
+    "manage": "Správa",
+    "manageHint": "Zapněte pro úpravy a mazání receptů na kartách a v detailu.",
+    "searchLabel": "Hledat v kategorii",
+    "searchPlaceholder": "Název receptu…",
+    "categoriesNav": "Kategorie"
+  },
+  "home": {
+    "noRecipes": "Žádné recepty v databázi.",
+    "noRecipesHint": "Administrátor může přidat recepty přes správu receptů.",
+    "heading": "Recepty",
+    "selectCategory": "Vyberte kategorii v postranním panelu.",
+    "clickCard": "Klikněte na kartu níže — zobrazí se přepočet surovin a poznámky."
+  },
+  "recipeDetail": {
+    "back": "Zpět na recepty",
+    "editTitle": "Upravit recept",
+    "editHint": "Úpravy jsou jen pro administrátory se zapnutou správou v panelu.",
+    "edit": "Upravit",
+    "targetYield": "Cílové netto / počet",
+    "yieldHint": "Upravte hodnotu — přepočet všech surovin proběhne okamžitě.",
+    "coefficient": "Koeficient (live):",
+    "colIngredient": "Surovina",
+    "colOriginal": "Původní",
+    "colScaled": "Přepočet",
+    "batchTotal": "Součet receptury",
+    "componentTotal": "Součet komponenty",
+    "batchTotalHint": "Součet přepočtu podle jednotek v řádcích (hmotnosti v g, ks a další zvlášť)"
+  },
+  "recipeForm": {
+    "newTitle": "Nový recept",
+    "editTitle": "Upravit recept",
+    "defaultComponentName": "Základ",
+    "sectionBase": "Základ",
+    "sectionComponents": "Komponenty a suroviny",
+    "labelName": "Název",
+    "labelCategory": "Kategorie",
+    "labelBaseYield": "Základní výstup (kladné číslo)",
+    "labelYieldUnit": "Jednotka výstupu",
+    "labelNote": "Poznámka",
+    "addComponent": "Přidat komponentu",
+    "labelComponentName": "Název komponenty",
+    "removeComponent": "Komponenta",
+    "labelIngredient": "Surovina",
+    "labelAmount": "Množství",
+    "labelUnit": "Jednotka",
+    "labelIngredientNote": "Poznámka (volitelné)",
+    "removeIngredient": "Odstranit surovinu",
+    "addIngredient": "Přidat surovinu",
+    "cancel": "Zrušit",
+    "save": "Uložit změny",
+    "create": "Vytvořit recept"
+  },
+  "confirmDelete": {
+    "title": "Smazat recept?",
+    "message": "Opravdu chcete trvale smazat recept \u201e{name}\u201c? Tuto akci nelze vrátit zpět.",
+    "cancel": "Zrušit",
+    "confirm": "Smazat"
+  },
+  "emptyState": {
+    "selectRecipe": "Vyberte recept",
+    "emptyCategory": "V této kategorii zatím nic není",
+    "clickCard": "Klikněte na kartu níže — zobrazí se přepočet surovin a poznámky.",
+    "addInManage": "Přidejte recept v režimu Správa nebo zvolte jinou kategorii."
+  },
+  "admin": {
+    "pageTitle": "Správa uživatelů — PastryCalc",
+    "pageDescription": "Přidělení a odebrání role administrátora",
+    "errorLoad": "Nelze načíst uživatele: {message}",
+    "errorHint": "Ověřte, že v Supabase běží migrace profiles_admin_trigger.sql.",
+    "heading": "Správa uživatelů",
+    "subtitle": "Udělte nebo odeberte roli administrátora. První registrovaný účet je administrátor automaticky.",
+    "backToApp": "Zpět do aplikace",
+    "noProfiles": "Žádné profily. Po přihlášení prvního uživatele se profil vytvoří automaticky.",
+    "colUser": "Uživatel",
+    "colEmail": "E-mail",
+    "colAdmin": "Administrátor",
+    "you": "(vy)",
+    "removeAdmin": "Odebrat roli administrátora",
+    "grantAdmin": "Udělit roli administrátora"
+  },
+  "errors": {
+    "heading": "Něco se pokazilo",
+    "digest": "Kód chyby: {digest}",
+    "generic": "Neočekávaná chyba aplikace.",
+    "retry": "Zkusit znovu",
+    "adminHeading": "Chyba administrace",
+    "adminGeneric": "Neočekávaná chyba v administraci.",
+    "backToApp": "Zpět na aplikaci",
+    "globalHeading": "Kritická chyba aplikace",
+    "globalGeneric": "Prosím obnovte stránku.",
+    "globalRetry": "Obnovit"
+  },
+  "recipeContext": {
+    "mutationForbidden": "Úpravy receptů smí provádět pouze administrátor. Přihlaste se účtem s rolí admin."
+  },
+  "account": {
+    "title": "Nastavení účtu",
+    "loggedInAs": "Přihlášený uživatel",
+    "language": "Jazyk aplikace",
+    "langCs": "Čeština",
+    "langEn": "English",
+    "dangerZone": "Nebezpečná zóna",
+    "deleteAccount": "Smazat účet",
+    "deleteHint": "Tato akce je nevratná. Váš účet a profil budou trvale odstraněny.",
+    "deleteConfirmTitle": "Opravdu smazat účet?",
+    "deleteConfirmMessage": "Tato akce je nevratná. Přijdete o přístup k aplikaci. Recepty zůstanou zachovány.",
+    "deleteConfirmButton": "Ano, smazat účet",
+    "deleteCancel": "Zrušit",
+    "backToRecipes": "Zpět na recepty",
+    "deleting": "Mazání…"
+  }
+}

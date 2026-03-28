@@ -1,9 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useRecipe } from "@/hooks/useRecipe";
 import { Button, GlassModal } from "@/components/common";
 
 export function ConfirmDeleteModal() {
+  const t = useTranslations("confirmDelete");
   const {
     deleteTarget,
     setDeleteTarget,
@@ -27,19 +29,22 @@ export function ConfirmDeleteModal() {
   };
 
   return (
-    <GlassModal open={open} onClose={handleClose} title="Smazat recept?">
+    <GlassModal open={open} onClose={handleClose} title={t("title")}>
       <div className="space-y-6">
         <p className="text-slate-600">
-          Opravdu chcete trvale smazat recept{" "}
-          <span className="font-semibold text-slate-800">„{recipeName}“</span>
-          ? Tuto akci nelze vrátit zpět.
+          {t.rich("message", {
+            name: recipeName,
+            strong: (chunks) => (
+              <span className="font-semibold text-slate-800">{chunks}</span>
+            ),
+          })}
         </p>
         <div className="flex flex-wrap justify-end gap-3">
           <Button type="button" variant="secondary" onClick={handleClose}>
-            Zrušit
+            {t("cancel")}
           </Button>
           <Button type="button" variant="danger" onClick={handleConfirm}>
-            Smazat
+            {t("confirm")}
           </Button>
         </div>
       </div>

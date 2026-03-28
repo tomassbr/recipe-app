@@ -2,9 +2,11 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import type { User } from "@supabase/supabase-js";
-import { LogOut } from "lucide-react";
+import { LogOut, Settings } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/utils/cn";
 
@@ -18,7 +20,6 @@ function initialsFromUser(user: User) {
   return name.slice(0, 2).toUpperCase();
 }
 
-/** Google často dává fotku do identity_data, ne jen do user_metadata. */
 function avatarUrlFromUser(user: User): string | undefined {
   const meta = user.user_metadata as Record<string, unknown>;
   const fromMeta =
@@ -39,6 +40,7 @@ function avatarUrlFromUser(user: User): string | undefined {
 }
 
 export function UserNav() {
+  const t = useTranslations("nav");
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
   const [avatarFailed, setAvatarFailed] = useState(false);
@@ -76,10 +78,10 @@ export function UserNav() {
 
   const meta = user.user_metadata as Record<string, string | undefined>;
   const avatarUrl = avatarUrlFromUser(user);
-  const label = meta?.full_name ?? meta?.name ?? user.email ?? "Účet";
+  const label = meta?.full_name ?? meta?.name ?? user.email ?? t("account");
 
   return (
-    <div className="flex items-center gap-3 rounded-full border border-white/50 bg-white/50 px-2 py-1.5 pl-2 pr-1 shadow-sm backdrop-blur-sm">
+    <div className="flex items-center gap-1 rounded-full border border-white/50 bg-white/50 px-2 py-1.5 pl-2 pr-1 shadow-sm backdrop-blur-sm">
       <div className="flex min-w-0 items-center gap-2">
         {avatarUrl && !avatarFailed ? (
           <Image
@@ -102,17 +104,28 @@ export function UserNav() {
           {label}
         </span>
       </div>
+      <Link
+        href="/dashboard"
+        title={t("settings")}
+        className={cn(
+          "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-transparent text-slate-600 transition-colors",
+          "hover:border-slate-200/80 hover:bg-white/70 hover:text-slate-800"
+        )}
+      >
+        <Settings className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+        <span className="sr-only">{t("settings")}</span>
+      </Link>
       <button
         type="button"
         onClick={() => void signOut()}
-        title="Odhlásit se"
+        title={t("signOut")}
         className={cn(
           "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-transparent text-slate-600 transition-colors",
           "hover:border-red-200/80 hover:bg-red-50/90 hover:text-red-700"
         )}
       >
         <LogOut className="h-4 w-4" strokeWidth={2} aria-hidden />
-        <span className="sr-only">Odhlásit se</span>
+        <span className="sr-only">{t("signOut")}</span>
       </button>
     </div>
   );

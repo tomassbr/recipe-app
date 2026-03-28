@@ -2,11 +2,13 @@
 
 import { motion } from "framer-motion";
 import { LayoutGrid, Search, Settings2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { getCategoryIcon } from "@/utils/categoryIcons";
 import { useRecipe } from "@/hooks/useRecipe";
 import { GlassCard, GlassInput } from "@/components/ui";
 
 export function Sidebar() {
+  const t = useTranslations("sidebar");
   const {
     categories,
     activeCategory,
@@ -23,14 +25,14 @@ export function Sidebar() {
     <GlassCard
       className="flex w-full flex-col shrink-0 p-6 md:sticky md:top-8 md:z-10 md:h-[calc(100vh-10rem)] md:w-80 md:min-h-0 md:overflow-hidden md:p-8"
       role="complementary"
-      aria-label="Kategorie receptů"
+      aria-label={t("categories")}
     >
       {profileRoleHydrated && isAdmin ? (
         <div className="mb-8 flex shrink-0 flex-col gap-4 rounded-2xl border border-white/40 bg-white/25 p-4">
           <div className="flex items-center justify-between gap-3">
             <span className="flex items-center gap-2 text-sm font-semibold text-slate-700">
               <Settings2 className="h-4 w-4 text-gold-dark" aria-hidden />
-              Správa
+              {t("manage")}
             </span>
             <button
               type="button"
@@ -51,7 +53,7 @@ export function Sidebar() {
             </button>
           </div>
           <p className="text-xs leading-relaxed text-slate-500">
-            Zapněte pro úpravy a mazání receptů na kartách a v detailu.
+            {t("manageHint")}
           </p>
         </div>
       ) : null}
@@ -59,13 +61,13 @@ export function Sidebar() {
       <div className="mb-4 shrink-0">
         <label className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
           <Search className="h-3.5 w-3.5 shrink-0" strokeWidth={2} aria-hidden />
-          Hledat v kategorii
+          {t("searchLabel")}
         </label>
         <GlassInput
           type="search"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Název receptu…"
+          placeholder={t("searchPlaceholder")}
           autoComplete="off"
           className="py-3 text-sm"
         />
@@ -74,12 +76,12 @@ export function Sidebar() {
       <div className="mb-4 flex shrink-0 items-center gap-2 text-slate-500">
         <LayoutGrid className="h-4 w-4 shrink-0" strokeWidth={1.75} aria-hidden />
         <p className="text-xs font-semibold uppercase tracking-wider">
-          Kategorie
+          {t("categoriesNav")}
         </p>
       </div>
       <nav
         className="flex min-h-0 flex-row gap-2 overflow-x-auto pb-2 md:flex-1 md:flex-col md:gap-2 md:overflow-y-auto md:overflow-x-hidden md:pb-0"
-        aria-label="Seznam kategorií"
+        aria-label={t("categories")}
       >
         {categories.map((cat) => {
           const active = cat === activeCategory;

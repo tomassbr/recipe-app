@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { AppBrandBar } from "@/components/features/layout/AppBrandBar";
 import { Sidebar } from "@/components/features/layout/Sidebar";
 import { RecipeGrid } from "@/components/features/recipe/RecipeGrid";
@@ -14,31 +15,19 @@ import { GlassCard } from "@/components/ui";
 const transitionEase = [0.22, 1, 0.36, 1] as const;
 
 export default function HomePage() {
+  const t = useTranslations("home");
   const {
-    hydrated,
     categories,
     activeCategory,
     filteredRecipes,
     activeRecipe,
   } = useRecipe();
 
-  if (!hydrated) {
-    return (
-      <div className="relative z-10 flex min-h-screen items-center justify-center px-6 text-slate-500">
-        Načítám recepty…
-      </div>
-    );
-  }
-
   if (!categories.length) {
     return (
       <div className="relative z-10 mx-auto max-w-lg px-6 py-20 text-center text-slate-600">
-        <p className="text-lg">Žádné recepty v databázi.</p>
-        <p className="mt-2 text-sm text-slate-500">
-          Vymažte localStorage klíč{" "}
-          <code className="rounded bg-white/50 px-1">pastrycalc-recipes-v1</code>{" "}
-          a obnovte stránku pro obnovení výchozích dat.
-        </p>
+        <p className="text-lg">{t("noRecipes")}</p>
+        <p className="mt-2 text-sm text-slate-500">{t("noRecipesHint")}</p>
       </div>
     );
   }
@@ -77,26 +66,21 @@ export default function HomePage() {
                   transition={{ duration: 0.35, delay: 0.05, ease: transitionEase }}
                 >
                   <h2 className="text-3xl font-bold tracking-tight text-slate-800 md:text-4xl">
-                    Recepty
+                    {t("heading")}
                   </h2>
                   <p className="mt-2 max-w-2xl text-pretty text-sm text-slate-500 md:mt-3 md:text-base">
-                    Vyberte kategorii v postranním panelu.
+                    {t("selectCategory")}
                     {filteredRecipes.length > 0 ? (
-                      <>
-                        {" "}
-                        Klikněte na kartu níže — zobrazí se přepočet surovin a
-                        poznámky.
-                      </>
+                      <> {t("clickCard")}</>
                     ) : null}
                   </p>
                 </motion.header>
 
                 <CategoryBrowseHero category={activeCategory} />
-
                 <RecipeGrid />
               </GlassCard>
             </motion.div>
-            )}
+          )}
         </main>
       </div>
 

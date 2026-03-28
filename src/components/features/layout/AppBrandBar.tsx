@@ -2,12 +2,14 @@
 
 import { motion } from "framer-motion";
 import { ChefHat, Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRecipe } from "@/hooks/useRecipe";
 import { UserNav } from "@/components/features/auth/UserNav";
 import { GlassCard } from "@/components/ui";
 import { cn } from "@/utils/cn";
 
 export function AppBrandBar() {
+  const t = useTranslations("brandBar");
   const { effectiveManageMode, openCreateRecipe } = useRecipe();
 
   return (
@@ -26,9 +28,7 @@ export function AppBrandBar() {
             <h1 className="text-xl font-bold tracking-tight text-slate-800 md:text-2xl">
               PastryCalc
             </h1>
-            <p className="mt-1 text-sm text-slate-500">
-              Přepočty receptur pro cukráře
-            </p>
+            <p className="mt-1 text-sm text-slate-500">{t("tagline")}</p>
           </div>
         </div>
         <div className="flex shrink-0 flex-wrap items-center justify-end gap-3">
@@ -37,11 +37,7 @@ export function AppBrandBar() {
             type="button"
             disabled={!effectiveManageMode}
             onClick={openCreateRecipe}
-            title={
-              effectiveManageMode
-                ? "Přidat nový recept"
-                : "Režim Správa je dostupný jen administrátorům (postranní panel)."
-            }
+            title={effectiveManageMode ? t("addRecipe") : t("adminOnly")}
             className={cn(
               "inline-flex items-center gap-2 rounded-full border px-4 py-3 text-sm font-medium shadow-sm backdrop-blur-sm transition-colors",
               effectiveManageMode
@@ -50,7 +46,7 @@ export function AppBrandBar() {
             )}
           >
             <Plus className="h-4 w-4" strokeWidth={2} aria-hidden />
-            Nový recept
+            {t("newRecipe")}
           </button>
         </div>
       </GlassCard>

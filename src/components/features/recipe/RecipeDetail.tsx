@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowLeft, Pencil } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { Recipe } from "@/types/recipe";
 import { useRecipe, useRecipeDetailScaling } from "@/hooks/useRecipe";
 import { GlassCard, GlassInput, GlassTable } from "@/components/ui";
@@ -13,6 +14,7 @@ type RecipeDetailProps = {
 };
 
 export function RecipeDetail({ recipe }: RecipeDetailProps) {
+  const t = useTranslations("recipeDetail");
   const { setActiveRecipeId, effectiveManageMode, openEditRecipe } = useRecipe();
   const {
     targetYield,
@@ -38,16 +40,12 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
           className="inline-flex items-center gap-2 rounded-full border border-gold/25 bg-white/50 px-4 py-3 text-sm font-medium text-slate-600 shadow-sm transition-colors hover:border-gold/45 hover:bg-gold-muted hover:text-slate-900"
         >
           <ArrowLeft className="h-4 w-4" strokeWidth={2} aria-hidden />
-          Zpět na recepty
+          {t("back")}
         </motion.button>
         <button
           type="button"
           disabled={!effectiveManageMode}
-          title={
-            effectiveManageMode
-              ? "Upravit recept"
-              : "Úpravy jsou jen pro administrátory se zapnutou správou v panelu."
-          }
+          title={effectiveManageMode ? t("editTitle") : t("editHint")}
           onClick={() => effectiveManageMode && openEditRecipe(recipe)}
           className={`inline-flex items-center gap-2 rounded-full border px-4 py-3 text-sm ${
             effectiveManageMode
@@ -56,7 +54,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
           }`}
         >
           <Pencil className="h-4 w-4" strokeWidth={1.75} aria-hidden />
-          Upravit
+          {t("edit")}
         </button>
       </div>
 
@@ -91,50 +89,38 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
             htmlFor="target-yield"
             className="flex flex-wrap items-baseline gap-2 text-lg font-semibold tracking-tight text-slate-800"
           >
-            Cílové netto / počet
+            {t("targetYield")}
             <span className="rounded-full bg-gold-muted px-3 py-1 text-sm font-bold tabular-nums text-gold-dark">
               {recipe.yieldUnit}
             </span>
           </label>
-          <p className="text-sm text-slate-500">
-            Upravte hodnotu — přepočet všech surovin proběhne okamžitě.
-          </p>
+          <p className="text-sm text-slate-500">{t("yieldHint")}</p>
           <GlassInput
             id="target-yield"
             type="number"
             inputMode="decimal"
             step="any"
             variant="emphasis"
+            data-testid="yield-input"
             value={Number.isFinite(targetYield) ? targetYield : ""}
             onChange={(e) => {
               const raw = e.target.value;
-              if (raw === "" || raw === "-") {
-                setTargetYield(0);
-                return;
-              }
+              if (raw === "" || raw === "-") { setTargetYield(0); return; }
               const n = parseFloat(raw);
-              if (!Number.isNaN(n)) {
-                setTargetYield(n);
-              }
+              if (!Number.isNaN(n)) setTargetYield(n);
             }}
             className="max-w-lg md:max-w-xl"
           />
           <p className="text-sm tabular-nums text-slate-500">
-            Koeficient (live):{" "}
+            {t("coefficient")}{" "}
             <motion.span
-              key={
-                Number.isFinite(coefficient)
-                  ? formatScaledAmountDisplay(coefficient)
-                  : "nan"
-              }
+              key={Number.isFinite(coefficient) ? formatScaledAmountDisplay(coefficient) : "nan"}
               initial={{ opacity: 0.35, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="inline-block font-medium text-gold-dark"
             >
-              {Number.isFinite(coefficient)
-                ? formatScaledAmountDisplay(coefficient)
-                : "—"}
+              {Number.isFinite(coefficient) ? formatScaledAmountDisplay(coefficient) : "—"}
             </motion.span>
           </p>
         </div>
@@ -146,30 +132,19 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
             key={component.id}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.32,
-              delay: 0.12 + ci * 0.05,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            transition={{ duration: 0.32, delay: 0.12 + ci * 0.05, ease: [0.22, 1, 0.36, 1] }}
             className="min-w-0"
           >
             <h2 className="mb-4 flex items-center gap-4 text-xl font-bold tracking-tight text-slate-800 md:text-2xl">
-              <span
-                className="h-8 w-1 rounded-full bg-gradient-to-b from-gold to-gold-dark"
-                aria-hidden
-              />
+              <span className="h-8 w-1 rounded-full bg-gradient-to-b from-gold to-gold-dark" aria-hidden />
               {component.name}
             </h2>
             <GlassTable className="shadow-inner">
               <thead>
                 <tr className="border-b border-white/50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  <th className="px-4 py-4">Surovina</th>
-                  <th className="px-4 py-4 text-right tabular-nums">
-                    Původní
-                  </th>
-                  <th className="px-4 py-4 text-right tabular-nums">
-                    Přepočet
-                  </th>
+                  <th className="px-4 py-4">{t("colIngredient")}</th>
+                  <th className="px-4 py-4 text-right tabular-nums">{t("colOriginal")}</th>
+                  <th className="px-4 py-4 text-right tabular-nums">{t("colScaled")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -177,26 +152,20 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
                   <IngredientRow
                     key={`${component.id}-${idx}-${ing.name}`}
                     originalIngredient={ing}
-                    scaledIngredient={
-                      scaledRecipe.components[ci].ingredients[idx]
-                    }
+                    scaledIngredient={scaledRecipe.components[ci].ingredients[idx]}
                     recalcKey={`${targetYield}`}
+                    data-testid="scaled-amount"
                   />
                 ))}
               </tbody>
               <tfoot>
                 <tr className="border-t border-white/20 bg-white/15 text-slate-800">
-                  <td
-                    colSpan={2}
-                    className="px-4 py-3 text-left text-sm font-semibold"
-                  >
-                    {singleComponent
-                      ? "Součet receptury"
-                      : "Součet komponenty"}
+                  <td colSpan={2} className="px-4 py-3 text-left text-sm font-semibold">
+                    {singleComponent ? t("batchTotal") : t("componentTotal")}
                   </td>
                   <td
                     className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-gold-dark"
-                    title="Součet přepočtu podle jednotek v řádcích (hmotnosti v g, ks a další zvlášť)"
+                    title={t("batchTotalHint")}
                   >
                     {componentBatchSummaries[ci]?.displayLine ?? "—"}
                   </td>
