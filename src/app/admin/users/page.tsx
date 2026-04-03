@@ -20,7 +20,7 @@ export default async function AdminUsersPage() {
 
   const { data: rows, error } = await supabase
     .from("profiles")
-    .select("id, email, display_name, role")
+    .select("id, email, display_name, role, approved")
     .order("email", { ascending: true, nullsFirst: false });
 
   if (error) {

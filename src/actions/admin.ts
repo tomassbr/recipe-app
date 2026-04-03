@@ -7,6 +7,29 @@ import type { ProfileRole } from "@/types/profile";
 
 export type SetProfileRoleResult = { ok: true } | { ok: false; error: string };
 
+export async function setUserApproved(
+  targetUserId: string,
+  approved: boolean
+): Promise<SetProfileRoleResult> {
+  const supabase = await createClient();
+  const authz = await requireAdmin(supabase);
+  if (!authz.ok) {
+    return { ok: false, error: authz.error };
+  }
+
+  const { error } = await supabase
+    .from("profiles")
+    .update({ approved, updated_at: new Date().toISOString() })
+    .eq("id", targetUserId);
+
+  if (error) {
+    return { ok: false, error: error.message };
+  }
+
+  revalidatePath("/admin/users");
+  return { ok: true };
+}
+
 export async function setProfileAdminRole(
   targetUserId: string,
   role: ProfileRole

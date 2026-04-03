@@ -5,4 +5,5 @@ export type ProfileRow = {
   email: string | null;
   display_name: string | null;
   role: ProfileRole;
+  approved: boolean;
 };

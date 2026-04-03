@@ -101,7 +101,10 @@
     "noProfiles": "Žádné profily. Po přihlášení prvního uživatele se profil vytvoří automaticky.",
     "colUser": "Uživatel",
     "colEmail": "E-mail",
+    "colAccess": "Přístup",
     "colAdmin": "Administrátor",
+    "grantAccess": "Udělit přístup",
+    "revokeAccess": "Odebrat přístup",
     "you": "(vy)",
     "removeAdmin": "Odebrat roli administrátora",
     "grantAdmin": "Udělit roli administrátora"
@@ -117,6 +120,11 @@
     "globalHeading": "Kritická chyba aplikace",
     "globalGeneric": "Prosím obnovte stránku.",
     "globalRetry": "Obnovit"
+  },
+  "pending": {
+    "heading": "Čekáte na schválení",
+    "message": "Váš účet zatím nemá přístup do aplikace. Kontaktujte administrátora.",
+    "signOut": "Odhlásit se"
   },
   "recipeContext": {
     "mutationForbidden": "Úpravy receptů smí provádět pouze administrátor. Přihlaste se účtem s rolí admin."

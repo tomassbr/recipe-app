@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
-import { setProfileAdminRole } from "@/actions/admin";
+import { setProfileAdminRole, setUserApproved } from "@/actions/admin";
 import { GlassTable } from "@/components/ui";
 import type { ProfileRow } from "@/types/profile";
 import { cn } from "@/utils/cn";
@@ -20,11 +20,27 @@ export function UserManagementTable({ profiles, currentUserId }: UserManagementT
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [pendingId, setPendingId] = useState<string | null>(null);
 
+  const toggleApproved = useCallback(
+    async (row: ProfileRow, nextApproved: boolean) => {
+      setErrorMessage(null);
+      setPendingId(row.id + "-approved");
+      const result = await setUserApproved(row.id, nextApproved);
+      setPendingId(null);
+      if (!result.ok) {
+        toast.error(result.error);
+        setErrorMessage(result.error);
+        return;
+      }
+      router.refresh();
+    },
+    [router]
+  );
+
   const toggleAdmin = useCallback(
     async (row: ProfileRow, nextIsAdmin: boolean) => {
       setErrorMessage(null);
       const nextRole = nextIsAdmin ? "admin" : "user";
-      setPendingId(row.id);
+      setPendingId(row.id + "-role");
       const result = await setProfileAdminRole(row.id, nextRole);
       setPendingId(null);
       if (!result.ok) {
@@ -50,6 +66,7 @@ export function UserManagementTable({ profiles, currentUserId }: UserManagementT
           <tr className="border-b border-white/40 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
             <th className="px-4 py-3 md:px-6">{t("colUser")}</th>
             <th className="px-4 py-3 md:px-6">{t("colEmail")}</th>
+            <th className="px-4 py-3 md:px-6">{t("colAccess")}</th>
             <th className="px-4 py-3 md:px-6">{t("colAdmin")}</th>
           </tr>
         </thead>
@@ -57,13 +74,14 @@ export function UserManagementTable({ profiles, currentUserId }: UserManagementT
           {profiles.map((row) => {
             const label = row.display_name?.trim() || row.email?.trim() || row.id.slice(0, 8);
             const isAdmin = row.role === "admin";
-            const busy = pendingId === row.id;
+            const isApproved = row.approved;
+            const isSelf = row.id === currentUserId;
 
             return (
               <tr key={row.id} className="border-b border-white/25 last:border-0">
                 <td className="px-4 py-3 font-medium text-slate-800 md:px-6 md:py-4">
                   {label}
-                  {row.id === currentUserId ? (
+                  {isSelf ? (
                     <span className="ml-2 text-xs font-normal text-slate-500">{t("you")}</span>
                   ) : null}
                 </td>
@@ -72,8 +90,29 @@ export function UserManagementTable({ profiles, currentUserId }: UserManagementT
                   <button
                     type="button"
                     role="switch"
+                    aria-checked={isApproved}
+                    disabled={pendingId === row.id + "-approved" || isSelf}
+                    onClick={() => toggleApproved(row, !isApproved)}
+                    className={cn(
+                      "relative h-8 w-14 shrink-0 rounded-full border transition-colors disabled:opacity-60",
+                      isApproved ? "border-emerald-400/50 bg-emerald-100/80" : "border-white/50 bg-white/40"
+                    )}
+                  >
+                    <span className={cn(
+                      "absolute top-1 h-6 w-6 rounded-full bg-white shadow transition-transform",
+                      isApproved ? "left-7 border border-emerald-400/30" : "left-1"
+                    )} />
+                    <span className="sr-only">
+                      {isApproved ? t("revokeAccess") : t("grantAccess")}
+                    </span>
+                  </button>
+                </td>
+                <td className="px-4 py-3 md:px-6 md:py-4">
+                  <button
+                    type="button"
+                    role="switch"
                     aria-checked={isAdmin}
-                    disabled={busy}
+                    disabled={pendingId === row.id + "-role" || isSelf}
                     onClick={() => toggleAdmin(row, !isAdmin)}
                     className={cn(
                       "relative h-8 w-14 shrink-0 rounded-full border transition-colors disabled:opacity-60",

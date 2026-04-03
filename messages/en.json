@@ -101,7 +101,10 @@
     "noProfiles": "No profiles yet. A profile is created automatically when the first user signs in.",
     "colUser": "User",
     "colEmail": "Email",
+    "colAccess": "Access",
     "colAdmin": "Administrator",
+    "grantAccess": "Grant access",
+    "revokeAccess": "Revoke access",
     "you": "(you)",
     "removeAdmin": "Remove administrator role",
     "grantAdmin": "Grant administrator role"
@@ -117,6 +120,11 @@
     "globalHeading": "Critical application error",
     "globalGeneric": "Please refresh the page.",
     "globalRetry": "Refresh"
+  },
+  "pending": {
+    "heading": "Awaiting approval",
+    "message": "Your account doesn't have access yet. Contact the administrator.",
+    "signOut": "Sign out"
   },
   "recipeContext": {
     "mutationForbidden": "Only administrators can edit recipes. Please sign in with an admin account."

@@ -62,14 +62,28 @@ export async function middleware(request: NextRequest) {
     return redirect;
   }
 
-  if (user && pathname.startsWith("/admin")) {
+  if (user) {
     const { data: profile } = await supabase
       .from("profiles")
-      .select("role")
+      .select("role, approved")
       .eq("id", user.id)
       .maybeSingle();
 
-    if (profile?.role !== "admin") {
+    const isApproved = profile?.approved === true;
+
+    if (!isApproved && pathname !== "/pending") {
+      const redirect = NextResponse.redirect(new URL("/pending", request.url));
+      copyCookies(supabaseResponse, redirect);
+      return redirect;
+    }
+
+    if (isApproved && pathname === "/pending") {
+      const redirect = NextResponse.redirect(new URL("/", request.url));
+      copyCookies(supabaseResponse, redirect);
+      return redirect;
+    }
+
+    if (pathname.startsWith("/admin") && profile?.role !== "admin") {
       const redirect = NextResponse.redirect(new URL("/", request.url));
       copyCookies(supabaseResponse, redirect);
       return redirect;
