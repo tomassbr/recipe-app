@@ -6,7 +6,6 @@
   "login": {
     "heading": "Sign in",
     "subtitle": "Continue with Google to access PastryCalc.",
-    "redirectNote": "Always open the app from the same URL configured in Supabase Redirect URLs (e.g. only <code>localhost</code>, not mixed with <code>127.0.0.1</code>).",
     "signInButton": "Sign in with Google",
     "redirecting": "Redirecting…",
     "errorAuth": "Sign-in failed. Please try again.",

@@ -6,7 +6,6 @@
   "login": {
     "heading": "Přihlášení",
     "subtitle": "Pokračujte účtem Google pro přístup k PastryCalc.",
-    "redirectNote": "Otevírejte app vždy přes stejnou adresu jako v Supabase Redirect URLs (např. jen <code>localhost</code>, ne mix s <code>127.0.0.1</code>).",
     "signInButton": "Přihlásit se přes Google",
     "redirecting": "Přesměrování…",
     "errorAuth": "Přihlášení se nezdařilo. Zkuste to prosím znovu.",
