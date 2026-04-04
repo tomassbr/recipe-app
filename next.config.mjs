@@ -86,6 +86,7 @@ function buildCsp(isDev) {
 const nextConfig = {
   reactStrictMode: true,
   async headers() {
+    const isDev = process.env.NODE_ENV !== "production";
     return [
       {
         source: "/(.*)",
@@ -100,6 +101,10 @@ const nextConfig = {
           {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: buildCsp(isDev),
           },
         ],
       },

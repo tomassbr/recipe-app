@@ -26,8 +26,12 @@ export async function deleteAccount(): Promise<DeleteAccountResult> {
     return { ok: false, error: error.message };
   }
 
-  // Sign out locally so cookies are cleared
-  await supabase.auth.signOut();
+  // Sign out locally so cookies are cleared — ignore errors, account is already deleted
+  try {
+    await supabase.auth.signOut();
+  } catch {
+    // Session will expire naturally via JWT expiry
+  }
 
   return { ok: true };
 }

@@ -90,6 +90,7 @@ export function Sidebar() {
             <motion.button
               key={cat}
               type="button"
+              aria-current={active ? "page" : undefined}
               onClick={() => setActiveCategory(cat)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

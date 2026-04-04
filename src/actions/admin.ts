@@ -7,10 +7,18 @@ import type { ProfileRole } from "@/types/profile";
 
 export type SetProfileRoleResult = { ok: true } | { ok: false; error: string };
 
+function isValidUUID(id: string): boolean {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+}
+
 export async function setUserApproved(
   targetUserId: string,
   approved: boolean
 ): Promise<SetProfileRoleResult> {
+  if (!isValidUUID(targetUserId)) {
+    return { ok: false, error: "Neplatné ID uživatele" };
+  }
+
   const supabase = await createClient();
   const authz = await requireAdmin(supabase);
   if (!authz.ok) {
@@ -34,6 +42,9 @@ export async function setProfileAdminRole(
   targetUserId: string,
   role: ProfileRole
 ): Promise<SetProfileRoleResult> {
+  if (!isValidUUID(targetUserId)) {
+    return { ok: false, error: "Neplatné ID uživatele" };
+  }
   if (role !== "admin" && role !== "user") {
     return { ok: false, error: "Neplatná role" };
   }

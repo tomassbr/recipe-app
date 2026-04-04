@@ -5,6 +5,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -21,9 +22,16 @@ export type SessionProfileValue = {
 
 const SessionProfileContext = createContext<SessionProfileValue | null>(null);
 
-export function SessionProfileProvider({ children }: { children: ReactNode }) {
-  const [role, setRole] = useState<ProfileRole | null>(null);
-  const [profileHydrated, setProfileHydrated] = useState(false);
+export function SessionProfileProvider({
+  children,
+  initialRole,
+}: {
+  children: ReactNode;
+  initialRole?: ProfileRole | null;
+}) {
+  const [role, setRole] = useState<ProfileRole | null>(initialRole ?? null);
+  const [profileHydrated, setProfileHydrated] = useState(initialRole !== undefined);
+  const skipInitialFetch = useRef(initialRole !== undefined);
 
   useEffect(() => {
     const supabase = createClient();
@@ -59,7 +67,9 @@ export function SessionProfileProvider({ children }: { children: ReactNode }) {
       setProfileHydrated(true);
     }
 
-    void loadRole();
+    if (!skipInitialFetch.current) {
+      void loadRole();
+    }
 
     const {
       data: { subscription },
@@ -71,7 +81,7 @@ export function SessionProfileProvider({ children }: { children: ReactNode }) {
       cancelled = true;
       subscription.unsubscribe();
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const value = useMemo<SessionProfileValue>(
     () => ({

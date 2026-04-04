@@ -5,6 +5,8 @@ import { getLocale, getMessages } from "next-intl/server";
 import "./globals.css";
 import { GlassBlobBackground } from "@/components/features/layout/GlassBlobBackground";
 import { Providers } from "@/components/features/layout/Providers";
+import { createClient } from "@/lib/supabase/server";
+import type { ProfileRole } from "@/types/profile";
 
 export const metadata: Metadata = {
   title: "PastryCalc — přepočty receptur",
@@ -19,6 +21,19 @@ export default async function RootLayout({
   const locale = await getLocale();
   const messages = await getMessages();
 
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  let initialRole: ProfileRole | null = null;
+  if (user) {
+    const { data } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .maybeSingle();
+    const r = data?.role;
+    if (r === "admin" || r === "user") initialRole = r;
+  }
+
   return (
     <html lang={locale} className={GeistSans.variable}>
       <body
@@ -30,7 +45,7 @@ export default async function RootLayout({
           aria-hidden
         />
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Providers>{children}</Providers>
+          <Providers initialRole={initialRole}>{children}</Providers>
         </NextIntlClientProvider>
       </body>
     </html>
