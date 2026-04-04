@@ -30,7 +30,7 @@ export function IngredientRow({
           </span>
         ) : null}
       </td>
-      <td className="px-4 py-3 text-right tabular-nums text-slate-500">
+      <td className="hidden px-4 py-3 text-right tabular-nums text-slate-500 sm:table-cell">
         {formatScaledAmountDisplay(originalIngredient.baseAmount)}{" "}
         {originalIngredient.unit}
       </td>

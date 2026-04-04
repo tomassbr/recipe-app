@@ -143,7 +143,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
               <thead>
                 <tr className="border-b border-white/50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
                   <th className="px-4 py-4">{t("colIngredient")}</th>
-                  <th className="px-4 py-4 text-right tabular-nums">{t("colOriginal")}</th>
+                  <th className="hidden px-4 py-4 text-right tabular-nums sm:table-cell">{t("colOriginal")}</th>
                   <th className="px-4 py-4 text-right tabular-nums">{t("colScaled")}</th>
                 </tr>
               </thead>
@@ -160,9 +160,10 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
               </tbody>
               <tfoot>
                 <tr className="border-t border-white/20 bg-white/15 text-slate-800">
-                  <td colSpan={2} className="px-4 py-3 text-left text-sm font-semibold">
+                  <td className="px-4 py-3 text-left text-sm font-semibold">
                     {singleComponent ? t("batchTotal") : t("componentTotal")}
                   </td>
+                  <td className="hidden sm:table-cell" />
                   <td
                     className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-gold-dark"
                     title={t("batchTotalHint")}
