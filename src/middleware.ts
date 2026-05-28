@@ -13,81 +13,92 @@ function copyCookies(from: NextResponse, to: NextResponse) {
 
 function isPublicPath(pathname: string) {
   if (pathname === "/login") return true;
+  if (pathname === "/api/health") return true;
   if (pathname.startsWith("/api/auth/callback")) return true;
   return false;
+}
+
+/**
+ * Decodes the JWT payload without signature verification.
+ * Safe for routing decisions — actual data access is protected by Supabase RLS.
+ * Claims are injected by custom_access_token_hook (see migration).
+ */
+function decodeJwtClaims(token: string): Record<string, unknown> {
+  try {
+    const payload = token.split(".")[1];
+    const padded = payload.replace(/-/g, "+").replace(/_/g, "/");
+    return JSON.parse(atob(padded));
+  } catch {
+    return {};
+  }
 }
 
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
-  const supabase = createServerClient(
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll();
-        },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) =>
-            request.cookies.set(name, value)
-          );
-          supabaseResponse = NextResponse.next({ request });
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          );
-        },
+  const supabase = createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    cookies: {
+      getAll() {
+        return request.cookies.getAll();
       },
-    }
-  );
+      setAll(cookiesToSet) {
+        cookiesToSet.forEach(({ name, value }) =>
+          request.cookies.set(name, value)
+        );
+        supabaseResponse = NextResponse.next({ request });
+        cookiesToSet.forEach(({ name, value, options }) =>
+          supabaseResponse.cookies.set(name, value, options)
+        );
+      },
+    },
+  });
 
+  // getSession reads the JWT cookie locally — no network call.
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
 
   const pathname = request.nextUrl.pathname;
 
-  if (user && pathname === "/login") {
+  if (!session) {
+    if (!isPublicPath(pathname)) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/login";
+      url.searchParams.set("next", pathname);
+      const redirect = NextResponse.redirect(url);
+      copyCookies(supabaseResponse, redirect);
+      return redirect;
+    }
+    return supabaseResponse;
+  }
+
+  // Authenticated — read role/approved from JWT claims (no DB query).
+  const claims = decodeJwtClaims(session.access_token);
+  const isApproved = claims.user_approved === true;
+  const isAdmin = claims.user_role === "admin";
+
+  if (pathname === "/login") {
     const redirect = NextResponse.redirect(new URL("/", request.url));
     copyCookies(supabaseResponse, redirect);
     return redirect;
   }
 
-  if (!user && !isPublicPath(pathname)) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/login";
-    url.searchParams.set("next", pathname);
-    const redirect = NextResponse.redirect(url);
+  if (!isApproved && pathname !== "/pending") {
+    const redirect = NextResponse.redirect(new URL("/pending", request.url));
     copyCookies(supabaseResponse, redirect);
     return redirect;
   }
 
-  if (user) {
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role, approved")
-      .eq("id", user.id)
-      .maybeSingle();
+  if (isApproved && pathname === "/pending") {
+    const redirect = NextResponse.redirect(new URL("/", request.url));
+    copyCookies(supabaseResponse, redirect);
+    return redirect;
+  }
 
-    const isApproved = profile?.approved === true;
-
-    if (!isApproved && pathname !== "/pending") {
-      const redirect = NextResponse.redirect(new URL("/pending", request.url));
-      copyCookies(supabaseResponse, redirect);
-      return redirect;
-    }
-
-    if (isApproved && pathname === "/pending") {
-      const redirect = NextResponse.redirect(new URL("/", request.url));
-      copyCookies(supabaseResponse, redirect);
-      return redirect;
-    }
-
-    if (pathname.startsWith("/admin") && profile?.role !== "admin") {
-      const redirect = NextResponse.redirect(new URL("/", request.url));
-      copyCookies(supabaseResponse, redirect);
-      return redirect;
-    }
+  if (pathname.startsWith("/admin") && !isAdmin) {
+    const redirect = NextResponse.redirect(new URL("/", request.url));
+    copyCookies(supabaseResponse, redirect);
+    return redirect;
   }
 
   return supabaseResponse;

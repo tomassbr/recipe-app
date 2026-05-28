@@ -42,7 +42,7 @@ export function Sidebar() {
               className={`relative h-8 w-14 shrink-0 rounded-full border transition-colors ${
                 manageMode
                   ? "border-gold/50 bg-gold-muted shadow-inner"
-                  : "border-white/50 bg-white/40"
+                  : "border-slate-300/60 bg-slate-200/80"
               }`}
             >
               <span
@@ -80,7 +80,7 @@ export function Sidebar() {
         </p>
       </div>
       <nav
-        className="flex min-h-0 flex-row gap-2 overflow-x-auto pb-2 md:flex-1 md:flex-col md:gap-2 md:overflow-y-auto md:overflow-x-hidden md:pb-0"
+        className="flex min-h-0 flex-row gap-2 overflow-x-auto pb-2 md:flex-1 md:flex-col md:gap-2 md:overflow-y-auto md:overflow-x-hidden md:pb-0 md:px-1"
         aria-label={t("categories")}
       >
         {categories.map((cat) => {
