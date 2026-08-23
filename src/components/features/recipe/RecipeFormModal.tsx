@@ -163,7 +163,7 @@ export function RecipeFormModal() {
         ) : null}
 
         <section className="space-y-4">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-600">
             {t("sectionBase")}
           </h3>
           <div className="grid gap-4 md:grid-cols-2">
@@ -204,7 +204,7 @@ export function RecipeFormModal() {
 
         <section className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-600">
               {t("sectionComponents")}
             </h3>
             <Button type="button" variant="primary" onClick={addComponent}
@@ -255,12 +255,28 @@ export function RecipeFormModal() {
                     <div className="flex md:col-span-1 md:justify-end">
                       {comp.ingredients.length > 1 ? (
                         <Button type="button" variant="ghost" onClick={() => removeIngredient(ci, ii)}
-                          className="rounded-lg border border-white/50 p-2 text-slate-500 hover:bg-red-50 hover:text-red-800"
+                          className="min-h-10 min-w-10 items-center justify-center rounded-lg border border-white/50 p-2 text-slate-600 hover:bg-red-50 hover:text-red-800"
                           aria-label={t("removeIngredient")}>
                           <Trash2 className="h-4 w-4" />
                         </Button>
                       ) : null}
                     </div>
+                    <label
+                      className="flex items-center gap-2 md:col-span-12"
+                      title={t("exactRoundingHint")}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={ing.rounding === "exact"}
+                        onChange={(e) =>
+                          updateIngredient(ci, ii, {
+                            rounding: e.target.checked ? "exact" : undefined,
+                          })
+                        }
+                        className="h-4 w-4 rounded border-white/60 accent-gold"
+                      />
+                      <span className="text-xs text-slate-600">{t("exactRoundingLabel")}</span>
+                    </label>
                   </div>
                 ))}
                 <button type="button" onClick={() => addIngredient(ci)}

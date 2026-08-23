@@ -4,7 +4,7 @@ import type {
   Recipe,
   YieldUnit,
 } from "@/types/recipe";
-import { isYieldUnit } from "@/types/recipe";
+import { isIngredientRounding, isYieldUnit } from "@/types/recipe";
 
 function isRecord(x: unknown): x is Record<string, unknown> {
   return typeof x === "object" && x !== null;
@@ -12,7 +12,7 @@ function isRecord(x: unknown): x is Record<string, unknown> {
 
 function parseIngredient(raw: unknown, path: string): Ingredient {
   if (!isRecord(raw)) throw new Error(`${path}: ingredient must be object`);
-  const { name, baseAmount, unit, note } = raw;
+  const { name, baseAmount, unit, note, rounding } = raw;
   if (typeof name !== "string") throw new Error(`${path}.name`);
   if (typeof baseAmount !== "number" || !Number.isFinite(baseAmount)) {
     throw new Error(`${path}.baseAmount`);
@@ -22,6 +22,10 @@ function parseIngredient(raw: unknown, path: string): Ingredient {
   if (note !== undefined) {
     if (typeof note !== "string") throw new Error(`${path}.note`);
     ing.note = note;
+  }
+  if (rounding !== undefined) {
+    if (!isIngredientRounding(rounding)) throw new Error(`${path}.rounding`);
+    ing.rounding = rounding;
   }
   return ing;
 }

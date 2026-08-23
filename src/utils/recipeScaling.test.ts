@@ -38,6 +38,14 @@ describe("scaleIngredientAmount", () => {
   it("returns 0 for invalid base", () => {
     expect(scaleIngredientAmount(0, 500, 200)).toBe(0);
   });
+
+  it("rounds to 2 decimals in exact mode", () => {
+    // coefficient 1/3 → 1.666… → default 1.7, exact 1.67
+    expect(scaleIngredientAmount(3000, 1000, 5)).toBe(1.7);
+    expect(scaleIngredientAmount(3000, 1000, 5, "exact")).toBe(1.67);
+    // half a vanilla pod stays 0.5
+    expect(scaleIngredientAmount(1000, 500, 1, "exact")).toBe(0.5);
+  });
 });
 
 describe("buildScaledRecipe", () => {
@@ -106,6 +114,44 @@ describe("buildScaledRecipe", () => {
     const scaled = buildScaledRecipe(kgRecipe, 0.5);
     expect(scaled.components[0].ingredients[0].unit).toBe("kg");
     expect(scaled.components[0].ingredients[0].baseAmount).toBe(0.5);
+  });
+
+  it("applies exact rounding to flagged ingredients", () => {
+    const exactRecipe: Recipe = {
+      ...recipe,
+      components: [
+        {
+          id: "c4",
+          name: "Želé",
+          ingredients: [
+            { name: "Pektin NH", baseAmount: 5, unit: "g", rounding: "exact" },
+            { name: "Cukr", baseAmount: 5, unit: "g" },
+          ],
+        },
+      ],
+    };
+    const scaled = buildScaledRecipe(exactRecipe, 1 / 3);
+    expect(scaled.components[0].ingredients[0].baseAmount).toBe(1.67);
+    expect(scaled.components[0].ingredients[1].baseAmount).toBe(1.7);
+  });
+
+  it("uses exact rounding in kg→g conversion for flagged ingredients", () => {
+    const kgRecipe: Recipe = {
+      ...recipe,
+      components: [
+        {
+          id: "c5",
+          name: "Želé",
+          ingredients: [
+            { name: "Želatina", baseAmount: 0.05, unit: "kg", rounding: "exact" },
+          ],
+        },
+      ],
+    };
+    // 0.05 kg * 0.333 = 0.01665 kg → grams 16.65 (exact keeps 2 decimals)
+    const scaled = buildScaledRecipe(kgRecipe, 0.333);
+    expect(scaled.components[0].ingredients[0].unit).toBe("g");
+    expect(scaled.components[0].ingredients[0].baseAmount).toBe(16.65);
   });
 
   it("handles empty components array", () => {

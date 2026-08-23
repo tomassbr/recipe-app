@@ -55,6 +55,29 @@ describe("parseRecipeDatabase", () => {
     }
   });
 
+  it("parses optional ingredient rounding", () => {
+    const r = structuredClone(validRecipe);
+    r.components[0].ingredients[0] = {
+      ...r.components[0].ingredients[0],
+      rounding: "exact",
+    } as never;
+    const result = parseRecipeDatabase([r]);
+    expect(result[0].components[0].ingredients[0].rounding).toBe("exact");
+    // absence keeps it undefined
+    expect(result[0].components[0].ingredients[1].rounding).toBeUndefined();
+  });
+
+  it("throws on invalid ingredient rounding", () => {
+    const r = structuredClone(validRecipe);
+    r.components[0].ingredients[0] = {
+      ...r.components[0].ingredients[0],
+      rounding: "foo",
+    } as never;
+    expect(() => parseRecipeDatabase([r])).toThrow(
+      "recipes[0].components[0].ingredients[0].rounding"
+    );
+  });
+
   it("throws when baseYield is not a finite number", () => {
     expect(() =>
       parseRecipeDatabase([{ ...validRecipe, baseYield: "1000" }])

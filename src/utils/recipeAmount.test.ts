@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
   roundRecipeAmount,
+  roundExactAmount,
   formatScaledAmountDisplay,
+  formatExactAmountDisplay,
+  formatIngredientAmountDisplay,
   roundBatchTotalAmount,
   formatBatchTotalAmountDisplay,
 } from "./recipeAmount";
@@ -50,6 +53,47 @@ describe("formatScaledAmountDisplay", () => {
   it("rounds before formatting", () => {
     // 1.25 rounds to 1.3
     expect(formatScaledAmountDisplay(1.25)).toBe("1.3");
+  });
+});
+
+describe("roundExactAmount", () => {
+  it("rounds to 2 decimal places", () => {
+    expect(roundExactAmount(1.254)).toBe(1.25);
+    expect(roundExactAmount(1.256)).toBe(1.26);
+    expect(roundExactAmount(0.5)).toBe(0.5);
+  });
+
+  it("kills float noise", () => {
+    expect(roundExactAmount(36.799999999999997)).toBe(36.8);
+  });
+
+  it("returns 0 for non-finite values", () => {
+    expect(roundExactAmount(NaN)).toBe(0);
+    expect(roundExactAmount(Infinity)).toBe(0);
+  });
+});
+
+describe("formatExactAmountDisplay", () => {
+  it("keeps fractions without trailing zeros", () => {
+    expect(formatExactAmountDisplay(0.5)).toBe("0.5");
+    expect(formatExactAmountDisplay(36.8)).toBe("36.8");
+    expect(formatExactAmountDisplay(1.254)).toBe("1.25");
+  });
+
+  it("shows integers without decimal", () => {
+    expect(formatExactAmountDisplay(2)).toBe("2");
+  });
+
+  it("returns — for non-finite values", () => {
+    expect(formatExactAmountDisplay(NaN)).toBe("—");
+  });
+});
+
+describe("formatIngredientAmountDisplay", () => {
+  it("dispatches by rounding mode", () => {
+    expect(formatIngredientAmountDisplay(1.25, "exact")).toBe("1.25");
+    expect(formatIngredientAmountDisplay(1.25, "default")).toBe("1.3");
+    expect(formatIngredientAmountDisplay(1.25)).toBe("1.3");
   });
 });
 

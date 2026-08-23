@@ -1,8 +1,9 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { Ingredient } from "@/types/recipe";
 import type { CalculatedIngredient } from "@/types/calculatedRecipe";
-import { formatScaledAmountDisplay } from "@/utils/recipeAmount";
+import { formatIngredientAmountDisplay } from "@/utils/recipeAmount";
 import { AnimatedScaledAmount } from "./AnimatedScaledAmount";
 
 type IngredientRowProps = {
@@ -17,7 +18,9 @@ export function IngredientRow({
   scaledIngredient,
   recalcKey,
 }: IngredientRowProps) {
-  const mainLine = `${formatScaledAmountDisplay(scaledIngredient.baseAmount)} ${scaledIngredient.unit}`;
+  const t = useTranslations("recipeDetail");
+  const rounding = originalIngredient.rounding;
+  const mainLine = `${formatIngredientAmountDisplay(scaledIngredient.baseAmount, rounding)} ${scaledIngredient.unit}`;
   const subLine = scaledIngredient.displayAmount ?? "";
 
   return (
@@ -25,20 +28,27 @@ export function IngredientRow({
       <td className="px-4 py-3 text-slate-800">
         <span className="block">{originalIngredient.name}</span>
         {originalIngredient.note ? (
-          <span className="mt-1 block text-xs text-slate-500">
+          <span className="mt-1 block text-xs text-slate-600">
             {originalIngredient.note}
           </span>
         ) : null}
       </td>
-      <td className="hidden px-4 py-3 text-right tabular-nums text-slate-500 sm:table-cell">
-        {formatScaledAmountDisplay(originalIngredient.baseAmount)}{" "}
+      <td className="hidden px-4 py-3 text-right tabular-nums text-slate-600 sm:table-cell">
+        {formatIngredientAmountDisplay(originalIngredient.baseAmount, rounding)}{" "}
         {originalIngredient.unit}
       </td>
       <td className="px-4 py-3 text-right font-medium text-slate-800">
+        {/* Original column is visually hidden on mobile — keep it for screen readers */}
+        <span className="sr-only sm:hidden">
+          {t("colOriginal")}:{" "}
+          {formatIngredientAmountDisplay(originalIngredient.baseAmount, rounding)}{" "}
+          {originalIngredient.unit}.{" "}
+          {t("colScaled")}:{" "}
+        </span>
         <span className="block">
           <AnimatedScaledAmount valueKey={`${recalcKey}|${mainLine}`}>
             <span className="tabular-nums">
-              {formatScaledAmountDisplay(scaledIngredient.baseAmount)}{" "}
+              {formatIngredientAmountDisplay(scaledIngredient.baseAmount, rounding)}{" "}
               {scaledIngredient.unit}
             </span>
           </AnimatedScaledAmount>
@@ -46,7 +56,7 @@ export function IngredientRow({
         {scaledIngredient.displayAmount ? (
           <span className="mt-1 block text-xs font-normal">
             <AnimatedScaledAmount valueKey={`${recalcKey}|${subLine}`}>
-              <span className="tabular-nums text-slate-500">
+              <span className="tabular-nums text-slate-600">
                 {scaledIngredient.displayAmount}
               </span>
             </AnimatedScaledAmount>

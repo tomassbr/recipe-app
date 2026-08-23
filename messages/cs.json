@@ -76,7 +76,9 @@
     "addIngredient": "Přidat surovinu",
     "cancel": "Zrušit",
     "save": "Uložit změny",
-    "create": "Vytvořit recept"
+    "create": "Vytvořit recept",
+    "exactRoundingLabel": "Přesné množství (nezaokrouhlovat)",
+    "exactRoundingHint": "Zobrazit přesně na 2 desetinná místa \u2014 pektin, agar, želatina, vanilkový lusk\u2026"
   },
   "confirmDelete": {
     "title": "Smazat recept?",

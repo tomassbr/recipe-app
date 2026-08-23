@@ -1,6 +1,6 @@
-import type { Recipe } from "@/types/recipe";
+import type { IngredientRounding, Recipe } from "@/types/recipe";
 import type { CalculatedIngredient, CalculatedRecipe } from "@/types/calculatedRecipe";
-import { roundRecipeAmount } from "@/utils/recipeAmount";
+import { roundExactAmount, roundRecipeAmount } from "@/utils/recipeAmount";
 
 /**
  * Pure scaling math: target / base. Returns 0 when inputs are invalid.
@@ -25,10 +25,12 @@ export function computeScaledCoefficient(
 export function scaleIngredientAmount(
   baseYield: number,
   targetYield: number,
-  baseAmount: number
+  baseAmount: number,
+  rounding: IngredientRounding = "default"
 ): number {
   const c = computeScaledCoefficient(baseYield, targetYield);
-  return roundRecipeAmount(baseAmount * c);
+  const raw = baseAmount * c;
+  return rounding === "exact" ? roundExactAmount(raw) : roundRecipeAmount(raw);
 }
 
 /**
@@ -48,10 +50,12 @@ export function buildScaledRecipe(
     const ingredients: CalculatedIngredient[] = [];
     for (const ing of component.ingredients) {
       const raw = ing.baseAmount * coefficient;
+      const round =
+        ing.rounding === "exact" ? roundExactAmount : roundRecipeAmount;
 
       // Při zaokrouhlení na 1 desetinné místo by malé kg šly na 0 — pod 100 g zobrazíme gramy.
       if (ing.unit === "kg" && raw > 0 && raw < 0.1) {
-        const grams = roundRecipeAmount(raw * 1000);
+        const grams = round(raw * 1000);
         ingredients.push({
           ...ing,
           baseAmount: grams,
@@ -60,7 +64,7 @@ export function buildScaledRecipe(
         continue;
       }
 
-      const rounded = roundRecipeAmount(raw);
+      const rounded = round(raw);
       ingredients.push({
         ...ing,
         baseAmount: rounded,

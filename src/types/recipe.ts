@@ -6,12 +6,30 @@ export function isYieldUnit(value: unknown): value is YieldUnit {
   return typeof value === "string" && YIELD_UNITS.includes(value as YieldUnit);
 }
 
+/** Rounding modes for scaled ingredient amounts. */
+export const INGREDIENT_ROUNDINGS = ["default", "exact"] as const;
+export type IngredientRounding = (typeof INGREDIENT_ROUNDINGS)[number];
+
+export function isIngredientRounding(
+  value: unknown
+): value is IngredientRounding {
+  return (
+    typeof value === "string" &&
+    INGREDIENT_ROUNDINGS.includes(value as IngredientRounding)
+  );
+}
+
 export interface Ingredient {
   name: string;
   baseAmount: number;
   /** Mass / count unit (e.g. g, kg from db.json) */
   unit: string;
   note?: string;
+  /**
+   * "exact" = round to 2 decimals (pectin, agar, gelatin, vanilla pods…).
+   * Omitted/"default" = standard 1-decimal rounding.
+   */
+  rounding?: IngredientRounding;
 }
 
 export interface Component {

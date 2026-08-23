@@ -76,7 +76,9 @@
     "addIngredient": "Add ingredient",
     "cancel": "Cancel",
     "save": "Save changes",
-    "create": "Create recipe"
+    "create": "Create recipe",
+    "exactRoundingLabel": "Exact amount (no rounding)",
+    "exactRoundingHint": "Show precisely to 2 decimals \u2014 pectin, agar, gelatin, vanilla pod\u2026"
   },
   "confirmDelete": {
     "title": "Delete recipe?",
