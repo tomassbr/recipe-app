@@ -5,7 +5,6 @@
     "category": "Zrcadlové glazury",
     "baseYield": 1000,
     "yieldUnit": "g",
-    "note": "Recept počítán s odpadem 13,21 % (brutto ~1152 g → netto 1000 g).",
     "components": [
       {
         "id": "zaklad",
@@ -48,7 +47,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Recept počítán s odpadem 13,21 % (brutto ~1152 g → netto 1000 g)."
   },
   {
     "id": "zrcadlove-glazury-glaze-bila-vanilka",
@@ -56,7 +56,6 @@
     "category": "Zrcadlové glazury",
     "baseYield": 1000,
     "yieldUnit": "g",
-    "note": "Brutto 1,010 kg • Netto 1,000 kg",
     "components": [
       {
         "id": "zaklad",
@@ -104,7 +103,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Brutto 1,010 kg • Netto 1,000 kg"
   },
   {
     "id": "zrcadlove-glazury-glaze-bila-barvy",
@@ -112,7 +112,6 @@
     "category": "Zrcadlové glazury",
     "baseYield": 1000,
     "yieldUnit": "g",
-    "note": "Brutto 1,010 kg • Netto 1,000 kg",
     "components": [
       {
         "id": "zaklad",
@@ -155,7 +154,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Brutto 1,010 kg • Netto 1,000 kg"
   },
   {
     "id": "potahovani-cokolady-potahovani-callebaut-gold",
@@ -163,7 +163,6 @@
     "category": "Potahování, čokolády",
     "baseYield": 1000,
     "yieldUnit": "g",
-    "note": "Brutto 1,011 kg • Netto 1,000 kg",
     "components": [
       {
         "id": "zaklad",
@@ -186,7 +185,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Brutto 1,011 kg • Netto 1,000 kg"
   },
   {
     "id": "potahovani-cokolady-potahovani-mlecna-rocher",
@@ -194,7 +194,6 @@
     "category": "Potahování, čokolády",
     "baseYield": 990,
     "yieldUnit": "g",
-    "note": "Brutto 1,000 kg • Netto 0,990 kg",
     "components": [
       {
         "id": "zaklad",
@@ -227,7 +226,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Brutto 1,000 kg • Netto 0,990 kg"
   },
   {
     "id": "potahovani-cokolady-potah-gold-pekany",
@@ -235,7 +235,6 @@
     "category": "Potahování, čokolády",
     "baseYield": 490,
     "yieldUnit": "g",
-    "note": "Brutto 0,5 kg • Netto 490 g",
     "components": [
       {
         "id": "zaklad",
@@ -263,7 +262,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Brutto 0,5 kg • Netto 490 g"
   },
   {
     "id": "potahovani-cokolady-potahovani-mlecna-kokos",
@@ -271,7 +271,6 @@
     "category": "Potahování, čokolády",
     "baseYield": 1000,
     "yieldUnit": "g",
-    "note": "Brutto 1,010 kg • Netto 1,000 kg",
     "components": [
       {
         "id": "zaklad",
@@ -294,7 +293,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Brutto 1,010 kg • Netto 1,000 kg"
   },
   {
     "id": "potahovani-cokolady-potahovani-rub-travel-cake",
@@ -302,7 +302,6 @@
     "category": "Potahování, čokolády",
     "baseYield": 1000,
     "yieldUnit": "g",
-    "note": "Brutto 1,050 kg • Netto 1,000 kg",
     "components": [
       {
         "id": "zaklad",
@@ -330,7 +329,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Brutto 1,050 kg • Netto 1,000 kg"
   },
   {
     "id": "potahovani-cokolady-poleva-mlecna-croissanty",
@@ -338,7 +338,6 @@
     "category": "Potahování, čokolády",
     "baseYield": 1000,
     "yieldUnit": "g",
-    "note": "Brutto 1008 g • Netto 1000 g",
     "components": [
       {
         "id": "zaklad",
@@ -361,7 +360,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Brutto 1008 g • Netto 1000 g"
   },
   {
     "id": "potahovani-cokolady-poleva-ruby-croissanty",
@@ -369,7 +369,6 @@
     "category": "Potahování, čokolády",
     "baseYield": 998,
     "yieldUnit": "g",
-    "note": "Brutto 1004 g • Netto 998 g",
     "components": [
       {
         "id": "zaklad",
@@ -392,7 +391,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Brutto 1004 g • Netto 998 g"
   },
   {
     "id": "omacky-s-pektinem-mango-omacka-s-pektinem",
@@ -400,7 +400,6 @@
     "category": "Omáčky s pektinem",
     "baseYield": 950,
     "yieldUnit": "g",
-    "note": "Výchozí receptura –  brutto 1.0 kg / netto 950 g :",
     "components": [
       {
         "id": "zaklad",
@@ -438,7 +437,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura –  brutto 1.0 kg / netto 950 g :"
   },
   {
     "id": "omacky-s-pektinem-boruvkova-omacka-s-pektinem",
@@ -446,7 +446,6 @@
     "category": "Omáčky s pektinem",
     "baseYield": 950,
     "yieldUnit": "g",
-    "note": "Výchozí receptura brutto 1,0 kg / netto 950 g:",
     "components": [
       {
         "id": "zaklad",
@@ -474,7 +473,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura brutto 1,0 kg / netto 950 g:"
   },
   {
     "id": "omacky-s-pektinem-jahodova-omacka-s-pektinem",
@@ -482,7 +482,6 @@
     "category": "Omáčky s pektinem",
     "baseYield": 950,
     "yieldUnit": "g",
-    "note": "Výchozí receptura brutto 1,0 kg / netto 950 g:",
     "components": [
       {
         "id": "zaklad",
@@ -515,7 +514,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura brutto 1,0 kg / netto 950 g:"
   },
   {
     "id": "omacky-s-pektinem-malinova-omacka-s-pektinem",
@@ -523,7 +523,6 @@
     "category": "Omáčky s pektinem",
     "baseYield": 950,
     "yieldUnit": "g",
-    "note": "Výchozí receptura bertto 1,0 kg / netto 950 g:",
     "components": [
       {
         "id": "zaklad",
@@ -551,7 +550,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura bertto 1,0 kg / netto 950 g:"
   },
   {
     "id": "kremy-slehacky-creumex-svycarsky-maslovy-krem",
@@ -559,7 +559,6 @@
     "category": "Krémy, šlehačky, créumex",
     "baseYield": 2600,
     "yieldUnit": "g",
-    "note": "Výchozí receptura – brutto 2,732 kg /  netto 2600 g:",
     "components": [
       {
         "id": "zaklad",
@@ -587,7 +586,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura – brutto 2,732 kg /  netto 2600 g:"
   },
   {
     "id": "kremy-slehacky-creumex-zakladni-zloutkovy-krem",
@@ -595,7 +595,6 @@
     "category": "Krémy, šlehačky, créumex",
     "baseYield": 900,
     "yieldUnit": "g",
-    "note": "Výchozí receptura – brtto 1,0 kg / netto 0,9 kg:",
     "components": [
       {
         "id": "zaklad",
@@ -638,7 +637,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura – brtto 1,0 kg / netto 0,9 kg:"
   },
   {
     "id": "kremy-slehacky-creumex-krem-venecek",
@@ -646,7 +646,6 @@
     "category": "Krémy, šlehačky, créumex",
     "baseYield": 950,
     "yieldUnit": "g",
-    "note": "Výchozí receptura – brutto 1,0 kg / netto 0,95 kg:",
     "components": [
       {
         "id": "zaklad",
@@ -664,7 +663,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura – brutto 1,0 kg / netto 0,95 kg:"
   },
   {
     "id": "kremy-slehacky-creumex-karamelova-slehacka",
@@ -672,7 +672,6 @@
     "category": "Krémy, šlehačky, créumex",
     "baseYield": 1400,
     "yieldUnit": "g",
-    "note": "Brutto 1,408 kg • Netto 1,4 kg",
     "components": [
       {
         "id": "zaklad",
@@ -695,7 +694,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Brutto 1,408 kg • Netto 1,4 kg"
   },
   {
     "id": "kremy-slehacky-creumex-chantilly-karamel",
@@ -743,7 +743,6 @@
     "category": "Krémy, šlehačky, créumex",
     "baseYield": 1752,
     "yieldUnit": "g",
-    "note": "Výchozí receptura – brutto 1,765 kg / netto 1,752 kg:",
     "components": [
       {
         "id": "zaklad",
@@ -796,7 +795,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura – brutto 1,765 kg / netto 1,752 kg:"
   },
   {
     "id": "kremy-slehacky-creumex-chantilly-travel-cake",
@@ -1014,7 +1014,6 @@
     "category": "Korpusy",
     "baseYield": 348.32,
     "yieldUnit": "g",
-    "note": "Počet věnečků: 7; Počet větrníků: 3",
     "components": [
       {
         "id": "zaklad",
@@ -1047,7 +1046,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Počet věnečků: 7; Počet větrníků: 3"
   },
   {
     "id": "korpusy-paris-brest",
@@ -1121,7 +1121,6 @@
     "category": "Korpusy",
     "baseYield": 54,
     "yieldUnit": "ks",
-    "note": "Varianta 1: společný počet ks pro korpus i crumble",
     "components": [
       {
         "id": "choux-korpus",
@@ -1195,7 +1194,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Varianta 1: společný počet ks pro korpus i crumble"
   },
   {
     "id": "korpusy-susenkovy-crips-zmrzlina",
@@ -1203,7 +1203,6 @@
     "category": "Korpusy",
     "baseYield": 478,
     "yieldUnit": "g",
-    "note": "Výchozí receptura – brutto 0,5 kg/ netto 0,478 kg:",
     "components": [
       {
         "id": "zaklad",
@@ -1231,7 +1230,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura – brutto 0,5 kg/ netto 0,478 kg:"
   },
   {
     "id": "korpusy-brownies-horka-cokolada",
@@ -1239,7 +1239,6 @@
     "category": "Korpusy",
     "baseYield": 950,
     "yieldUnit": "g",
-    "note": "Brutto 1,071 kg • Netto (před pečením) 1,050 kg • Netto po upečení ODHAD 0,95 kg (uprav podle reálného vážení)",
     "components": [
       {
         "id": "zaklad",
@@ -1282,7 +1281,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Brutto 1,071 kg • Netto (před pečením) 1,050 kg • Netto po upečení ODHAD 0,95 kg (uprav podle reálného vážení)"
   },
   {
     "id": "korpusy-buflery-5-5-cm",
@@ -1290,7 +1290,6 @@
     "category": "Korpusy",
     "baseYield": 100,
     "yieldUnit": "ks",
-    "note": "Receptura na 100 ks",
     "components": [
       {
         "id": "zaklad",
@@ -1323,7 +1322,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Receptura na 100 ks"
   },
   {
     "id": "korpusy-pavlova-6-cm",
@@ -1331,7 +1331,6 @@
     "category": "Korpusy",
     "baseYield": 36,
     "yieldUnit": "ks",
-    "note": "Receptura na 36 ks (vážené suroviny jsou uvedeny v kg)",
     "components": [
       {
         "id": "zaklad",
@@ -1369,7 +1368,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Receptura na 36 ks (vážené suroviny jsou uvedeny v kg)"
   },
   {
     "id": "karamel-slany-karamel",
@@ -1377,7 +1377,6 @@
     "category": "Karamel",
     "baseYield": 2030,
     "yieldUnit": "g",
-    "note": "Výchozí receptura – brutto 2,460 kg / netto 2030 g:",
     "components": [
       {
         "id": "zaklad",
@@ -1410,7 +1409,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura – brutto 2,460 kg / netto 2030 g:"
   },
   {
     "id": "karamel-exoticky-karamel",
@@ -1418,7 +1418,6 @@
     "category": "Karamel",
     "baseYield": 864,
     "yieldUnit": "g",
-    "note": "Výchozí receptura brutto 960 g / netto 864 g",
     "components": [
       {
         "id": "zaklad",
@@ -1451,7 +1450,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura brutto 960 g / netto 864 g"
   },
   {
     "id": "dekorovani-mango-mucenka-agarove-zele",
@@ -1459,7 +1459,6 @@
     "category": "Dekorování",
     "baseYield": 806,
     "yieldUnit": "g",
-    "note": "Výchozí receptura brutto 808 g / netto 806 g:",
     "components": [
       {
         "id": "zaklad",
@@ -1487,7 +1486,8 @@
           }
         ]
       }
-    ]
+    ],
+    "note": "Výchozí receptura brutto 808 g / netto 806 g:"
   },
   {
     "id": "dekorovani-mucenkovy-kaviar",
@@ -1514,6 +1514,1676 @@
             "name": "Cukr – krupice",
             "baseAmount": 0.015,
             "unit": "kg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dekorovani-ananasove-zele-v-karamelu",
+    "name": "Ananasové želé v karamelu",
+    "category": "Dekorování",
+    "baseYield": 1158,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 260,
+            "unit": "g"
+          },
+          {
+            "name": "Agar",
+            "baseAmount": 9,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Ananasové pyré",
+            "baseAmount": 920,
+            "unit": "g"
+          },
+          {
+            "name": "Voda",
+            "baseAmount": 20,
+            "unit": "g"
+          },
+          {
+            "name": "Citrónové pyré",
+            "baseAmount": 12,
+            "unit": "g"
+          },
+          {
+            "name": "Glukózový sirup",
+            "baseAmount": 100,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Výchozí receptura brutto 1321 g / netto 1158 g:"
+  },
+  {
+    "id": "korpusy-dorty-vanilkovy-korpus",
+    "name": "Vanilkový korpus",
+    "category": "Korpusy dorty",
+    "baseYield": 792,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Vejce",
+            "baseAmount": 400,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 180,
+            "unit": "g"
+          },
+          {
+            "name": "Mouka hladká",
+            "baseAmount": 180,
+            "unit": "g"
+          },
+          {
+            "name": "Svetlo 80",
+            "baseAmount": 30,
+            "unit": "g"
+          },
+          {
+            "name": "Vanilkový prach",
+            "baseAmount": 2,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Referenční ráfek Ø 22 cm, výška 7 cm"
+  },
+  {
+    "id": "korpusy-dorty-kakaovy-korpus",
+    "name": "Kakaový korpus",
+    "category": "Korpusy dorty",
+    "baseYield": 790,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Vejce",
+            "baseAmount": 400,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 180,
+            "unit": "g"
+          },
+          {
+            "name": "Mouka hladká",
+            "baseAmount": 140,
+            "unit": "g"
+          },
+          {
+            "name": "Kakao",
+            "baseAmount": 40,
+            "unit": "g"
+          },
+          {
+            "name": "Svetlo 80",
+            "baseAmount": 30,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Referenční ráfek Ø 22 cm, výška 7 cm"
+  },
+  {
+    "id": "korpusy-dorty-cerveny-korpus",
+    "name": "Červený korpus",
+    "category": "Korpusy dorty",
+    "baseYield": 904,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Vejce",
+            "baseAmount": 450,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr",
+            "baseAmount": 200,
+            "unit": "g"
+          },
+          {
+            "name": "Mouka",
+            "baseAmount": 200,
+            "unit": "g"
+          },
+          {
+            "name": "Barvivo Červeň jahodová Aroco",
+            "baseAmount": 20,
+            "unit": "g"
+          },
+          {
+            "name": "Emulgační pasta",
+            "baseAmount": 34,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Referenční ráfek Ø 22 cm, výška 7 cm"
+  },
+  {
+    "id": "korpusy-dorty-kokosovy-korpus",
+    "name": "Kokosový korpus",
+    "category": "Korpusy dorty",
+    "baseYield": 790,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Vejce",
+            "baseAmount": 400,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr",
+            "baseAmount": 180,
+            "unit": "g"
+          },
+          {
+            "name": "Mouka",
+            "baseAmount": 150,
+            "unit": "g"
+          },
+          {
+            "name": "Kokos",
+            "baseAmount": 30,
+            "unit": "g"
+          },
+          {
+            "name": "Emulgační pasta",
+            "baseAmount": 30,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Referenční ráfek Ø 22 cm, výška 7 cm; Kokos zamíchat až po vyšlehání."
+  },
+  {
+    "id": "korpusy-mango-mandlovo-kokosovy-plat",
+    "name": "Mango – mandlovo-kokosový plát",
+    "category": "Korpusy",
+    "baseYield": 1,
+    "yieldUnit": "ks",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Vejce – bílky",
+            "baseAmount": 224,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 100,
+            "unit": "g"
+          },
+          {
+            "name": "Mandlová mouka",
+            "baseAmount": 138,
+            "unit": "g"
+          },
+          {
+            "name": "Kokos strouhaný jemný",
+            "baseAmount": 100,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr moučka",
+            "baseAmount": 150,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Základ pro 1 plát; Forma: 54,5 × 35 × 0,9 cm; Pečení: 170 °C, 8–10 min, větrák 4"
+  },
+  {
+    "id": "korpusy-kynute-testo-na-buchticky",
+    "name": "Kynuté těsto na buchtičky",
+    "category": "Korpusy",
+    "baseYield": 1856,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Mouka hladká",
+            "baseAmount": 1000,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 180,
+            "unit": "g"
+          },
+          {
+            "name": "Sůl",
+            "baseAmount": 1,
+            "unit": "g"
+          },
+          {
+            "name": "Žloutky",
+            "baseAmount": 24,
+            "unit": "g",
+            "note": "2 ks"
+          },
+          {
+            "name": "Vejce",
+            "baseAmount": 2,
+            "unit": "ks"
+          },
+          {
+            "name": "Máslo",
+            "baseAmount": 500,
+            "unit": "g"
+          },
+          {
+            "name": "Droždí",
+            "baseAmount": 42,
+            "unit": "g"
+          },
+          {
+            "name": "Mléko",
+            "baseAmount": 400,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Základ: 1 plech = 1 856 g netto = 17 porcí; 1 porce 116 g buchtiček"
+  },
+  {
+    "id": "korpusy-pistaciovy-crumble-s-mandlovou-moukou",
+    "name": "Pistáciový crumble s mandlovou moukou",
+    "category": "Korpusy",
+    "baseYield": 484,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Máslo",
+            "baseAmount": 190,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr třtinový",
+            "baseAmount": 150,
+            "unit": "g"
+          },
+          {
+            "name": "Mouka hladká",
+            "baseAmount": 100,
+            "unit": "g"
+          },
+          {
+            "name": "Mandlová mouka",
+            "baseAmount": 40,
+            "unit": "g"
+          },
+          {
+            "name": "Pistácie drcené",
+            "baseAmount": 18,
+            "unit": "g"
+          },
+          {
+            "name": "Sůl kamenná",
+            "baseAmount": 2,
+            "unit": "g"
+          },
+          {
+            "name": "Callebaut Velvet bílá",
+            "baseAmount": 40,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Pečení: 160 °C, 10 minut"
+  },
+  {
+    "id": "korpusy-makronky-skorapky",
+    "name": "Makronky – skořápky",
+    "category": "Korpusy",
+    "baseYield": 215,
+    "yieldUnit": "ks",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Mandlová mouka",
+            "baseAmount": 0.344,
+            "unit": "kg"
+          },
+          {
+            "name": "Cukr moučka",
+            "baseAmount": 0.344,
+            "unit": "kg"
+          },
+          {
+            "name": "Bílky – čerstvé",
+            "baseAmount": 0.254,
+            "unit": "kg"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 0.344,
+            "unit": "kg"
+          },
+          {
+            "name": "Voda",
+            "baseAmount": 0.1,
+            "unit": "kg"
+          },
+          {
+            "name": "Barvivo (orientačně)",
+            "baseAmount": 0.006,
+            "unit": "kg"
+          }
+        ]
+      }
+    ],
+    "note": "Barvivo 6 g / 215 ks skořápek (průměr z celku)."
+  },
+  {
+    "id": "kremy-slehacky-creumex-krem-buchticky",
+    "name": "Krém buchtičky",
+    "category": "Krémy, šlehačky, créumex",
+    "baseYield": 2000,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Smetana 35 %",
+            "baseAmount": 1.62,
+            "unit": "kg"
+          },
+          {
+            "name": "Žloutky pasterované",
+            "baseAmount": 0.21,
+            "unit": "kg"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 0.17,
+            "unit": "kg"
+          },
+          {
+            "name": "Vanilkový lusk",
+            "baseAmount": 1.5,
+            "unit": "ks",
+            "rounding": "exact"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kremy-slehacky-creumex-zloutkova-slehacka",
+    "name": "Žloutková šlehačka",
+    "category": "Krémy, šlehačky, créumex",
+    "baseYield": 1036,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Želatina Ewald – stříbrná",
+            "baseAmount": 7,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Základní žloutkový krém",
+            "baseAmount": 490,
+            "unit": "g"
+          },
+          {
+            "name": "Smetana 35 %",
+            "baseAmount": 510,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Brutto 1,007 kg • Netto 1,036 kg"
+  },
+  {
+    "id": "kremy-slehacky-creumex-mascarpone-chantilly-s-bilou-cokoladou",
+    "name": "Mascarpone chantilly s bílou čokoládou",
+    "category": "Krémy, šlehačky, créumex",
+    "baseYield": 990,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Smetana 33 % (1)",
+            "baseAmount": 285,
+            "unit": "g"
+          },
+          {
+            "name": "Glukózový sirup",
+            "baseAmount": 44,
+            "unit": "g"
+          },
+          {
+            "name": "Želatina Ewald stříbrná",
+            "baseAmount": 4.6,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Čokoláda bílá 28–32 %",
+            "baseAmount": 285,
+            "unit": "g"
+          },
+          {
+            "name": "Maldonská sůl",
+            "baseAmount": 2,
+            "unit": "g"
+          },
+          {
+            "name": "Mascarpone",
+            "baseAmount": 86,
+            "unit": "g"
+          },
+          {
+            "name": "Smetana 33 % (2)",
+            "baseAmount": 285,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Výchozí receptura brutto 808 g / netto 806 g:"
+  },
+  {
+    "id": "kremy-slehacky-creumex-philadelphia-chantilly-s-bilou-cokoladou-a-vanilkou",
+    "name": "Philadelphia chantilly s bílou čokoládou a vanilkou",
+    "category": "Krémy, šlehačky, créumex",
+    "baseYield": 1000,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Želatina Ewald – stříbrná",
+            "baseAmount": 7,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Vanilkový lusk",
+            "baseAmount": 1,
+            "unit": "ks",
+            "rounding": "exact"
+          },
+          {
+            "name": "Smetana 33 % (1)",
+            "baseAmount": 304,
+            "unit": "g"
+          },
+          {
+            "name": "Glukózový sirup",
+            "baseAmount": 46,
+            "unit": "g"
+          },
+          {
+            "name": "Čokoláda bílá 28–32 %",
+            "baseAmount": 304,
+            "unit": "g"
+          },
+          {
+            "name": "Maldonská sůl",
+            "baseAmount": 3,
+            "unit": "g"
+          },
+          {
+            "name": "Philadelphia",
+            "baseAmount": 91,
+            "unit": "g"
+          },
+          {
+            "name": "Smetana 33 % (2)",
+            "baseAmount": 304,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Výchozí receptura brutto 808 g / netto 806 g:"
+  },
+  {
+    "id": "kremy-slehacky-creumex-tiramisu-krem",
+    "name": "Tiramisu krém",
+    "category": "Krémy, šlehačky, créumex",
+    "baseYield": 1990,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Mascarpone",
+            "baseAmount": 1.5,
+            "unit": "kg"
+          },
+          {
+            "name": "Cukr moučka",
+            "baseAmount": 0.3,
+            "unit": "kg"
+          },
+          {
+            "name": "Žloutky pasterované",
+            "baseAmount": 0.18,
+            "unit": "kg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kremy-slehacky-creumex-mucenkovy-curd",
+    "name": "Mučenkový curd",
+    "category": "Krémy, šlehačky, créumex",
+    "baseYield": 490,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Vejce M",
+            "baseAmount": 200,
+            "unit": "g"
+          },
+          {
+            "name": "Mučenka čerstvá",
+            "baseAmount": 67,
+            "unit": "g"
+          },
+          {
+            "name": "Mučenka pyré",
+            "baseAmount": 66,
+            "unit": "g"
+          },
+          {
+            "name": "Maldonská sůl",
+            "baseAmount": 0.5,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 54,
+            "unit": "g"
+          },
+          {
+            "name": "Máslo",
+            "baseAmount": 134,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kremy-slehacky-creumex-mucenkova-monte-ganache",
+    "name": "Mučenková monté ganache",
+    "category": "Krémy, šlehačky, créumex",
+    "baseYield": 656,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Mučenka pyré",
+            "baseAmount": 0.18,
+            "unit": "kg"
+          },
+          {
+            "name": "Glukóza sirup",
+            "baseAmount": 0.016,
+            "unit": "kg"
+          },
+          {
+            "name": "Bílá čokoláda 31,4 %",
+            "baseAmount": 0.22,
+            "unit": "kg"
+          },
+          {
+            "name": "Maldonská sůl",
+            "baseAmount": 0.001,
+            "unit": "kg"
+          },
+          {
+            "name": "Smetana 35 %",
+            "baseAmount": 0.25,
+            "unit": "kg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kremy-slehacky-creumex-yuzu-slehana-ganache",
+    "name": "Yuzu šlehaná ganache",
+    "category": "Krémy, šlehačky, créumex",
+    "baseYield": 2337,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Želatina Ewald – stříbrná",
+            "baseAmount": 0.009,
+            "unit": "kg",
+            "rounding": "exact"
+          },
+          {
+            "name": "Smetana 35 % (1)",
+            "baseAmount": 0.736,
+            "unit": "kg"
+          },
+          {
+            "name": "Yuzu pyré",
+            "baseAmount": 0.118,
+            "unit": "kg"
+          },
+          {
+            "name": "Glukózový sirup",
+            "baseAmount": 0.04,
+            "unit": "kg"
+          },
+          {
+            "name": "Bílá čokoláda 28 %",
+            "baseAmount": 0.566,
+            "unit": "kg"
+          },
+          {
+            "name": "Smetana 35 % (2)",
+            "baseAmount": 0.868,
+            "unit": "kg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kremy-slehacky-creumex-chantilly-mlecna-cokolada",
+    "name": "Chantilly – mléčná čokoláda",
+    "category": "Krémy, šlehačky, créumex",
+    "baseYield": 2400,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Smetana 33 % (1)",
+            "baseAmount": 718,
+            "unit": "g"
+          },
+          {
+            "name": "Mléčná čokoláda 33,6 %",
+            "baseAmount": 900,
+            "unit": "g"
+          },
+          {
+            "name": "Kakao 20–22 %",
+            "baseAmount": 100,
+            "unit": "g"
+          },
+          {
+            "name": "Smetana 33 % (2)",
+            "baseAmount": 718,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Brutto receptury: 2436 g / netto: 2400 g."
+  },
+  {
+    "id": "makronky-naplne-ganache-slany-karamel",
+    "name": "Ganache – slaný karamel",
+    "category": "Makronky náplně",
+    "baseYield": 590,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 120,
+            "unit": "g"
+          },
+          {
+            "name": "Smetana 33 %",
+            "baseAmount": 180,
+            "unit": "g"
+          },
+          {
+            "name": "Maldonská sůl",
+            "baseAmount": 3,
+            "unit": "g"
+          },
+          {
+            "name": "Glukózový sirup",
+            "baseAmount": 40,
+            "unit": "g"
+          },
+          {
+            "name": "Callebaut Gold",
+            "baseAmount": 200,
+            "unit": "g"
+          },
+          {
+            "name": "Máslo",
+            "baseAmount": 20,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "makronky-naplne-ganache-horka-cokolada",
+    "name": "Ganache – hořká čokoláda",
+    "category": "Makronky náplně",
+    "baseYield": 510,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Smetana 33 %",
+            "baseAmount": 226,
+            "unit": "g"
+          },
+          {
+            "name": "Glukózový sirup",
+            "baseAmount": 36,
+            "unit": "g"
+          },
+          {
+            "name": "Callebaut 811",
+            "baseAmount": 210,
+            "unit": "g"
+          },
+          {
+            "name": "Máslo",
+            "baseAmount": 30,
+            "unit": "g"
+          },
+          {
+            "name": "Maldonská sůl",
+            "baseAmount": 1,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "makronky-naplne-pistacie-chantilly",
+    "name": "Pistácie chantilly",
+    "category": "Makronky náplně",
+    "baseYield": 526,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Želatina Ewald – stříbrná",
+            "baseAmount": 4,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Smetana 33 %",
+            "baseAmount": 164,
+            "unit": "g"
+          },
+          {
+            "name": "Maldonská sůl",
+            "baseAmount": 0.5,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 34,
+            "unit": "g"
+          },
+          {
+            "name": "Pistáciová pasta Mediterraneo 100 %",
+            "baseAmount": 88,
+            "unit": "g"
+          },
+          {
+            "name": "Mascarpone",
+            "baseAmount": 220,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "makronky-naplne-malinovy-gel",
+    "name": "Malinový gel",
+    "category": "Makronky náplně",
+    "baseYield": 420,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 72,
+            "unit": "g"
+          },
+          {
+            "name": "Pektin NHX",
+            "baseAmount": 7,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Malinové pyré",
+            "baseAmount": 360,
+            "unit": "g"
+          },
+          {
+            "name": "Maldonská sůl",
+            "baseAmount": 1,
+            "unit": "g"
+          },
+          {
+            "name": "Citronové pyré",
+            "baseAmount": 18,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "makronky-naplne-mango-mucenka-gel",
+    "name": "Mango–mučenka gel",
+    "category": "Makronky náplně",
+    "baseYield": 500,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 82,
+            "unit": "g"
+          },
+          {
+            "name": "Pektin NHX",
+            "baseAmount": 8,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Mango pyré",
+            "baseAmount": 368,
+            "unit": "g"
+          },
+          {
+            "name": "Mučenka pyré",
+            "baseAmount": 82,
+            "unit": "g"
+          },
+          {
+            "name": "Maldonská sůl",
+            "baseAmount": 1,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "potahovani-cokolady-potahovani-citron",
+    "name": "Potahování – Citron",
+    "category": "Potahování, čokolády",
+    "baseYield": 1000,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Kakaové máslo",
+            "baseAmount": 0.182,
+            "unit": "kg"
+          },
+          {
+            "name": "Barvivo rozpustné v tucích – žlutá",
+            "baseAmount": 0.002,
+            "unit": "kg"
+          },
+          {
+            "name": "Callebaut Velvet – bílá",
+            "baseAmount": 0.788,
+            "unit": "kg"
+          },
+          {
+            "name": "Olej",
+            "baseAmount": 0.038,
+            "unit": "kg"
+          }
+        ]
+      }
+    ],
+    "note": "Brutto 1,010 kg • Netto 1,000 kg"
+  },
+  {
+    "id": "potahovani-cokolady-potahovani-mango",
+    "name": "Potahování – Mango",
+    "category": "Potahování, čokolády",
+    "baseYield": 1000,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Callebaut Velvet – bílá",
+            "baseAmount": 0.86,
+            "unit": "kg"
+          },
+          {
+            "name": "Kakaové máslo",
+            "baseAmount": 0.14,
+            "unit": "kg"
+          },
+          {
+            "name": "Olej",
+            "baseAmount": 0.008,
+            "unit": "kg"
+          }
+        ]
+      }
+    ],
+    "note": "Brutto 1,010 kg • Netto 1,000 kg"
+  },
+  {
+    "id": "sirupy-kakaovy-sirup-rozvar",
+    "name": "Kakaový sirup / rozvar",
+    "category": "Sirupy",
+    "baseYield": 500,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Kakao 20–22 %",
+            "baseAmount": 90,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 90,
+            "unit": "g"
+          },
+          {
+            "name": "Voda",
+            "baseAmount": 400,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sirupy-malinovy-sirup-rozvar",
+    "name": "Malinový sirup / rozvar",
+    "category": "Sirupy",
+    "baseYield": 500,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Malinové pyré",
+            "baseAmount": 184,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 125,
+            "unit": "g"
+          },
+          {
+            "name": "Voda",
+            "baseAmount": 184,
+            "unit": "g"
+          },
+          {
+            "name": "Citronové pyré",
+            "baseAmount": 8,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sirupy-kavovy-sirup-rozvar",
+    "name": "Kávový sirup / rozvar",
+    "category": "Sirupy",
+    "baseYield": 1150,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Voda",
+            "baseAmount": 1000,
+            "unit": "g"
+          },
+          {
+            "name": "Instantní káva",
+            "baseAmount": 50,
+            "unit": "g"
+          },
+          {
+            "name": "Amaretto",
+            "baseAmount": 100,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sirupy-invertni-cukr",
+    "name": "Invertní cukr",
+    "category": "Sirupy",
+    "baseYield": 1000,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Voda",
+            "baseAmount": 300,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 700,
+            "unit": "g"
+          },
+          {
+            "name": "Kyselina citronová",
+            "baseAmount": 3,
+            "unit": "g"
+          },
+          {
+            "name": "Jedlá soda",
+            "baseAmount": 3,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sirupy-sorbetovy-sirup",
+    "name": "Sorbetový sirup",
+    "category": "Sirupy",
+    "baseYield": 1000,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Voda",
+            "baseAmount": 627,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 308,
+            "unit": "g"
+          },
+          {
+            "name": "Invertní cukr",
+            "baseAmount": 60,
+            "unit": "g"
+          },
+          {
+            "name": "Karubin",
+            "baseAmount": 5,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sirupy-vajecny-liker-do-likerove-spicky",
+    "name": "Vaječný likér do likérové špičky",
+    "category": "Sirupy",
+    "baseYield": 8590,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Kondenzované mléko",
+            "baseAmount": 3000,
+            "unit": "g"
+          },
+          {
+            "name": "Smetana 33 %",
+            "baseAmount": 3000,
+            "unit": "g"
+          },
+          {
+            "name": "Pasterované žloutky",
+            "baseAmount": 860,
+            "unit": "g"
+          },
+          {
+            "name": "Rum",
+            "baseAmount": 1730,
+            "unit": "g"
+          },
+          {
+            "name": "Vanilkový lusk",
+            "baseAmount": 4,
+            "unit": "ks",
+            "rounding": "exact"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tartaletky-kakaove-tartaletky-vaha",
+    "name": "Kakaové tartaletky - váha",
+    "category": "Tartaletky",
+    "baseYield": 0.532,
+    "yieldUnit": "kg",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Cukr moučka",
+            "baseAmount": 0.1,
+            "unit": "kg"
+          },
+          {
+            "name": "Máslo – povolené",
+            "baseAmount": 0.17,
+            "unit": "kg"
+          },
+          {
+            "name": "Vejce – velikost M",
+            "baseAmount": 0.09,
+            "unit": "kg"
+          },
+          {
+            "name": "Kakao 20–22 %",
+            "baseAmount": 0.06,
+            "unit": "kg"
+          },
+          {
+            "name": "Mouka hladká",
+            "baseAmount": 0.2,
+            "unit": "kg"
+          },
+          {
+            "name": "Mouka mandlová",
+            "baseAmount": 0.04,
+            "unit": "kg"
+          },
+          {
+            "name": "Sůl – kamenná",
+            "baseAmount": 0.002,
+            "unit": "kg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tartaletky-kakaove-tartaletky-kusy",
+    "name": "Kakaové tartaletky - kusy",
+    "category": "Tartaletky",
+    "baseYield": 19,
+    "yieldUnit": "ks",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Cukr moučka",
+            "baseAmount": 0.1,
+            "unit": "kg"
+          },
+          {
+            "name": "Máslo – povolené",
+            "baseAmount": 0.17,
+            "unit": "kg"
+          },
+          {
+            "name": "Vejce – velikost M",
+            "baseAmount": 0.09,
+            "unit": "kg"
+          },
+          {
+            "name": "Kakao 20–22 %",
+            "baseAmount": 0.06,
+            "unit": "kg"
+          },
+          {
+            "name": "Mouka hladká",
+            "baseAmount": 0.2,
+            "unit": "kg"
+          },
+          {
+            "name": "Mouka mandlová",
+            "baseAmount": 0.04,
+            "unit": "kg"
+          },
+          {
+            "name": "Sůl – kamenná",
+            "baseAmount": 0.002,
+            "unit": "kg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tartaletky-mandlove-tartaletky-vaha",
+    "name": "Mandlové tartaletky - váha",
+    "category": "Tartaletky",
+    "baseYield": 2.38,
+    "yieldUnit": "kg",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Máslo – studené",
+            "baseAmount": 0.6,
+            "unit": "kg"
+          },
+          {
+            "name": "Cukr moučka",
+            "baseAmount": 0.3,
+            "unit": "kg"
+          },
+          {
+            "name": "Vejce M",
+            "baseAmount": 0.16,
+            "unit": "kg"
+          },
+          {
+            "name": "Mouka hladká",
+            "baseAmount": 0.8,
+            "unit": "kg"
+          },
+          {
+            "name": "Mouka mandlová",
+            "baseAmount": 0.4,
+            "unit": "kg"
+          },
+          {
+            "name": "Sůl",
+            "baseAmount": 0.006,
+            "unit": "kg"
+          },
+          {
+            "name": "Citronová kůra",
+            "baseAmount": 0.012,
+            "unit": "kg"
+          },
+          {
+            "name": "Limetková kůra",
+            "baseAmount": 0.008,
+            "unit": "kg"
+          }
+        ]
+      }
+    ],
+    "note": "1 ks Ø 7 cm = 34 g netto po upečení."
+  },
+  {
+    "id": "tartaletky-mandlove-tartaletky-kusy",
+    "name": "Mandlové tartaletky - kusy",
+    "category": "Tartaletky",
+    "baseYield": 70,
+    "yieldUnit": "ks",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Máslo – studené",
+            "baseAmount": 0.6,
+            "unit": "kg"
+          },
+          {
+            "name": "Cukr moučka",
+            "baseAmount": 0.3,
+            "unit": "kg"
+          },
+          {
+            "name": "Vejce M",
+            "baseAmount": 0.16,
+            "unit": "kg"
+          },
+          {
+            "name": "Mouka hladká",
+            "baseAmount": 0.8,
+            "unit": "kg"
+          },
+          {
+            "name": "Mouka mandlová",
+            "baseAmount": 0.4,
+            "unit": "kg"
+          },
+          {
+            "name": "Sůl",
+            "baseAmount": 0.006,
+            "unit": "kg"
+          },
+          {
+            "name": "Citronová kůra",
+            "baseAmount": 0.012,
+            "unit": "kg"
+          },
+          {
+            "name": "Limetková kůra",
+            "baseAmount": 0.008,
+            "unit": "kg"
+          }
+        ]
+      }
+    ],
+    "note": "1 ks Ø 7 cm = 34 g netto po upečení."
+  },
+  {
+    "id": "vklady-do-dortu-jahodovy-vklad",
+    "name": "Jahodový vklad",
+    "category": "Vklady do dortů",
+    "baseYield": 332.7,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 50,
+            "unit": "g"
+          },
+          {
+            "name": "Pektin NHX",
+            "baseAmount": 4.7,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Jahodové pyré",
+            "baseAmount": 264,
+            "unit": "g"
+          },
+          {
+            "name": "Citronové pyré",
+            "baseAmount": 14,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Referenční ráfek Ø 20 cm, výška 1 cm"
+  },
+  {
+    "id": "zrcadlove-glazury-cokoladove-glaze",
+    "name": "Čokoládové glazé",
+    "category": "Zrcadlové glazury",
+    "baseYield": 5022,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Želatina prášková",
+            "baseAmount": 60,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Voda (1)",
+            "baseAmount": 360,
+            "unit": "g"
+          },
+          {
+            "name": "Glukózový sirup",
+            "baseAmount": 900,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 900,
+            "unit": "g"
+          },
+          {
+            "name": "Voda (2)",
+            "baseAmount": 450,
+            "unit": "g"
+          },
+          {
+            "name": "Salko",
+            "baseAmount": 900,
+            "unit": "g"
+          },
+          {
+            "name": "Callebaut 811",
+            "baseAmount": 1500,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Receptura na 100 ks"
+  },
+  {
+    "id": "zrcadlove-glazury-kakaova-glaze",
+    "name": "Kakaová glazé",
+    "category": "Zrcadlové glazury",
+    "baseYield": 3748,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Želatina prášková",
+            "baseAmount": 53,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Voda (1)",
+            "baseAmount": 557,
+            "unit": "g"
+          },
+          {
+            "name": "Voda (2)",
+            "baseAmount": 1070,
+            "unit": "g"
+          },
+          {
+            "name": "Smetana 33 %",
+            "baseAmount": 1115,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 1670,
+            "unit": "g"
+          },
+          {
+            "name": "Kakao 20–22 %",
+            "baseAmount": 535,
+            "unit": "g"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zrcadlove-glazury-bila-glaze",
+    "name": "Bílá glazé",
+    "category": "Zrcadlové glazury",
+    "baseYield": 1000,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Želatina prášková",
+            "baseAmount": 12,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Voda (1)",
+            "baseAmount": 67,
+            "unit": "g"
+          },
+          {
+            "name": "Voda (2)",
+            "baseAmount": 117,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 168,
+            "unit": "g"
+          },
+          {
+            "name": "Glukózový sirup",
+            "baseAmount": 168,
+            "unit": "g"
+          },
+          {
+            "name": "Callebaut Velvet bílá",
+            "baseAmount": 168,
+            "unit": "g"
+          },
+          {
+            "name": "Kondenzované mléko",
+            "baseAmount": 117,
+            "unit": "g"
+          },
+          {
+            "name": "Barvivo bílé",
+            "baseAmount": 17,
+            "unit": "g"
           }
         ]
       }
