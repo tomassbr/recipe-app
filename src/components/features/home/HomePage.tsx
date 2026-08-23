@@ -27,7 +27,7 @@ export default function HomePage() {
     return (
       <div className="relative z-10 mx-auto max-w-lg px-6 py-20 text-center text-slate-600">
         <p className="text-lg">{t("noRecipes")}</p>
-        <p className="mt-2 text-sm text-slate-500">{t("noRecipesHint")}</p>
+        <p className="mt-2 text-sm text-slate-600">{t("noRecipesHint")}</p>
       </div>
     );
   }
@@ -68,7 +68,7 @@ export default function HomePage() {
                   <h2 className="text-3xl font-bold tracking-tight text-slate-800 md:text-4xl">
                     {t("heading")}
                   </h2>
-                  <p className="mt-2 max-w-2xl text-pretty text-sm text-slate-500 md:mt-3 md:text-base">
+                  <p className="mt-2 max-w-2xl text-pretty text-sm text-slate-600 md:mt-3 md:text-base">
                     {t("selectCategory")}
                     {filteredRecipes.length > 0 ? (
                       <> {t("clickCard")}</>

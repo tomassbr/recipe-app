@@ -27,7 +27,7 @@ export default async function AdminUsersPage() {
     return (
       <GlassCard className="p-6 md:p-8">
         <p className="text-sm text-red-700">{t("errorLoad", { message: error.message })}</p>
-        <p className="mt-2 text-xs text-slate-500">{t("errorHint")}</p>
+        <p className="mt-2 text-xs text-slate-600">{t("errorHint")}</p>
       </GlassCard>
     );
   }
@@ -41,7 +41,7 @@ export default async function AdminUsersPage() {
           <h1 className="text-2xl font-bold tracking-tight text-slate-800 md:text-3xl">
             {t("heading")}
           </h1>
-          <p className="mt-1 text-sm text-slate-500">{t("subtitle")}</p>
+          <p className="mt-1 text-sm text-slate-600">{t("subtitle")}</p>
         </div>
         <Link
           href="/"

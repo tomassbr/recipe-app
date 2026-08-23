@@ -20,7 +20,7 @@ export default function Error({ error, reset }: ErrorProps) {
     <div className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center">
       <div className="rounded-2xl border border-white/40 bg-white/50 p-8 shadow-glass backdrop-blur-xl">
         <h2 className="mb-2 text-xl font-semibold text-slate-800">{t("heading")}</h2>
-        <p className="mb-6 text-sm text-slate-500">
+        <p className="mb-6 text-sm text-slate-600">
           {error.digest ? t("digest", { digest: error.digest }) : t("generic")}
         </p>
         <button

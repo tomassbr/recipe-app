@@ -78,7 +78,7 @@ export function LoginContent() {
           <h1 className="text-2xl font-bold tracking-tight text-slate-800">
             {t("heading")}
           </h1>
-          <p className="mt-2 text-sm text-slate-500">{t("subtitle")}</p>
+          <p className="mt-2 text-sm text-slate-600">{t("subtitle")}</p>
         </div>
 
         {displayError ? (

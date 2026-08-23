@@ -68,7 +68,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
           {recipe.name}
         </h1>
         {recipe.note ? (
-          <p className="max-w-3xl text-base leading-relaxed text-slate-500 md:text-lg">
+          <p className="max-w-3xl text-base leading-relaxed text-slate-600 md:text-lg">
             {recipe.note}
           </p>
         ) : null}
@@ -78,7 +78,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-        className="relative overflow-hidden rounded-2xl border-2 border-gold/40 bg-gradient-to-br from-white/75 via-white/55 to-white/45 p-6 shadow-glass-gold ring-1 ring-gold/20 backdrop-blur-xl md:rounded-3xl md:p-8"
+        className="relative overflow-hidden rounded-2xl border-2 border-gold/40 bg-gradient-to-br from-white/75 via-white/60 to-white/55 p-6 shadow-glass-gold ring-1 ring-gold/20 backdrop-blur-xl md:rounded-3xl md:p-8"
       >
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(212,175,55,0.1),_transparent_55%)]"
@@ -94,7 +94,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
               {recipe.yieldUnit}
             </span>
           </label>
-          <p className="text-sm text-slate-500">{t("yieldHint")}</p>
+          <p className="text-sm text-slate-600">{t("yieldHint")}</p>
           <GlassInput
             id="target-yield"
             type="number"
@@ -111,7 +111,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
             }}
             className="max-w-lg md:max-w-xl"
           />
-          <p className="text-sm tabular-nums text-slate-500">
+          <p className="text-sm tabular-nums text-slate-600" aria-live="polite">
             {t("coefficient")}{" "}
             <motion.span
               key={Number.isFinite(coefficient) ? formatScaledAmountDisplay(coefficient) : "nan"}
@@ -141,7 +141,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
             </h2>
             <GlassTable className="shadow-inner">
               <thead>
-                <tr className="border-b border-white/50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <tr className="border-b border-white/50 text-left text-xs font-semibold uppercase tracking-wide text-slate-600">
                   <th className="px-4 py-4">{t("colIngredient")}</th>
                   <th className="hidden px-4 py-4 text-right tabular-nums sm:table-cell">{t("colOriginal")}</th>
                   <th className="px-4 py-4 text-right tabular-nums">{t("colScaled")}</th>
@@ -167,6 +167,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
                   <td
                     className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-gold-dark"
                     title={t("batchTotalHint")}
+                    aria-live="polite"
                   >
                     {componentBatchSummaries[ci]?.displayLine ?? "—"}
                   </td>

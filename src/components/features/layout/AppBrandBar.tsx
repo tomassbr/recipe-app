@@ -28,7 +28,7 @@ export function AppBrandBar() {
             <h1 className="text-xl font-bold tracking-tight text-slate-800 md:text-2xl">
               PastryCalc
             </h1>
-            <p className="mt-1 text-sm text-slate-500">{t("tagline")}</p>
+            <p className="mt-1 text-sm text-slate-600">{t("tagline")}</p>
           </div>
         </div>
         <div className="flex shrink-0 flex-wrap items-center justify-end gap-3">

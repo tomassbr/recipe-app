@@ -7,7 +7,7 @@ export default async function LoginPage() {
   return (
     <Suspense
       fallback={
-        <div className="relative z-10 flex min-h-screen items-center justify-center px-6 text-slate-500">
+        <div className="relative z-10 flex min-h-screen items-center justify-center px-6 text-slate-600">
           {t("loading")}
         </div>
       }

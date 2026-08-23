@@ -28,7 +28,7 @@ export default async function DashboardPage() {
       <div className="mb-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 transition-colors hover:text-slate-800"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 transition-colors hover:text-slate-800"
         >
           <ArrowLeft className="h-4 w-4" />
           {t("backToRecipes")}

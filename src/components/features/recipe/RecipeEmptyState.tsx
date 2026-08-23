@@ -78,7 +78,7 @@ export function RecipeEmptyState({
         </div>
         <div className="min-w-0 flex-1 text-center sm:text-left">
           {category ? (
-            <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500 md:text-xs">
+            <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-slate-600 md:text-xs">
               {category}
             </p>
           ) : null}

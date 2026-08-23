@@ -63,7 +63,7 @@ export function UserManagementTable({ profiles, currentUserId }: UserManagementT
 
       <GlassTable>
         <thead>
-          <tr className="border-b border-white/40 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
+          <tr className="border-b border-white/40 text-left text-xs font-semibold uppercase tracking-wider text-slate-600">
             <th className="px-4 py-3 md:px-6">{t("colUser")}</th>
             <th className="px-4 py-3 md:px-6">{t("colEmail")}</th>
             <th className="px-4 py-3 md:px-6">{t("colAccess")}</th>
@@ -82,7 +82,7 @@ export function UserManagementTable({ profiles, currentUserId }: UserManagementT
                 <td className="px-4 py-3 font-medium text-slate-800 md:px-6 md:py-4">
                   {label}
                   {isSelf ? (
-                    <span className="ml-2 text-xs font-normal text-slate-500">{t("you")}</span>
+                    <span className="ml-2 text-xs font-normal text-slate-600">{t("you")}</span>
                   ) : null}
                 </td>
                 <td className="px-4 py-3 text-slate-600 md:px-6 md:py-4">{row.email ?? "—"}</td>

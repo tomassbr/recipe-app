@@ -97,7 +97,7 @@ export function RecipeCard({
               </span>{" "}
               {recipe.yieldUnit}
             </span>
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/60 bg-white/45 text-slate-500 shadow-sm backdrop-blur-sm">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/60 bg-white/45 text-slate-600 shadow-sm backdrop-blur-sm">
               <Scale className="h-4 w-4" strokeWidth={1.5} aria-hidden />
             </span>
           </div>

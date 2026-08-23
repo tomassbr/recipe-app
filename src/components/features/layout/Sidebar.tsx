@@ -52,14 +52,14 @@ export function Sidebar() {
               />
             </button>
           </div>
-          <p className="text-xs leading-relaxed text-slate-500">
+          <p className="text-xs leading-relaxed text-slate-600">
             {t("manageHint")}
           </p>
         </div>
       ) : null}
 
       <div className="mb-4 shrink-0">
-        <label className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+        <label className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-600">
           <Search className="h-3.5 w-3.5 shrink-0" strokeWidth={2} aria-hidden />
           {t("searchLabel")}
         </label>
@@ -73,7 +73,7 @@ export function Sidebar() {
         />
       </div>
 
-      <div className="mb-4 flex shrink-0 items-center gap-2 text-slate-500">
+      <div className="mb-4 flex shrink-0 items-center gap-2 text-slate-600">
         <LayoutGrid className="h-4 w-4 shrink-0" strokeWidth={1.75} aria-hidden />
         <p className="text-xs font-semibold uppercase tracking-wider">
           {t("categoriesNav")}
@@ -98,7 +98,7 @@ export function Sidebar() {
               className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm transition-colors md:py-4 ${
                 active
                   ? "border border-gold/35 bg-gold-muted font-semibold text-slate-900 shadow-sm ring-1 ring-gold/20"
-                  : "border border-transparent font-normal text-slate-500 hover:border-white/40 hover:bg-white/30 hover:text-slate-700"
+                  : "border border-transparent font-normal text-slate-600 hover:border-white/40 hover:bg-white/30 hover:text-slate-700"
               }`}
             >
               <span
