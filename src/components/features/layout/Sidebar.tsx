@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { LayoutGrid, Search, Settings2 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -19,7 +20,16 @@ export function Sidebar() {
     profileRoleHydrated,
     searchQuery,
     setSearchQuery,
+    recipes,
   } = useRecipe();
+
+  const categoryCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const r of recipes) {
+      counts.set(r.category, (counts.get(r.category) ?? 0) + 1);
+    }
+    return counts;
+  }, [recipes]);
 
   return (
     <GlassCard
@@ -111,6 +121,15 @@ export function Sidebar() {
                 <Icon className="h-4 w-4" strokeWidth={1.75} aria-hidden />
               </span>
               <span className="min-w-0 flex-1 leading-snug">{cat}</span>
+              <span
+                className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-medium tabular-nums ${
+                  active
+                    ? "bg-white/70 text-gold-dark"
+                    : "bg-white/30 text-slate-600"
+                }`}
+              >
+                {categoryCounts.get(cat) ?? 0}
+              </span>
             </motion.button>
           );
         })}

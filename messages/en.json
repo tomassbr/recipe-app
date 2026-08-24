@@ -78,7 +78,13 @@
     "save": "Save changes",
     "create": "Create recipe",
     "exactRoundingLabel": "Exact amount (no rounding)",
-    "exactRoundingHint": "Show precisely to 2 decimals \u2014 pectin, agar, gelatin, vanilla pod\u2026"
+    "exactRoundingHint": "Show precisely to 2 decimals \u2014 pectin, agar, gelatin, vanilla pod\u2026",
+    "componentHeading": "Component {index}"
+  },
+  "recipeCard": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "parts": "{count, plural, one {# part} other {# parts}}"
   },
   "confirmDelete": {
     "title": "Delete recipe?",

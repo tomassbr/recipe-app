@@ -216,6 +216,12 @@ export function RecipeFormModal() {
 
           {draft.components.map((comp, ci) => (
             <div key={comp.id} className="rounded-2xl border border-white/45 bg-white/25 p-4 md:p-6">
+              <div className="mb-3 flex items-center gap-2">
+                <span className="h-5 w-1 rounded-full bg-gradient-to-b from-gold to-gold-dark" aria-hidden />
+                <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                  {t("componentHeading", { index: ci + 1 })}
+                </span>
+              </div>
               <div className="mb-4 flex flex-wrap items-end gap-3">
                 <label className="min-w-0 flex-1 space-y-2">
                   <span className="text-xs font-medium text-slate-600">{t("labelComponentName")}</span>
@@ -234,7 +240,7 @@ export function RecipeFormModal() {
                 {comp.ingredients.map((ing, ii) => (
                   <div key={`${comp.id}-${ii}`}
                     className="grid gap-4 rounded-xl border border-white/35 bg-white/30 p-4 md:grid-cols-12 md:items-end">
-                    <label className="md:col-span-4">
+                    <label className="md:col-span-3">
                       <span className="mb-1 block text-xs text-slate-600">{t("labelIngredient")}</span>
                       <Input value={ing.name} onChange={(e) => updateIngredient(ci, ii, { name: e.target.value })} className={compactInput} />
                     </label>
@@ -252,31 +258,31 @@ export function RecipeFormModal() {
                       <span className="mb-1 block text-xs text-slate-600">{t("labelIngredientNote")}</span>
                       <Input value={ing.note ?? ""} onChange={(e) => updateIngredient(ci, ii, { note: e.target.value || undefined })} className={compactInput} />
                     </label>
-                    <div className="flex md:col-span-1 md:justify-end">
+                    <div className="flex items-center justify-between gap-2 md:col-span-2">
+                      <label
+                        className="flex min-w-0 items-center gap-2"
+                        title={t("exactRoundingHint")}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={ing.rounding === "exact"}
+                          onChange={(e) =>
+                            updateIngredient(ci, ii, {
+                              rounding: e.target.checked ? "exact" : undefined,
+                            })
+                          }
+                          className="h-4 w-4 shrink-0 rounded border-white/60 accent-gold"
+                        />
+                        <span className="min-w-0 text-xs leading-tight text-slate-600">{t("exactRoundingLabel")}</span>
+                      </label>
                       {comp.ingredients.length > 1 ? (
                         <Button type="button" variant="ghost" onClick={() => removeIngredient(ci, ii)}
-                          className="min-h-10 min-w-10 items-center justify-center rounded-lg border border-white/50 p-2 text-slate-600 hover:bg-red-50 hover:text-red-800"
+                          className="min-h-10 min-w-10 shrink-0 items-center justify-center rounded-lg border border-white/50 p-2 text-slate-600 hover:bg-red-50 hover:text-red-800"
                           aria-label={t("removeIngredient")}>
                           <Trash2 className="h-4 w-4" />
                         </Button>
                       ) : null}
                     </div>
-                    <label
-                      className="flex items-center gap-2 md:col-span-12"
-                      title={t("exactRoundingHint")}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={ing.rounding === "exact"}
-                        onChange={(e) =>
-                          updateIngredient(ci, ii, {
-                            rounding: e.target.checked ? "exact" : undefined,
-                          })
-                        }
-                        className="h-4 w-4 rounded border-white/60 accent-gold"
-                      />
-                      <span className="text-xs text-slate-600">{t("exactRoundingLabel")}</span>
-                    </label>
                   </div>
                 ))}
                 <button type="button" onClick={() => addIngredient(ci)}

@@ -2,7 +2,8 @@
 
 import type { Recipe } from "@/types/recipe";
 import { motion } from "framer-motion";
-import { Pencil, Scale, Trash2 } from "lucide-react";
+import { Layers, Pencil, Scale, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { GlassCard } from "@/components/ui";
 import { getCategoryIcon } from "@/utils/categoryIcons";
 
@@ -21,7 +22,9 @@ export function RecipeCard({
   onEdit,
   onDelete,
 }: RecipeCardProps) {
+  const t = useTranslations("recipeCard");
   const CategoryIcon = getCategoryIcon(recipe.category);
+  const partsCount = recipe.components?.length ?? 0;
 
   return (
     <motion.div
@@ -46,7 +49,7 @@ export function RecipeCard({
                 onEdit?.(recipe);
               }}
               className="inline-flex h-8 min-w-[2rem] shrink-0 items-center justify-center rounded-xl border border-white/60 bg-white/80 px-2 text-gold-dark shadow-sm backdrop-blur-sm transition-colors hover:border-gold/50 hover:bg-gold-muted"
-              title="Upravit"
+              title={t("edit")}
             >
               <Pencil className="h-4 w-4" strokeWidth={1.75} aria-hidden />
             </button>
@@ -58,7 +61,7 @@ export function RecipeCard({
                 onDelete?.(recipe);
               }}
               className="inline-flex h-8 min-w-[2rem] shrink-0 items-center justify-center rounded-xl border border-red-200/80 bg-red-50/90 px-2 text-red-800 shadow-sm backdrop-blur-sm transition-colors hover:bg-red-100"
-              title="Smazat"
+              title={t("delete")}
             >
               <Trash2 className="h-4 w-4" strokeWidth={1.75} aria-hidden />
             </button>
@@ -83,7 +86,7 @@ export function RecipeCard({
           className="relative flex min-h-[120px] flex-1 flex-col gap-4 overflow-hidden p-6 text-left md:min-h-[128px] md:p-8"
         >
           <div className="flex min-w-0 items-start justify-between gap-4">
-            <span className="min-w-0 flex-1 line-clamp-2 text-lg font-bold tracking-tight text-slate-800 group-hover/card:text-slate-900 md:text-xl">
+            <span className="min-w-0 flex-1 line-clamp-2 min-h-[2.6em] text-lg font-bold leading-tight tracking-tight text-slate-800 group-hover/card:text-slate-900 md:text-xl">
               {recipe.name}
             </span>
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/70 bg-white/60 text-gold-dark shadow-md backdrop-blur-md">
@@ -91,11 +94,19 @@ export function RecipeCard({
             </span>
           </div>
           <div className="mt-auto flex items-center justify-between gap-3">
-            <span className="tabular-nums text-sm text-slate-600">
-              <span className="font-semibold text-gold-dark/90">
-                {recipe.baseYield}
-              </span>{" "}
-              {recipe.yieldUnit}
+            <span className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 tabular-nums text-sm text-slate-600">
+              <span>
+                <span className="font-semibold text-gold-dark/90">
+                  {recipe.baseYield}
+                </span>{" "}
+                {recipe.yieldUnit}
+              </span>
+              {partsCount > 1 ? (
+                <span className="inline-flex items-center gap-1 rounded-full border border-white/60 bg-white/40 px-2 py-0.5 text-xs text-slate-600">
+                  <Layers className="h-3 w-3" strokeWidth={1.75} aria-hidden />
+                  {t("parts", { count: partsCount })}
+                </span>
+              ) : null}
             </span>
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/60 bg-white/45 text-slate-600 shadow-sm backdrop-blur-sm">
               <Scale className="h-4 w-4" strokeWidth={1.5} aria-hidden />

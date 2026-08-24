@@ -139,12 +139,12 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
               <span className="h-8 w-1 rounded-full bg-gradient-to-b from-gold to-gold-dark" aria-hidden />
               {component.name}
             </h2>
-            <GlassTable className="shadow-inner">
+            <GlassTable className="shadow-inner md:overflow-x-visible">
               <thead>
                 <tr className="border-b border-white/50 text-left text-xs font-semibold uppercase tracking-wide text-slate-600">
-                  <th className="px-4 py-4">{t("colIngredient")}</th>
-                  <th className="hidden px-4 py-4 text-right tabular-nums sm:table-cell">{t("colOriginal")}</th>
-                  <th className="px-4 py-4 text-right tabular-nums">{t("colScaled")}</th>
+                  <th className="px-4 py-4 md:sticky md:top-0 md:z-10 md:rounded-tl-3xl md:bg-white/75 md:backdrop-blur-md">{t("colIngredient")}</th>
+                  <th className="hidden px-4 py-4 text-right tabular-nums sm:table-cell md:sticky md:top-0 md:z-10 md:bg-white/75 md:backdrop-blur-md">{t("colOriginal")}</th>
+                  <th className="px-4 py-4 text-right tabular-nums md:sticky md:top-0 md:z-10 md:rounded-tr-3xl md:bg-white/75 md:backdrop-blur-md">{t("colScaled")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -159,13 +159,13 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
                 ))}
               </tbody>
               <tfoot>
-                <tr className="border-t border-white/20 bg-white/15 text-slate-800">
-                  <td className="px-4 py-3 text-left text-sm font-semibold">
+                <tr className="border-t-2 border-gold/25 bg-gold-muted/40 text-slate-800">
+                  <td className="px-4 py-3.5 text-left text-sm font-bold">
                     {singleComponent ? t("batchTotal") : t("componentTotal")}
                   </td>
                   <td className="hidden sm:table-cell" />
                   <td
-                    className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-gold-dark"
+                    className="px-4 py-3.5 text-right text-base font-bold tabular-nums text-gold-dark"
                     title={t("batchTotalHint")}
                     aria-live="polite"
                   >

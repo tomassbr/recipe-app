@@ -24,7 +24,7 @@ export function IngredientRow({
   const subLine = scaledIngredient.displayAmount ?? "";
 
   return (
-    <tr className="border-b border-white/25 tabular-nums last:border-b-0">
+    <tr className="border-b border-white/25 tabular-nums transition-colors odd:bg-white/10 even:bg-white/30 last:border-b-0 hover:bg-gold-muted/40">
       <td className="px-4 py-3 text-slate-800">
         <span className="block">{originalIngredient.name}</span>
         {originalIngredient.note ? (
@@ -33,11 +33,11 @@ export function IngredientRow({
           </span>
         ) : null}
       </td>
-      <td className="hidden px-4 py-3 text-right tabular-nums text-slate-600 sm:table-cell">
+      <td className="hidden px-4 py-3 text-right text-sm tabular-nums text-slate-600 sm:table-cell">
         {formatIngredientAmountDisplay(originalIngredient.baseAmount, rounding)}{" "}
         {originalIngredient.unit}
       </td>
-      <td className="px-4 py-3 text-right font-medium text-slate-800">
+      <td className="px-4 py-3 text-right text-base font-semibold text-slate-900 md:text-lg">
         {/* Original column is visually hidden on mobile — keep it for screen readers */}
         <span className="sr-only sm:hidden">
           {t("colOriginal")}:{" "}
