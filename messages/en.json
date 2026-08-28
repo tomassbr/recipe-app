@@ -56,7 +56,8 @@
     "pieceModeTitle": "Enter by pieces",
     "piecesHint": "Enter piece counts \u2014 the target grams are calculated automatically.",
     "piecePerUnit": "{grams} g/pc",
-    "pieceBatchYield": "full batch = {count} pcs"
+    "pieceBatchYield": "full batch = {count} pcs",
+    "pieceCurrentYield": "entered weight \u2248 {count} pcs"
   },
   "recipeForm": {
     "newTitle": "New recipe",

@@ -122,6 +122,16 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
                         count: Math.round((recipe.baseYield / opt.grams) * 100) / 100,
                       })}
                     </span>
+                    <span
+                      className="text-xs font-medium tabular-nums text-gold-dark"
+                      aria-live="polite"
+                    >
+                      {Number.isFinite(targetYield) && targetYield > 0
+                        ? t("pieceCurrentYield", {
+                            count: Math.round((targetYield / opt.grams) * 100) / 100,
+                          })
+                        : "—"}
+                    </span>
                   </label>
                 ))}
               </div>

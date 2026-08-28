@@ -56,7 +56,8 @@
     "pieceModeTitle": "Zadání po kusech",
     "piecesHint": "Zadej počty kusů \u2014 cílové gramy se dopočítají samy.",
     "piecePerUnit": "{grams} g/kus",
-    "pieceBatchYield": "celá dávka = {count} ks"
+    "pieceBatchYield": "celá dávka = {count} ks",
+    "pieceCurrentYield": "zadaná váha \u2248 {count} ks"
   },
   "recipeForm": {
     "newTitle": "Nový recept",
