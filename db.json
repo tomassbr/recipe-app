@@ -28,7 +28,8 @@
           {
             "name": "Pektin NHX 58",
             "baseAmount": 10.7,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Dextróza",
@@ -38,7 +39,8 @@
           {
             "name": "Kyselina citrónová",
             "baseAmount": 1.15,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Voda – převařená",
@@ -64,7 +66,8 @@
           {
             "name": "Želatina – prášková",
             "baseAmount": 0.018,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Voda – vlažná (1)",
@@ -99,7 +102,8 @@
           {
             "name": "Vanilkový lusk",
             "baseAmount": 0.5,
-            "unit": "ks"
+            "unit": "ks",
+            "rounding": "exact"
           }
         ]
       }
@@ -120,7 +124,8 @@
           {
             "name": "Želatina – prášková",
             "baseAmount": 0.018,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Voda – vlažná (1)",
@@ -423,7 +428,8 @@
           {
             "name": "Pektin NHX",
             "baseAmount": 0.006,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Joypaste – mango",
@@ -459,7 +465,8 @@
           {
             "name": "Pektin NHX 58",
             "baseAmount": 14,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Borůvky mražené",
@@ -495,7 +502,8 @@
           {
             "name": "Pektin NHX 58",
             "baseAmount": 4,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Jahody mražené",
@@ -536,7 +544,8 @@
           {
             "name": "Pektin NHX 58",
             "baseAmount": 13,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Maliny mražené",
@@ -580,7 +589,7 @@
             "unit": "g"
           },
           {
-            "name": "Sůl",
+            "name": "Citron pyré / šťáva",
             "baseAmount": 2,
             "unit": "g"
           }
@@ -618,12 +627,14 @@
           {
             "name": "Sůl kamenná",
             "baseAmount": 0.001,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Vanilkový lusk",
             "baseAmount": 0.5,
-            "unit": "kg"
+            "unit": "ks",
+            "rounding": "exact"
           },
           {
             "name": "Kukuřičný škrob",
@@ -670,7 +681,7 @@
     "id": "kremy-slehacky-creumex-karamelova-slehacka",
     "name": "Karamelová šlehačka",
     "category": "Krémy, šlehačky, créumex",
-    "baseYield": 1400,
+    "baseYield": 1066,
     "yieldUnit": "g",
     "components": [
       {
@@ -678,24 +689,25 @@
         "name": "Základ",
         "ingredients": [
           {
-            "name": "Smetana 35 %",
-            "baseAmount": 1,
-            "unit": "kg"
+            "name": "Želatina Ewald – stříbrná",
+            "baseAmount": 7,
+            "unit": "g",
+            "rounding": "exact"
           },
           {
-            "name": "Slamný karamel",
-            "baseAmount": 400,
+            "name": "Smetana 35 %",
+            "baseAmount": 660,
             "unit": "g"
           },
           {
-            "name": "Želatina Ewald – stříbrná",
-            "baseAmount": 8,
+            "name": "Slaný karamel",
+            "baseAmount": 330,
             "unit": "g"
           }
         ]
       }
     ],
-    "note": "Brutto 1,408 kg • Netto 1,4 kg"
+    "note": "Základ receptury: 1 066 g netto; Dávkování: 26–30 g / porce"
   },
   {
     "id": "kremy-slehacky-creumex-chantilly-karamel",
@@ -711,7 +723,8 @@
           {
             "name": "Želatina Ewald – stříbrná",
             "baseAmount": 0.0025,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Glukózový sirup",
@@ -751,7 +764,8 @@
           {
             "name": "Želatina Ewald – stříbrná",
             "baseAmount": 0.007,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Smetana 33 % (1)",
@@ -771,7 +785,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 0.002,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Callebaut Velvet – bílá",
@@ -812,7 +827,8 @@
           {
             "name": "Želatina Ewald – stříbrná",
             "baseAmount": 0.002,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Smetana 35 % (1)",
@@ -832,7 +848,8 @@
           {
             "name": "Sůl – maldonská",
             "baseAmount": 0.001,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Smetana 35 % (2)",
@@ -857,7 +874,8 @@
           {
             "name": "Želatina Ewald – stříbrná",
             "baseAmount": 0.003,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Smetana 33 % (1)",
@@ -882,7 +900,8 @@
           {
             "name": "Sůl – Maldonská",
             "baseAmount": 0.001,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Smetana 33 % (2)",
@@ -907,7 +926,8 @@
           {
             "name": "Želatina Ewald – stříbrná",
             "baseAmount": 0.003,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Smetana 33 % (1)",
@@ -932,7 +952,8 @@
           {
             "name": "Sůl – Maldonská",
             "baseAmount": 0.001,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Smetana 33 % (2)",
@@ -957,7 +978,8 @@
           {
             "name": "Želatina plátky Ewald – stříbrná",
             "baseAmount": 0.003,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Smetana 35 %",
@@ -987,7 +1009,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 0.0005,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Cukr krupice",
@@ -1012,7 +1035,7 @@
     "id": "korpusy-odpalovane-testo",
     "name": "Odpalované těsto – věnečky a větrníky Ø 6 cm",
     "category": "Korpusy",
-    "baseYield": 348.32,
+    "baseYield": 3000,
     "yieldUnit": "g",
     "components": [
       {
@@ -1032,7 +1055,8 @@
           {
             "name": "Sůl",
             "baseAmount": 4,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Mouka hladká",
@@ -1047,7 +1071,17 @@
         ]
       }
     ],
-    "note": "Počet věnečků: 7; Počet větrníků: 3"
+    "note": "Základ = 3000 g těsta. Věneček 30 g/kus, větrník 37,5 g/kus — celá dávka = 100 věnečků nebo 80 větrníků.",
+    "pieceOptions": [
+      {
+        "name": "Věneček",
+        "grams": 30
+      },
+      {
+        "name": "Větrník",
+        "grams": 37.5
+      }
+    ]
   },
   {
     "id": "korpusy-paris-brest",
@@ -1073,7 +1107,8 @@
           {
             "name": "Sůl",
             "baseAmount": 4,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Mouka hladká",
@@ -1104,7 +1139,8 @@
           {
             "name": "Sůl",
             "baseAmount": 3,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Máslo",
@@ -1139,7 +1175,8 @@
           {
             "name": "Sůl",
             "baseAmount": 0.001,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Mouka hladká",
@@ -1185,7 +1222,8 @@
           {
             "name": "Sůl",
             "baseAmount": 0.001,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Máslo",
@@ -1201,7 +1239,7 @@
     "id": "korpusy-susenkovy-crips-zmrzlina",
     "name": "Sušenkový crips (zmrzlina)",
     "category": "Korpusy",
-    "baseYield": 478,
+    "baseYield": 300,
     "yieldUnit": "g",
     "components": [
       {
@@ -1220,12 +1258,18 @@
           },
           {
             "name": "Máslo",
-            "baseAmount": 0.167,
+            "baseAmount": 0.18,
             "unit": "kg"
           },
           {
             "name": "Sůl – kamenná",
-            "baseAmount": 2,
+            "baseAmount": 0.002,
+            "unit": "kg",
+            "rounding": "exact"
+          },
+          {
+            "name": "Čokoláda bílá",
+            "baseAmount": 0.025,
             "unit": "kg"
           }
         ]
@@ -1277,7 +1321,8 @@
           {
             "name": "Sůl – kamenná",
             "baseAmount": 0.001,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           }
         ]
       }
@@ -1395,7 +1440,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 15,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Máslo",
@@ -1446,7 +1492,8 @@
           {
             "name": "Vanilkový lusk",
             "baseAmount": 1,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           }
         ]
       }
@@ -1482,7 +1529,8 @@
           {
             "name": "Agar",
             "baseAmount": 8,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           }
         ]
       }
@@ -1508,7 +1556,8 @@
           {
             "name": "Agar",
             "baseAmount": 0.001,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Cukr – krupice",
@@ -1795,7 +1844,8 @@
           {
             "name": "Sůl",
             "baseAmount": 1,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Žloutky",
@@ -1867,7 +1917,8 @@
           {
             "name": "Sůl kamenná",
             "baseAmount": 2,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Callebaut Velvet bílá",
@@ -2028,7 +2079,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 2,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Mascarpone",
@@ -2086,7 +2138,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 3,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Philadelphia",
@@ -2162,7 +2215,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 0.5,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Cukr krupice",
@@ -2207,7 +2261,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 0.001,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Smetana 35 %",
@@ -2324,7 +2379,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 3,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Glukózový sirup",
@@ -2379,7 +2435,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 1,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           }
         ]
       }
@@ -2410,7 +2467,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 0.5,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Cukr krupice",
@@ -2461,7 +2519,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 1,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Citronové pyré",
@@ -2507,7 +2566,8 @@
           {
             "name": "Maldonská sůl",
             "baseAmount": 1,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           }
         ]
       }
@@ -2699,7 +2759,8 @@
           {
             "name": "Kyselina citronová",
             "baseAmount": 3,
-            "unit": "g"
+            "unit": "g",
+            "rounding": "exact"
           },
           {
             "name": "Jedlá soda",
@@ -2830,7 +2891,8 @@
           {
             "name": "Sůl – kamenná",
             "baseAmount": 0.002,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           }
         ]
       }
@@ -2880,7 +2942,8 @@
           {
             "name": "Sůl – kamenná",
             "baseAmount": 0.002,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           }
         ]
       }
@@ -2925,7 +2988,8 @@
           {
             "name": "Sůl",
             "baseAmount": 0.006,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Citronová kůra",
@@ -2981,7 +3045,8 @@
           {
             "name": "Sůl",
             "baseAmount": 0.006,
-            "unit": "kg"
+            "unit": "kg",
+            "rounding": "exact"
           },
           {
             "name": "Citronová kůra",
@@ -3188,5 +3253,171 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kremy-slehacky-creumex-pistaciovy-maslovy-krem",
+    "name": "Pistáciový máslový krém",
+    "category": "Krémy, šlehačky, créumex",
+    "baseYield": 1000,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Základní žloutkový krém",
+            "baseAmount": 638,
+            "unit": "g"
+          },
+          {
+            "name": "Máslo",
+            "baseAmount": 227,
+            "unit": "g"
+          },
+          {
+            "name": "Pistácie pasta Leagel Mediterraneo",
+            "baseAmount": 136,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Základ receptury: 1 000 g netto"
+  },
+  {
+    "id": "karamel-ananasovy-karamel",
+    "name": "Ananasový karamel",
+    "category": "Karamel",
+    "baseYield": 412,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 180,
+            "unit": "g"
+          },
+          {
+            "name": "Glukózový sirup",
+            "baseAmount": 100,
+            "unit": "g"
+          },
+          {
+            "name": "Ananasové pyré",
+            "baseAmount": 220,
+            "unit": "g"
+          },
+          {
+            "name": "Citronové pyré",
+            "baseAmount": 4,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Brutto: 504 g; Netto: 412 g"
+  },
+  {
+    "id": "kremy-slehacky-creumex-mascarpone-chantilly-cukr",
+    "name": "Mascarpone chantilly (cukr)",
+    "category": "Krémy, šlehačky, créumex",
+    "baseYield": 3000,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Želatina Ewald stříbrná",
+            "baseAmount": 18,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Smetana 35 % (1)",
+            "baseAmount": 860,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 200,
+            "unit": "g"
+          },
+          {
+            "name": "Glukózový sirup",
+            "baseAmount": 140,
+            "unit": "g"
+          },
+          {
+            "name": "Mascarpone",
+            "baseAmount": 720,
+            "unit": "g"
+          },
+          {
+            "name": "Smetana 35 % (2)",
+            "baseAmount": 1010,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Základ receptury: 3 000 g netto; Do dortu Ø 22 cm, výška 16 cm (tři vrstvy krému) použito 1240 g krému – dort s čerstvými malinami."
+  },
+  {
+    "id": "korpusy-dorty-citronovy-korpus",
+    "name": "Citronový korpus",
+    "category": "Korpusy dorty",
+    "baseYield": 559,
+    "yieldUnit": "g",
+    "components": [
+      {
+        "id": "zaklad",
+        "name": "Základ",
+        "ingredients": [
+          {
+            "name": "Vejce",
+            "baseAmount": 256,
+            "unit": "g"
+          },
+          {
+            "name": "Cukr krupice",
+            "baseAmount": 116,
+            "unit": "g"
+          },
+          {
+            "name": "Mouka hladká",
+            "baseAmount": 120,
+            "unit": "g"
+          },
+          {
+            "name": "Sůl – kamenná",
+            "baseAmount": 1,
+            "unit": "g",
+            "rounding": "exact"
+          },
+          {
+            "name": "Svelto 80",
+            "baseAmount": 20,
+            "unit": "g"
+          },
+          {
+            "name": "Smetana 33 %",
+            "baseAmount": 40,
+            "unit": "g"
+          },
+          {
+            "name": "Citronová kůra",
+            "baseAmount": 6,
+            "unit": "g"
+          }
+        ]
+      }
+    ],
+    "note": "Referenční ráfek Ø 17 cm, výška 4,5 cm"
   }
 ]

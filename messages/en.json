@@ -52,7 +52,11 @@
     "colScaled": "Scaled",
     "batchTotal": "Recipe total",
     "componentTotal": "Component total",
-    "batchTotalHint": "Scaled total grouped by unit (weights in g, pcs, etc. separately)"
+    "batchTotalHint": "Scaled total grouped by unit (weights in g, pcs, etc. separately)",
+    "pieceModeTitle": "Enter by pieces",
+    "piecesHint": "Enter piece counts \u2014 the target grams are calculated automatically.",
+    "piecePerUnit": "{grams} g/pc",
+    "pieceBatchYield": "full batch = {count} pcs"
   },
   "recipeForm": {
     "newTitle": "New recipe",

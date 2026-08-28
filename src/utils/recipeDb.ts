@@ -1,8 +1,8 @@
 import type {
   Component,
   Ingredient,
+  PieceOption,
   Recipe,
-  YieldUnit,
 } from "@/types/recipe";
 import { isIngredientRounding, isYieldUnit } from "@/types/recipe";
 
@@ -45,10 +45,21 @@ function parseComponent(raw: unknown, path: string): Component {
   };
 }
 
+function parsePieceOption(raw: unknown, path: string): PieceOption {
+  if (!isRecord(raw)) throw new Error(`${path}: pieceOption must be object`);
+  const { name, grams } = raw;
+  if (typeof name !== "string") throw new Error(`${path}.name`);
+  if (typeof grams !== "number" || !Number.isFinite(grams) || grams <= 0) {
+    throw new Error(`${path}.grams`);
+  }
+  return { name, grams };
+}
+
 function parseRecipe(raw: unknown, index: number): Recipe {
   const path = `recipes[${index}]`;
   if (!isRecord(raw)) throw new Error(`${path}: must be object`);
-  const { id, name, category, baseYield, yieldUnit, note, components } = raw;
+  const { id, name, category, baseYield, yieldUnit, note, components, pieceOptions } =
+    raw;
   if (typeof id !== "string") throw new Error(`${path}.id`);
   if (typeof name !== "string") throw new Error(`${path}.name`);
   if (typeof category !== "string") throw new Error(`${path}.category`);
@@ -71,6 +82,12 @@ function parseRecipe(raw: unknown, index: number): Recipe {
   if (note !== undefined) {
     if (typeof note !== "string") throw new Error(`${path}.note`);
     recipe.note = note;
+  }
+  if (pieceOptions !== undefined && pieceOptions !== null) {
+    if (!Array.isArray(pieceOptions)) throw new Error(`${path}.pieceOptions`);
+    recipe.pieceOptions = pieceOptions.map((p, i) =>
+      parsePieceOption(p, `${path}.pieceOptions[${i}]`)
+    );
   }
   return recipe;
 }

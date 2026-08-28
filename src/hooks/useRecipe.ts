@@ -21,11 +21,30 @@ export { useRecipeContext };
  * Přepočet surovin a součty komponent pro detail receptu.
  */
 export function useRecipeDetailScaling(recipe: Recipe) {
-  const [targetYield, setTargetYield] = useState(recipe.baseYield);
+  const [targetYield, setTargetYieldState] = useState(recipe.baseYield);
+  const [pieceCounts, setPieceCounts] = useState<Record<number, number>>({});
 
   useEffect(() => {
-    setTargetYield(recipe.baseYield);
+    setTargetYieldState(recipe.baseYield);
+    setPieceCounts({});
   }, [recipe.id, recipe.baseYield]);
+
+  /** Přímé zadání gramů ruší kusové zadání. */
+  const setTargetYield = (value: number) => {
+    setPieceCounts({});
+    setTargetYieldState(value);
+  };
+
+  /** Kusové zadání: cílové gramy = Σ počet × gramy na kus. */
+  const setPieceCount = (index: number, count: number) => {
+    const next = { ...pieceCounts, [index]: count };
+    setPieceCounts(next);
+    const grams = (recipe.pieceOptions ?? []).reduce(
+      (sum, opt, i) => sum + (next[i] ?? 0) * opt.grams,
+      0
+    );
+    setTargetYieldState(Math.round(grams * 100) / 100);
+  };
 
   const { coefficient, scaledRecipe, componentBatchSummaries } =
     useRecipeCalculator(recipe, targetYield);
@@ -33,6 +52,8 @@ export function useRecipeDetailScaling(recipe: Recipe) {
   return {
     targetYield,
     setTargetYield,
+    pieceCounts,
+    setPieceCount,
     coefficient,
     scaledRecipe,
     componentBatchSummaries,

@@ -25,6 +25,7 @@ function rowToRecipe(row: Record<string, unknown>): Recipe {
       yieldUnit: row.yield_unit,
       note: row.note ?? undefined,
       components: row.components,
+      pieceOptions: row.piece_options ?? undefined,
     },
   ]);
   return parsed[0];
@@ -39,6 +40,7 @@ function recipeToRow(recipe: Recipe, userId: string) {
     yield_unit: recipe.yieldUnit,
     note: recipe.note ?? null,
     components: recipe.components,
+    piece_options: recipe.pieceOptions ?? null,
     created_by: userId,
   };
 }
@@ -98,18 +100,17 @@ export async function updateRecipe(recipe: Recipe): Promise<RecipeActionResult> 
   const authz = await requireAdmin(supabase);
   if (!authz.ok) return { ok: false, error: authz.error };
 
-  const { name, category, base_yield, yield_unit, note, components } = {
-    name: recipe.name,
-    category: recipe.category,
-    base_yield: recipe.baseYield,
-    yield_unit: recipe.yieldUnit,
-    note: recipe.note ?? null,
-    components: recipe.components,
-  };
-
   const { error } = await supabase
     .from("recipes")
-    .update({ name, category, base_yield, yield_unit, note, components })
+    .update({
+      name: recipe.name,
+      category: recipe.category,
+      base_yield: recipe.baseYield,
+      yield_unit: recipe.yieldUnit,
+      note: recipe.note ?? null,
+      components: recipe.components,
+      piece_options: recipe.pieceOptions ?? null,
+    })
     .eq("id", recipe.id);
 
   if (error) return { ok: false, error: error.message };

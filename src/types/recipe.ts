@@ -39,6 +39,16 @@ export interface Component {
 }
 
 /**
+ * Druh výrobku z jedné dávky (např. věneček 30 g, větrník 37,5 g těsta).
+ * Umožňuje zadat cílové množství počtem kusů místo gramů.
+ */
+export interface PieceOption {
+  name: string;
+  /** Gramy těsta / hmoty na 1 kus. */
+  grams: number;
+}
+
+/**
  * Single recipe — shape matches `db.json` entries.
  */
 export interface Recipe {
@@ -49,6 +59,8 @@ export interface Recipe {
   yieldUnit: YieldUnit;
   note?: string;
   components: Component[];
+  /** Volitelné zadání cílového množství po kusech (jen pro yieldUnit "g"). */
+  pieceOptions?: PieceOption[];
 }
 
 /** Root JSON document: array of recipes. */

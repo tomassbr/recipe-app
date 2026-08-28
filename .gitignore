@@ -12,3 +12,5 @@ tsconfig.tsbuildinfo
 supabase/.temp/
 Tabulky/
 .mcp.json
+.vercel
+.env*

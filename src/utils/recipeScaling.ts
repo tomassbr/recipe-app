@@ -26,11 +26,12 @@ export function scaleIngredientAmount(
   baseYield: number,
   targetYield: number,
   baseAmount: number,
-  rounding: IngredientRounding = "default"
+  rounding: IngredientRounding = "default",
+  unit = "g"
 ): number {
   const c = computeScaledCoefficient(baseYield, targetYield);
   const raw = baseAmount * c;
-  return rounding === "exact" ? roundExactAmount(raw) : roundRecipeAmount(raw);
+  return rounding === "exact" ? roundExactAmount(raw) : roundRecipeAmount(raw, unit);
 }
 
 /**
@@ -50,12 +51,12 @@ export function buildScaledRecipe(
     const ingredients: CalculatedIngredient[] = [];
     for (const ing of component.ingredients) {
       const raw = ing.baseAmount * coefficient;
-      const round =
-        ing.rounding === "exact" ? roundExactAmount : roundRecipeAmount;
+      const exact = ing.rounding === "exact";
 
-      // Při zaokrouhlení na 1 desetinné místo by malé kg šly na 0 — pod 100 g zobrazíme gramy.
+      // Malé kg množství zobrazíme rovnou v gramech (pod 100 g).
       if (ing.unit === "kg" && raw > 0 && raw < 0.1) {
-        const grams = round(raw * 1000);
+        const rawGrams = raw * 1000;
+        const grams = exact ? roundExactAmount(rawGrams) : roundRecipeAmount(rawGrams);
         ingredients.push({
           ...ing,
           baseAmount: grams,
@@ -64,7 +65,7 @@ export function buildScaledRecipe(
         continue;
       }
 
-      const rounded = round(raw);
+      const rounded = exact ? roundExactAmount(raw) : roundRecipeAmount(raw, ing.unit);
       ingredients.push({
         ...ing,
         baseAmount: rounded,

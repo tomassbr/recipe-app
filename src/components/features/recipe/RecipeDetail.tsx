@@ -19,12 +19,16 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
   const {
     targetYield,
     setTargetYield,
+    pieceCounts,
+    setPieceCount,
     coefficient,
     scaledRecipe,
     componentBatchSummaries,
   } = useRecipeDetailScaling(recipe);
 
   const singleComponent = (recipe.components?.length ?? 0) === 1;
+  const pieceOptions =
+    recipe.yieldUnit === "g" ? recipe.pieceOptions ?? [] : [];
 
   return (
     <GlassCard className="relative z-0 flex min-h-0 flex-1 flex-col gap-8 p-6 md:gap-8 md:p-8">
@@ -85,6 +89,44 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
           aria-hidden
         />
         <div className="relative space-y-4 md:space-y-6">
+          {pieceOptions.length > 0 ? (
+            <div className="space-y-3">
+              <p className="text-lg font-semibold tracking-tight text-slate-800">
+                {t("pieceModeTitle")}
+              </p>
+              <p className="text-sm text-slate-600">{t("piecesHint")}</p>
+              <div className="flex flex-wrap gap-4">
+                {pieceOptions.map((opt, i) => (
+                  <label key={opt.name} className="flex flex-col gap-2">
+                    <span className="text-sm font-medium text-slate-700">
+                      {opt.name}{" "}
+                      <span className="rounded-full bg-gold-muted px-2 py-0.5 text-xs font-bold tabular-nums text-gold-dark">
+                        {t("piecePerUnit", { grams: opt.grams })}
+                      </span>
+                    </span>
+                    <GlassInput
+                      type="number"
+                      inputMode="numeric"
+                      min={0}
+                      step={1}
+                      data-testid={`piece-count-${i}`}
+                      value={pieceCounts[i] ?? ""}
+                      onChange={(e) => {
+                        const n = parseInt(e.target.value, 10);
+                        setPieceCount(i, Number.isNaN(n) || n < 0 ? 0 : n);
+                      }}
+                      className="max-w-[9rem]"
+                    />
+                    <span className="text-xs tabular-nums text-slate-500">
+                      {t("pieceBatchYield", {
+                        count: Math.round((recipe.baseYield / opt.grams) * 100) / 100,
+                      })}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          ) : null}
           <label
             htmlFor="target-yield"
             className="flex flex-wrap items-baseline gap-2 text-lg font-semibold tracking-tight text-slate-800"

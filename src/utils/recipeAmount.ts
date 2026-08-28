@@ -1,16 +1,21 @@
 /**
- * Numerické zaokrouhlení přepočtených množství na 1 desetinné místo.
+ * Výchozí zaokrouhlení přepočtených množství — váha měří jen celé gramy:
+ * g/ks → celá čísla (123,4 → 123; 123,7 → 124), kg → 3 desetinná místa
+ * (gramová přesnost, 0,1311 kg → 0,131 kg).
  */
-export function roundRecipeAmount(value: number): number {
+export function roundRecipeAmount(value: number, unit = "g"): number {
   if (!Number.isFinite(value)) {
     return 0;
   }
-  return Math.round(value * 10) / 10;
+  if (unit.trim().toLowerCase() === "kg") {
+    return Math.round(value * 1000) / 1000;
+  }
+  return Math.round(value);
 }
 
 /**
  * Přesné zaokrouhlení na 2 desetinná místa — pro suroviny s režimem "exact"
- * (pektin, agar, želatina, vanilkový lusk…). Zabíjí float šum (36.799999… → 36.8).
+ * (pektin, agar, želatina, sůl, vanilkový lusk…). Zabíjí float šum (36.799999… → 36.8).
  */
 export function roundExactAmount(value: number): number {
   if (!Number.isFinite(value)) {
@@ -20,17 +25,14 @@ export function roundExactAmount(value: number): number {
 }
 
 /**
- * Zobrazení: celá čísla bez desetinné části; jinak jedno desetinné místo.
+ * Zobrazení: celá čísla bez desetinné části; jinak max 3 desetinná místa
+ * bez koncových nul (kg množství, koeficient).
  */
 export function formatScaledAmountDisplay(value: number): string {
   if (!Number.isFinite(value)) {
     return "—";
   }
-  const r = roundRecipeAmount(value);
-  if (r % 1 === 0) {
-    return String(r);
-  }
-  return r.toFixed(1);
+  return String(Math.round(value * 1000) / 1000);
 }
 
 /**
@@ -56,24 +58,20 @@ export function formatIngredientAmountDisplay(
     : formatScaledAmountDisplay(value);
 }
 
-/** Zaokrouhlení pro součty v komponentách (stejně 1 desetinné místo). */
+/** Zaokrouhlení pro součty v komponentách (2 desetinná místa — součet celých gramů a přesných položek). */
 export function roundBatchTotalAmount(value: number): number {
   if (!Number.isFinite(value)) {
     return 0;
   }
-  return Math.round(value * 10) / 10;
+  return Math.round(value * 100) / 100;
 }
 
 /**
- * Zobrazení čísel v součtu komponent: jedno desetinné místo, u celých čísel bez desetinné části.
+ * Zobrazení čísel v součtu komponent: bez koncových nul, u celých čísel bez desetinné části.
  */
 export function formatBatchTotalAmountDisplay(value: number): string {
   if (!Number.isFinite(value)) {
     return "—";
   }
-  const r = roundBatchTotalAmount(value);
-  if (r % 1 === 0) {
-    return String(r);
-  }
-  return r.toFixed(1);
+  return String(roundBatchTotalAmount(value));
 }

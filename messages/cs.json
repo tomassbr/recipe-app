@@ -52,7 +52,11 @@
     "colScaled": "Přepočet",
     "batchTotal": "Součet receptury",
     "componentTotal": "Součet komponenty",
-    "batchTotalHint": "Součet přepočtu podle jednotek v řádcích (hmotnosti v g, ks a další zvlášť)"
+    "batchTotalHint": "Součet přepočtu podle jednotek v řádcích (hmotnosti v g, ks a další zvlášť)",
+    "pieceModeTitle": "Zadání po kusech",
+    "piecesHint": "Zadej počty kusů \u2014 cílové gramy se dopočítají samy.",
+    "piecePerUnit": "{grams} g/kus",
+    "pieceBatchYield": "celá dávka = {count} ks"
   },
   "recipeForm": {
     "newTitle": "Nový recept",

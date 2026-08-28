@@ -39,9 +39,14 @@ describe("scaleIngredientAmount", () => {
     expect(scaleIngredientAmount(0, 500, 200)).toBe(0);
   });
 
+  it("rounds default amounts to whole grams", () => {
+    // coefficient 1/3 → 1.666… → default 2 (whole grams), exact 1.67
+    expect(scaleIngredientAmount(3000, 1000, 5)).toBe(2);
+    expect(scaleIngredientAmount(1000, 500, 246.8)).toBe(123);
+    expect(scaleIngredientAmount(1000, 500, 247.4)).toBe(124);
+  });
+
   it("rounds to 2 decimals in exact mode", () => {
-    // coefficient 1/3 → 1.666… → default 1.7, exact 1.67
-    expect(scaleIngredientAmount(3000, 1000, 5)).toBe(1.7);
     expect(scaleIngredientAmount(3000, 1000, 5, "exact")).toBe(1.67);
     // half a vanilla pod stays 0.5
     expect(scaleIngredientAmount(1000, 500, 1, "exact")).toBe(0.5);
@@ -100,20 +105,26 @@ describe("buildScaledRecipe", () => {
     expect(scaled.components[0].ingredients[0].baseAmount).toBe(50);
   });
 
-  it("keeps kg for amounts >= 0.1 kg", () => {
+  it("keeps kg for amounts >= 0.1 kg with gram precision", () => {
     const kgRecipe: Recipe = {
       ...recipe,
       components: [
         {
           id: "c3",
           name: "Moučník",
-          ingredients: [{ name: "Máslo", baseAmount: 1, unit: "kg" }],
+          ingredients: [
+            { name: "Máslo", baseAmount: 1, unit: "kg" },
+            { name: "Mascarpone", baseAmount: 1.5, unit: "kg" },
+          ],
         },
       ],
     };
     const scaled = buildScaledRecipe(kgRecipe, 0.5);
     expect(scaled.components[0].ingredients[0].unit).toBe("kg");
     expect(scaled.components[0].ingredients[0].baseAmount).toBe(0.5);
+    // 1.5 kg × 0.0874 = 0.1311 kg — must NOT collapse to 0.1 kg
+    const scaled2 = buildScaledRecipe(kgRecipe, 0.0874);
+    expect(scaled2.components[0].ingredients[1].baseAmount).toBe(0.131);
   });
 
   it("applies exact rounding to flagged ingredients", () => {
@@ -132,7 +143,7 @@ describe("buildScaledRecipe", () => {
     };
     const scaled = buildScaledRecipe(exactRecipe, 1 / 3);
     expect(scaled.components[0].ingredients[0].baseAmount).toBe(1.67);
-    expect(scaled.components[0].ingredients[1].baseAmount).toBe(1.7);
+    expect(scaled.components[0].ingredients[1].baseAmount).toBe(2);
   });
 
   it("uses exact rounding in kg→g conversion for flagged ingredients", () => {
