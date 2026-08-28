@@ -5,6 +5,7 @@ import {
   formatScaledAmountDisplay,
   formatExactAmountDisplay,
   formatIngredientAmountDisplay,
+  formatIngredientAmountWithUnit,
   roundBatchTotalAmount,
   formatBatchTotalAmountDisplay,
 } from "./recipeAmount";
@@ -62,9 +63,10 @@ describe("formatScaledAmountDisplay", () => {
 });
 
 describe("roundExactAmount", () => {
-  it("rounds to 2 decimal places", () => {
-    expect(roundExactAmount(1.254)).toBe(1.25);
-    expect(roundExactAmount(1.256)).toBe(1.26);
+  it("rounds to 1 decimal place (matches spreadsheets)", () => {
+    expect(roundExactAmount(1.254)).toBe(1.3);
+    expect(roundExactAmount(1.24)).toBe(1.2);
+    expect(roundExactAmount(0.67)).toBe(0.7);
     expect(roundExactAmount(0.5)).toBe(0.5);
   });
 
@@ -82,7 +84,7 @@ describe("formatExactAmountDisplay", () => {
   it("keeps fractions without trailing zeros", () => {
     expect(formatExactAmountDisplay(0.5)).toBe("0.5");
     expect(formatExactAmountDisplay(36.8)).toBe("36.8");
-    expect(formatExactAmountDisplay(1.254)).toBe("1.25");
+    expect(formatExactAmountDisplay(1.254)).toBe("1.3");
   });
 
   it("shows integers without decimal", () => {
@@ -96,9 +98,34 @@ describe("formatExactAmountDisplay", () => {
 
 describe("formatIngredientAmountDisplay", () => {
   it("dispatches by rounding mode", () => {
-    expect(formatIngredientAmountDisplay(1.254, "exact")).toBe("1.25");
+    expect(formatIngredientAmountDisplay(1.254, "exact")).toBe("1.3");
     expect(formatIngredientAmountDisplay(1.5, "default")).toBe("1.5");
     expect(formatIngredientAmountDisplay(123, "default")).toBe("123");
+  });
+});
+
+describe("formatIngredientAmountWithUnit", () => {
+  it("shows sub-gram exact amounts as whole gram with real value in parentheses", () => {
+    expect(formatIngredientAmountWithUnit(0.67, "g", "exact")).toBe("1 g (0.7 g)");
+    expect(formatIngredientAmountWithUnit(0.3, "g", "exact")).toBe("1 g (0.3 g)");
+  });
+
+  it("shows exact amounts >= 1 g plainly at 1 decimal", () => {
+    expect(formatIngredientAmountWithUnit(3.45, "g", "exact")).toBe("3.5 g");
+    expect(formatIngredientAmountWithUnit(2, "g", "exact")).toBe("2 g");
+  });
+
+  it("does not apply parentheses to non-gram units", () => {
+    expect(formatIngredientAmountWithUnit(0.5, "ks", "exact")).toBe("0.5 ks");
+  });
+
+  it("formats default rounding with unit", () => {
+    expect(formatIngredientAmountWithUnit(123, "g")).toBe("123 g");
+    expect(formatIngredientAmountWithUnit(0.131, "kg")).toBe("0.131 kg");
+  });
+
+  it("shows em-dash for non-finite values", () => {
+    expect(formatIngredientAmountWithUnit(NaN, "g", "exact")).toBe("— g");
   });
 });
 

@@ -83,7 +83,7 @@
     "save": "Uložit změny",
     "create": "Vytvořit recept",
     "exactRoundingLabel": "Přesné množství (nezaokrouhlovat)",
-    "exactRoundingHint": "Zobrazit přesně na 2 desetinná místa \u2014 pektin, agar, želatina, vanilkový lusk\u2026",
+    "exactRoundingHint": "Zobrazit přesně na 1 desetinné místo \u2014 pektin, agar, želatina, vanilkový lusk\u2026",
     "componentHeading": "Komponenta {index}"
   },
   "recipeCard": {

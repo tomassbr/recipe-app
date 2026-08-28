@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import type { Ingredient } from "@/types/recipe";
 import type { CalculatedIngredient } from "@/types/calculatedRecipe";
-import { formatIngredientAmountDisplay } from "@/utils/recipeAmount";
+import { formatIngredientAmountWithUnit } from "@/utils/recipeAmount";
 import { AnimatedScaledAmount } from "./AnimatedScaledAmount";
 
 type IngredientRowProps = {
@@ -20,7 +20,16 @@ export function IngredientRow({
 }: IngredientRowProps) {
   const t = useTranslations("recipeDetail");
   const rounding = originalIngredient.rounding;
-  const mainLine = `${formatIngredientAmountDisplay(scaledIngredient.baseAmount, rounding)} ${scaledIngredient.unit}`;
+  const mainLine = formatIngredientAmountWithUnit(
+    scaledIngredient.baseAmount,
+    scaledIngredient.unit,
+    rounding
+  );
+  const originalLine = formatIngredientAmountWithUnit(
+    originalIngredient.baseAmount,
+    originalIngredient.unit,
+    rounding
+  );
   const subLine = scaledIngredient.displayAmount ?? "";
 
   return (
@@ -34,23 +43,17 @@ export function IngredientRow({
         ) : null}
       </td>
       <td className="hidden px-4 py-3 text-right text-sm tabular-nums text-slate-600 sm:table-cell">
-        {formatIngredientAmountDisplay(originalIngredient.baseAmount, rounding)}{" "}
-        {originalIngredient.unit}
+        {originalLine}
       </td>
       <td className="px-4 py-3 text-right text-base font-semibold text-slate-900 md:text-lg">
         {/* Original column is visually hidden on mobile — keep it for screen readers */}
         <span className="sr-only sm:hidden">
-          {t("colOriginal")}:{" "}
-          {formatIngredientAmountDisplay(originalIngredient.baseAmount, rounding)}{" "}
-          {originalIngredient.unit}.{" "}
+          {t("colOriginal")}: {originalLine}.{" "}
           {t("colScaled")}:{" "}
         </span>
         <span className="block">
           <AnimatedScaledAmount valueKey={`${recalcKey}|${mainLine}`}>
-            <span className="tabular-nums">
-              {formatIngredientAmountDisplay(scaledIngredient.baseAmount, rounding)}{" "}
-              {scaledIngredient.unit}
-            </span>
+            <span className="tabular-nums">{mainLine}</span>
           </AnimatedScaledAmount>
         </span>
         {scaledIngredient.displayAmount ? (

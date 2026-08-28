@@ -40,14 +40,14 @@ describe("scaleIngredientAmount", () => {
   });
 
   it("rounds default amounts to whole grams", () => {
-    // coefficient 1/3 → 1.666… → default 2 (whole grams), exact 1.67
+    // coefficient 1/3 → 1.666… → default 2 (whole grams), exact 1.7
     expect(scaleIngredientAmount(3000, 1000, 5)).toBe(2);
     expect(scaleIngredientAmount(1000, 500, 246.8)).toBe(123);
     expect(scaleIngredientAmount(1000, 500, 247.4)).toBe(124);
   });
 
-  it("rounds to 2 decimals in exact mode", () => {
-    expect(scaleIngredientAmount(3000, 1000, 5, "exact")).toBe(1.67);
+  it("rounds to 1 decimal in exact mode", () => {
+    expect(scaleIngredientAmount(3000, 1000, 5, "exact")).toBe(1.7);
     // half a vanilla pod stays 0.5
     expect(scaleIngredientAmount(1000, 500, 1, "exact")).toBe(0.5);
   });
@@ -142,7 +142,7 @@ describe("buildScaledRecipe", () => {
       ],
     };
     const scaled = buildScaledRecipe(exactRecipe, 1 / 3);
-    expect(scaled.components[0].ingredients[0].baseAmount).toBe(1.67);
+    expect(scaled.components[0].ingredients[0].baseAmount).toBe(1.7);
     expect(scaled.components[0].ingredients[1].baseAmount).toBe(2);
   });
 
@@ -159,10 +159,10 @@ describe("buildScaledRecipe", () => {
         },
       ],
     };
-    // 0.05 kg * 0.333 = 0.01665 kg → grams 16.65 (exact keeps 2 decimals)
+    // 0.05 kg * 0.333 = 0.01665 kg → grams 16.65 → exact 1 decimal 16.7
     const scaled = buildScaledRecipe(kgRecipe, 0.333);
     expect(scaled.components[0].ingredients[0].unit).toBe("g");
-    expect(scaled.components[0].ingredients[0].baseAmount).toBe(16.65);
+    expect(scaled.components[0].ingredients[0].baseAmount).toBe(16.7);
   });
 
   it("handles empty components array", () => {
