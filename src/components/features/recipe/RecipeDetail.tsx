@@ -119,7 +119,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
                     />
                     <span className="text-xs tabular-nums text-slate-500">
                       {t("pieceBatchYield", {
-                        count: Math.round((recipe.baseYield / opt.grams) * 100) / 100,
+                        count: Math.round(recipe.baseYield / opt.grams),
                       })}
                     </span>
                     <span
@@ -128,7 +128,7 @@ export function RecipeDetail({ recipe }: RecipeDetailProps) {
                     >
                       {Number.isFinite(targetYield) && targetYield > 0
                         ? t("pieceCurrentYield", {
-                            count: Math.round((targetYield / opt.grams) * 100) / 100,
+                            count: Math.round(targetYield / opt.grams),
                           })
                         : "—"}
                     </span>

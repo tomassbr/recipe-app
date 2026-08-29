@@ -1071,7 +1071,7 @@
         ]
       }
     ],
-    "note": "Základ = 3000 g těsta. Věneček 30 g/kus, větrník 37,5 g/kus — celá dávka = 100 věnečků nebo 80 větrníků.",
+    "note": "Základ = 3000 g těsta. Věneček 30 g/kus, větrník 36,6 g/kus — celá dávka = 100 věnečků nebo 82 větrníků.",
     "pieceOptions": [
       {
         "name": "Věneček",
@@ -1079,7 +1079,7 @@
       },
       {
         "name": "Větrník",
-        "grams": 37.5
+        "grams": 36.6
       }
     ]
   },
